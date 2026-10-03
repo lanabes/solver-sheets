@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Buscar objetivo en Google Sheets: 4 formas de hacerlo</title>
+<meta name="description" content="¿Existe Buscar objetivo en Google Sheets? No de serie. Cuatro formas de hacerlo: con TASA o NPER, despejando, con el complemento de Google o con una plantilla.">
+<link rel="canonical" href="https://lanabes.github.io/solver-sheets/buscar-objetivo-google-sheets/">
+<link rel="alternate" hreflang="es" href="https://lanabes.github.io/solver-sheets/buscar-objetivo-google-sheets/">
+<link rel="alternate" hreflang="en" href="https://lanabes.github.io/solver-sheets/en/goal-seek-google-sheets/">
+<link rel="alternate" hreflang="x-default" href="https://lanabes.github.io/solver-sheets/en/goal-seek-google-sheets/">
+<meta name="theme-color" content="#FBFAF6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E1512" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="es_ES">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:site_name" content="Solver para Google Sheets">
+<meta property="og:title" content="Buscar objetivo en Google Sheets: 4 formas de hacerlo">
+<meta property="og:description" content="¿Existe Buscar objetivo en Google Sheets? No de serie. Cuatro formas de hacerlo: con TASA o NPER, despejando, con el complemento de Google o con una plantilla.">
+<meta property="og:url" content="https://lanabes.github.io/solver-sheets/buscar-objetivo-google-sheets/">
+<meta property="og:image" content="https://lanabes.github.io/solver-sheets/assets/og/buscar-objetivo.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/icono.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/icono-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../assets/icono-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400..700&family=Geist+Mono:wght@400..600&display=swap">
+<link rel="stylesheet" href="../assets/estilo.css">
+<script>(function(){var r=document.documentElement;r.classList.add('js');try{var t=localStorage.getItem('tema');if(t==='dark'||t==='light')r.setAttribute('data-theme',t);}catch(e){}})();</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Buscar objetivo en Google Sheets: cuatro formas de hacerlo","description":"¿Existe Buscar objetivo en Google Sheets? No de serie. Cuatro formas de hacerlo: con TASA o NPER, despejando, con el complemento de Google o con una plantilla.","inLanguage":"es","datePublished":"2026-10-02","dateModified":"2026-10-03","mainEntityOfPage":"https://lanabes.github.io/solver-sheets/buscar-objetivo-google-sheets/","image":"https://lanabes.github.io/solver-sheets/assets/og/buscar-objetivo.png","author":{"@type":"Organization","name":"lanabes","url":"https://lanabes.github.io/solver-sheets/"},"publisher":{"@type":"Organization","name":"lanabes","url":"https://lanabes.github.io/solver-sheets/","logo":{"@type":"ImageObject","url":"https://lanabes.github.io/solver-sheets/assets/icono-512.png"}}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","inLanguage":"es","mainEntity":[{"@type":"Question","name":"¿Existe Buscar objetivo en Google Sheets?","acceptedAnswer":{"@type":"Answer","text":"No viene de serie. Google publicó en 2019 un complemento gratuito, «Goal Seek», que hace lo mismo que el de Excel, pero solo está en inglés. También puedes usar funciones que calculan al revés, despejar a mano o el panel en castellano de nuestra plantilla ."}},{"@type":"Question","name":"¿Hay una función de Buscar objetivo en Google Sheets?","acceptedAnswer":{"@type":"Answer","text":"No hay una función que se llame así. Para préstamos e inversiones existen funciones que dan la respuesta directamente: TASA (el tipo de interés), NPER (el número de cuotas) y VA (cuánto puedes pedir). Para cualquier otra fórmula hace falta un complemento o la plantilla."}},{"@type":"Question","name":"¿Cómo se hace Buscar objetivo en Google Sheets?","acceptedAnswer":{"@type":"Answer","text":"Necesitas tres datos: la celda con la fórmula, el valor que quieres que dé y la celda que puede cambiar. Con el complemento de Google se rellenan en «Set cell», «To value» y «By changing cell»; con la plantilla, en el menú Solver → Buscar objetivo…, en castellano. Está explicado paso a paso en esta guía ."}},{"@type":"Question","name":"¿Se puede cambiar más de una celda a la vez?","acceptedAnswer":{"@type":"Answer","text":"No: Buscar objetivo cambia una sola celda. Si necesitas mover varias a la vez para conseguir el mejor resultado cumpliendo límites, lo que buscas es el Solver. Lo explicamos en la guía del Solver en Google Sheets ."}},{"@type":"Question","name":"¿Por qué no me funciona el complemento Goal Seek?","acceptedAnswer":{"@type":"Answer","text":"Comprueba primero que la celda de la fórmula tiene de verdad una fórmula y que la que cambia es un número escrito a mano. Las valoraciones recientes del complemento hablan de lentitud y de errores al abrir el panel. Si te pasa, usa TASA o NPER si tu caso es un préstamo, o el panel de la plantilla."}},{"@type":"Question","name":"¿Se puede hacer en el móvil?","acceptedAnswer":{"@type":"Answer","text":"Las funciones TASA , NPER y VA funcionan en cualquier dispositivo, también en la app de Google Sheets. Las instrucciones de Google para su complemento Goal Seek son para el ordenador, y la plantilla también se usa desde el ordenador."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://lanabes.github.io/solver-sheets/"},{"@type":"ListItem","position":2,"name":"Buscar objetivo en Google Sheets","item":"https://lanabes.github.io/solver-sheets/buscar-objetivo-google-sheets/"}]}</script>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../" aria-label="Solver para Google Sheets, inicio"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="15" fill="#1F4436"/><polygon points="16,47 16,19 35,24 48,47" fill="#F2EBDC" stroke="#F2EBDC" stroke-width="5" stroke-linejoin="round"/><circle cx="35" cy="24" r="6.6" fill="#A3D7BC" stroke="#1F4436" stroke-width="3.4"/></svg><span>Solver <small>para Google Sheets</small></span></a>
+    <nav class="nav" id="nav" aria-label="Principal"><a href="../solver-google-sheets/">Solver</a><a href="../buscar-objetivo-google-sheets/" aria-current="page">Buscar objetivo</a><a href="../ejemplos/">Ejemplos</a><a href="../plantilla/">Plantilla</a></nav>
+    <a class="lang-switch" href="../en/goal-seek-google-sheets/" hreflang="en" lang="en" aria-label="English version">EN</a>
+    <button class="icon-btn theme-toggle" type="button" aria-label="Cambiar el tema"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="sun"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4L6 18M18 6l1.4-1.4"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="moon"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
+    <button class="icon-btn menu-btn" type="button" aria-label="Menú" aria-expanded="false" aria-controls="nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <a class="btn btn-primary btn-sm cta-top" href="#avisame">Avísame</a>
+  </div>
+</header>
+<main id="contenido">
+<div class="wrap">
+  <header class="article-head">
+    <ol class="crumbs"><li><a href="../">Inicio</a></li><li aria-current="page">Buscar objetivo en Google Sheets</li></ol>
+    <p class="eyebrow">Guía</p>
+    <h1>Buscar objetivo en Google Sheets: cuatro formas de hacerlo</h1>
+    <p class="lede">«Buscar objetivo» cambia una celda hasta que una fórmula da el resultado que quieres. Excel lo trae de serie; Google Sheets, no. Estas son las cuatro formas de hacerlo, de la más rápida a la más general.</p>
+    <div class="meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>7 min de lectura</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><time datetime="2026-10-03">Revisado el 3 de octubre de 2026</time></span></div>
+  </header>
+
+  <div class="layout">
+    <article class="article">
+      <section class="summary" aria-label="En resumen">
+        <h2>En resumen</h2>
+        <ul>
+          <li><strong>Si existe una función que lo calcula al revés,</strong> úsala: <code>TASA</code>, <code>NPER</code> o <code>VA</code> para préstamos. Es lo más rápido y exacto.</li>
+          <li><strong>Si la fórmula es sencilla,</strong> despeja la incógnita a mano: es una línea.</li>
+          <li><strong>Para todo lo demás,</strong> el complemento gratuito «Goal Seek» de Google (en inglés) o el panel Buscar objetivo de nuestra <a href="../plantilla/">plantilla</a> (en castellano).</li>
+        </ul>
+      </section>
+
+      <h2 id="existe">¿Existe Buscar objetivo en Google Sheets?</h2>
+      <p class="first"><strong>No de serie.</strong> Excel lo trae en el menú de análisis de hipótesis; Google Sheets no tiene ni un menú ni una función que se llame así. Pero se puede hacer de cuatro formas, todas gratis, que explicamos abajo con el mismo ejemplo: con una función que calcula al revés, despejando, con el complemento Goal Seek de Google (en inglés) o con el panel en castellano de nuestra <a href="../plantilla/">plantilla</a>.</p>
+
+      <h2 id="que-es">Qué hace «Buscar objetivo»</h2>
+      <p>Normalmente escribes los datos y la fórmula te da el resultado. Buscar objetivo hace el camino contrario: <strong>tú dices el resultado que quieres y encuentra el dato que lo consigue.</strong></p>
+      <p>Siempre necesita tres cosas:</p>
+      <ul>
+        <li><strong>La celda con la fórmula</strong>: el resultado que quieres fijar. En Excel se llama «Definir la celda».</li>
+        <li><strong>El valor que quieres</strong> que dé esa fórmula.</li>
+        <li><strong>La celda que puede cambiar</strong>: un dato escrito a mano del que depende la fórmula. En Excel, «Cambiando la celda».</li>
+      </ul>
+
+      <h3>El ejemplo: ¿a qué tipo de interés la cuota queda en 280 €?</h3>
+      <p>Pides un préstamo de 15.000 € a 5 años (60 cuotas). Al 5 % anual, la cuota mensual sale en 283,07 €. Tu límite son 280 € al mes. ¿Qué tipo de interés tendrías que conseguir?</p>
+      <figure class="figure">
+        <div class="window">
+          <div class="window-bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="doc">Plantilla Solver · Buscar objetivo</span><span class="menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="4" y="4" width="16" height="16" rx="2.5"/><path d="M4 9.3h16M4 14.6h16M9.3 4v16M14.6 4v16"/></svg> Solver</span></div>
+          <div class="sheet-wrap">
+            <table class="sheet">
+              <caption class="sr-only">Préstamo de 15.000 euros a 60 meses: con un 5 % de interés la cuota es de 283,07 euros.</caption>
+              <thead><tr><th class="rn" scope="col"><span class="sr-only">Fila</span></th><th scope="col">A</th><th scope="col">B</th></tr></thead>
+              <tbody>
+                <tr><td class="rn">6</td><td class="txt">Importe del préstamo</td><td class="n">15.000 €</td></tr>
+                <tr><td class="rn">7</td><td class="txt">Plazo (meses)</td><td class="n">60</td></tr>
+                <tr><td class="rn">8</td><td class="txt">Tipo de interés anual</td><td class="sol">5,00 %</td></tr>
+                <tr><td class="rn">9</td><td class="lbl">Cuota mensual</td><td class="f">283,07 €</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <figcaption>La cuota se calcula con la función <code>PAGO</code>. En verde, la celda que queremos que cambie.</figcaption>
+      </figure>
+      <div class="fx"><span class="fx-tag" aria-hidden="true">fx</span><span class="fx-cell">B9</span><code>=PAGO(B8/12;B7;-B6)</code><button class="copy" type="button" aria-label="Copiar la fórmula"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span>Copiar</span></button></div>
+      <p>Dividimos el tipo entre 12 porque las cuotas son mensuales, y el importe va en negativo porque, para el banco, es dinero que sale. La respuesta es <strong>4,55 %</strong>. Veamos las cuatro formas de llegar a ella.</p>
+
+      <h2 id="funcion">1. Con una función que lo calcula al revés</h2>
+      <p>Para préstamos e inversiones, Google Sheets ya trae las funciones «al revés». Si buscas el tipo de interés, <code>TASA</code> lo da directamente:</p>
+      <div class="fx"><span class="fx-tag" aria-hidden="true">fx</span><code>=TASA(60;-280;15000)*12</code><button class="copy" type="button" aria-label="Copiar la fórmula"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span>Copiar</span></button></div>
+      <p>Resultado: <strong>4,55 %</strong> (exactamente, 4,552 %). Multiplicamos por 12 porque <code>TASA</code> devuelve el tipo de cada mes. Las otras dos más útiles:</p>
+      <div class="table-wrap">
+        <table class="data">
+          <thead><tr><th scope="col">Si buscas…</th><th scope="col">Función</th><th scope="col">Ejemplo</th></tr></thead>
+          <tbody>
+            <tr><td>Cuánto puedes pedir con una cuota dada</td><td><code>VA</code></td><td>Con 280 € al mes, 60 meses y un 5 %: <code>=VA(5%/12;60;-280)</code> → 14.837,40 €</td></tr>
+            <tr><td>En cuántas cuotas lo terminas de pagar</td><td><code>NPER</code></td><td>Con 300 € al mes: <code>=NPER(5%/12;-300;15000)</code> → 56,2, es decir, 57 cuotas</td></tr>
+            <tr><td>El tipo de interés</td><td><code>TASA</code></td><td>El ejemplo de arriba → 4,55 %</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Si tu caso tiene una función así, no necesitas nada más: es exacto y se recalcula solo si cambias los datos.</p>
+
+      <h2 id="despejar">2. Despejando a mano</h2>
+      <p>Cuando la fórmula es una cuenta sencilla, despejar es lo más limpio. Un ejemplo de tienda online:</p>
+      <p>Vendes un producto que te cuesta 18,40 €, el envío son 4,60 € y la plataforma se queda el 20 % del precio. ¿A qué precio tienes que venderlo para <strong>ganar 6 € por unidad</strong>?</p>
+      <div class="model" role="group" aria-label="Cómo se despeja el precio">
+        <p><span class="k">Beneficio</span> = Precio × (1 − 0,20) − 18,40 − 4,60</p>
+        <p><span class="k">Quieres</span> 6 = Precio × 0,80 − 23</p>
+        <p><span class="k">Despejas</span> Precio = (23 + 6) / 0,80 = 36,25 €</p>
+      </div>
+      <p>En la hoja, con el coste en <code>B2</code>, el envío en <code>B3</code>, la comisión en <code>B4</code> y el beneficio que quieres en <code>B5</code>:</p>
+      <div class="fx"><span class="fx-tag" aria-hidden="true">fx</span><span class="fx-cell">B6</span><code>=(B2+B3+B5)/(1-B4)</code><button class="copy" type="button" aria-label="Copiar la fórmula"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span>Copiar</span></button></div>
+      <p>Despejar tiene una ventaja que Buscar objetivo no tiene: <strong>la fórmula se queda</strong>. Si mañana sube el envío, el precio se recalcula solo.</p>
+
+      <h2 id="complemento">3. Con el complemento Goal Seek de Google</h2>
+      <p>Google publicó en 2019 un complemento gratuito, «Goal Seek», que hace lo mismo que el de Excel. Tiene millones de instalaciones, pero <strong>solo está en inglés</strong> y no se actualiza desde mayo de 2023.</p>
+      <ol class="steps">
+        <li><strong>Instálalo.</strong> En tu hoja, <span class="menu-path"><span>Extensiones</span><span>Complementos</span><span>Descargar complementos</span></span>, busca «Goal Seek» (el de Google) y pulsa <span class="menu-path"><span>Instalar</span><span>Continuar</span></span>.</li>
+        <li><strong>Ábrelo.</strong> En el menú <strong>Extensiones</strong>, busca Goal Seek y pulsa «Open». Se abre un panel a la derecha.</li>
+        <li><strong>Rellena los tres campos.</strong> Selecciona la celda de la cuota y, junto a «Set cell», pulsa el botón de capturar la celda. Escribe 280 en «To value». Selecciona la celda del tipo de interés y captúrala en «By changing cell».</li>
+        <li><strong>Pulsa «Solve».</strong></li>
+      </ol>
+      <p>Hay más complementos gratuitos que lo hacen, como SheetWhiz.</p>
+
+      <h2 id="plantilla">4. Con la plantilla, en castellano</h2>
+      <p>Nuestra <a href="../plantilla/">plantilla gratis</a> trae un panel de Buscar objetivo en castellano. Viene con el ejemplo del préstamo y el del precio listos para probar.</p>
+      <ol class="steps">
+        <li><strong>Haz una copia</strong> de la plantilla en tu Google Drive.</li>
+        <li><strong>Abre el panel</strong> en el menú <span class="menu-path"><span>Solver</span><span>Buscar objetivo…</span></span>.</li>
+        <li><strong>Rellena los tres campos:</strong> «Celda con la fórmula» (<code>B9</code>), «Valor que quieres» (280) y «Celda que puede cambiar» (<code>B8</code>). El botón «Usar la seleccionada» copia la celda que tengas marcada.</li>
+        <li><strong>Pulsa «Buscar».</strong> En un par de segundos, la celda cambia a 4,55 % y la cuota queda en 280,00 €. Si no te convence, «Deshacer» la deja como estaba.</li>
+      </ol>
+      <p><a class="btn btn-primary" href="https://docs.google.com/spreadsheets/d/1wYO8tv6pRsg1gmECqQLtMpFOm7IOn-0MS4rO8Z0BDJQ/copy" target="_blank" rel="noopener" data-plantilla>Hacer una copia de la plantilla <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="arrow"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+      <p>Si tu cálculo está en otra hoja de cálculo, cópialo a la plantilla: clic derecho en la pestaña, <span class="menu-path"><span>Copiar en</span><span>Hoja de cálculo existente</span></span>.</p>
+
+      <h2 id="tanteo">Sin nada instalado: el tanteo con una tabla</h2>
+      <p>Si solo quieres hacerte una idea, escribe varios valores en una columna y calcula la fórmula al lado. Donde el resultado cruza tu objetivo, está la respuesta:</p>
+      <div class="table-wrap">
+        <table class="data">
+          <thead><tr><th scope="col">Tipo anual</th><th scope="col" class="n">Cuota mensual</th><th scope="col"></th></tr></thead>
+          <tbody>
+            <tr><td>4,0 %</td><td class="n">276,25 €</td><td class="muted">por debajo de 280</td></tr>
+            <tr><td>4,2 %</td><td class="n">277,60 €</td><td></td></tr>
+            <tr><td>4,4 %</td><td class="n">278,96 €</td><td></td></tr>
+            <tr class="total"><td>4,6 %</td><td class="n">280,33 €</td><td>aquí se pasa de 280</td></tr>
+            <tr><td>4,8 %</td><td class="n">281,70 €</td><td></td></tr>
+            <tr><td>5,0 %</td><td class="n">283,07 €</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>La respuesta está entre 4,4 % y 4,6 %. Afinando entre esos dos valores llegas a 4,55 %, que es exactamente lo que hacen por dentro Buscar objetivo y la plantilla, solo que mucho más rápido.</p>
+
+      <h2 id="errores">Errores típicos</h2>
+      <h3>«La celda que cambia tiene una fórmula»</h3>
+      <p>La celda que puede cambiar tiene que ser un número escrito a mano. Si es una fórmula, busca la celda de la que depende y usa esa.</p>
+      <h3>«No encuentra ningún valor»</h3>
+      <p>Puede que el resultado que pides sea imposible: ninguna cuota de un préstamo de 15.000 € a 60 meses baja de 250 €, porque eso sería sin intereses. Comprueba que el objetivo tiene sentido.</p>
+      <h3>«La fórmula no cambia al cambiar la celda»</h3>
+      <p>La fórmula no depende de esa celda, o depende a través de un redondeo que la deja fija. Revisa que has elegido bien las dos celdas.</p>
+      <h3>«Me da un valor raro»</h3>
+      <p>Algunas fórmulas tienen dos soluciones (por ejemplo, las que tienen un cuadrado). Buscar objetivo devuelve la más cercana al valor de partida: escribe un valor de partida razonable y vuelve a buscar.</p>
+
+      <h2 id="preguntas">Preguntas frecuentes</h2>
+      <div class="faq">
+        <details>
+          <summary>¿Existe Buscar objetivo en Google Sheets?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>No viene de serie. Google publicó en 2019 un complemento gratuito, «Goal Seek», que hace lo mismo que el de Excel, pero solo está en inglés. También puedes usar funciones que calculan al revés, despejar a mano o el panel en castellano de nuestra <a href="../plantilla/">plantilla</a>.</p></div>
+        </details>
+        <details>
+          <summary>¿Hay una función de Buscar objetivo en Google Sheets?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>No hay una función que se llame así. Para préstamos e inversiones existen funciones que dan la respuesta directamente: <code>TASA</code> (el tipo de interés), <code>NPER</code> (el número de cuotas) y <code>VA</code> (cuánto puedes pedir). Para cualquier otra fórmula hace falta un complemento o la plantilla.</p></div>
+        </details>
+        <details>
+          <summary>¿Cómo se hace Buscar objetivo en Google Sheets?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>Necesitas tres datos: la celda con la fórmula, el valor que quieres que dé y la celda que puede cambiar. Con el complemento de Google se rellenan en «Set cell», «To value» y «By changing cell»; con la plantilla, en el menú Solver → Buscar objetivo…, en castellano. Está explicado <a href="#complemento">paso a paso en esta guía</a>.</p></div>
+        </details>
+        <details>
+          <summary>¿Se puede cambiar más de una celda a la vez?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>No: Buscar objetivo cambia una sola celda. Si necesitas mover varias a la vez para conseguir el mejor resultado cumpliendo límites, lo que buscas es el Solver. Lo explicamos en la <a href="../solver-google-sheets/">guía del Solver en Google Sheets</a>.</p></div>
+        </details>
+        <details>
+          <summary>¿Por qué no me funciona el complemento Goal Seek?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>Comprueba primero que la celda de la fórmula tiene de verdad una fórmula y que la que cambia es un número escrito a mano. Las valoraciones recientes del complemento hablan de lentitud y de errores al abrir el panel. Si te pasa, usa <code>TASA</code> o <code>NPER</code> si tu caso es un préstamo, o el panel de la plantilla.</p></div>
+        </details>
+        <details>
+          <summary>¿Se puede hacer en el móvil?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>Las funciones <code>TASA</code>, <code>NPER</code> y <code>VA</code> funcionan en cualquier dispositivo, también en la app de Google Sheets. Las instrucciones de Google para su complemento Goal Seek son para el ordenador, y la plantilla también se usa desde el ordenador.</p></div>
+        </details>
+      </div>
+
+      <h2 id="o-solver">¿Buscar objetivo o Solver?</h2>
+      <p><strong>Buscar objetivo</strong> cambia una sola celda para que una fórmula dé un valor exacto. <strong>El Solver</strong> cambia varias celdas a la vez para conseguir el máximo o el mínimo, cumpliendo límites. Si te encuentras probando combinaciones de varias cosas para ganar más o gastar menos, lo que necesitas es el Solver: está en la <a href="../solver-google-sheets/">guía del Solver en Google Sheets</a>.</p>
+      <div class="callout ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l7.5 3v5.5c0 4.6-3.2 8.2-7.5 9.5-4.3-1.3-7.5-4.9-7.5-9.5V6z"/><path d="M8.8 12.2l2.3 2.3 4.2-4.6"/></svg><div><p><strong>Revisa siempre el resultado.</strong> Buscar objetivo encuentra el valor que hace que tu fórmula dé lo que pides; si la fórmula está mal, el resultado también.</p></div></div>
+    </article>
+    <aside class="aside"><nav class="toc" aria-label="En esta página"><p>En esta página</p><ol><li><a href="#existe">¿Existe Buscar objetivo en Google Sheets?</a></li><li><a href="#que-es">Qué hace «Buscar objetivo»</a></li><li><a href="#funcion">1. Con una función que lo calcula al revés</a></li><li><a href="#despejar">2. Despejando a mano</a></li><li><a href="#complemento">3. Con el complemento Goal Seek de Google</a></li><li><a href="#plantilla">4. Con la plantilla, en castellano</a></li><li><a href="#tanteo">Sin nada instalado: el tanteo con una tabla</a></li><li><a href="#errores">Errores típicos</a></li><li><a href="#preguntas">Preguntas frecuentes</a></li><li><a href="#o-solver">¿Buscar objetivo o Solver?</a></li></ol>
+      <div class="aside-cta"><strong>Plantilla gratis</strong><span>Los ejemplos de esta web, listos para resolver en tu Google Sheets.</span><a class="btn btn-primary btn-sm" href="https://docs.google.com/spreadsheets/d/1wYO8tv6pRsg1gmECqQLtMpFOm7IOn-0MS4rO8Z0BDJQ/copy" target="_blank" rel="noopener" data-plantilla>Hacer una copia <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="arrow"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></nav></aside>
+  </div>
+</div>
+
+<section class="section" id="avisame" aria-labelledby="avisame-t">
+  <div class="wrap">
+    <div class="waitlist" data-reveal>
+      <div class="waitlist-grid">
+        <div>
+          <p class="eyebrow">Lista de espera</p>
+          <h2 id="avisame-t">¿Lo quieres en todas tus hojas, sin copiar plantillas?</h2>
+          <p class="lede">Estamos valorando hacer un complemento para Google Sheets con el Solver y Buscar objetivo, en castellano y en inglés. Lo haremos si hay interés suficiente. Déjanos tu correo y te avisaremos, una sola vez, si sale.</p>
+          <ul class="perks">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.2 4.2L19 7"/></svg><span>Leería tu modelo tal como lo tienes, con tus propias fórmulas.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.2 4.2L19 7"/></svg><span>Variables enteras y binarias, informes claros y Buscar objetivo.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.2 4.2L19 7"/></svg><span>Resolvería dentro de tu navegador: tus datos no saldrían de tu hoja.</span></li>
+          </ul>
+        </div>
+        <form class="wl-form" data-state="idle" data-endpoint="https://script.google.com/macros/s/AKfycbwQmEJsMEwahu4BLXoV_xvwo-aQ2-lAGDU6h97BB30XY1FvimbSGr1M9hIXH60bJUx9/exec" data-origen="/buscar-objetivo-google-sheets/" novalidate>
+          <div class="wl-fields">
+            <label class="wl-label" for="wl-principal">Tu correo</label>
+            <div class="wl-row">
+              <input id="wl-principal" type="email" name="correo" autocomplete="email" inputmode="email" placeholder="nombre@gmail.com" maxlength="254" required aria-describedby="wl-help-principal wl-err-principal">
+              <button class="btn" type="submit"><span class="wl-spin" aria-hidden="true"></span><span class="label">Avisadme</span></button>
+            </div>
+            <div class="wl-hp" aria-hidden="true"><label>No rellenes este campo <input type="text" name="web" tabindex="-1" autocomplete="off"></label></div>
+            <p class="wl-error" id="wl-err-principal" role="alert" aria-live="assertive"></p>
+            <p class="wl-help" id="wl-help-principal">Solo para avisarte. Sin boletines ni publicidad, y te borras cuando quieras. <a href="../privacidad/">Cómo tratamos tu correo</a>.</p>
+          </div>
+          <div class="wl-done" role="status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.2"/><path class="check" d="M7.8 12.4l2.9 2.9 5.6-6"/></svg><div><strong>Apuntado. Gracias.</strong><span>Si el complemento sale, te escribiremos una sola vez para avisarte.</span></div></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="../"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="15" fill="#1F4436"/><polygon points="16,47 16,19 35,24 48,47" fill="#F2EBDC" stroke="#F2EBDC" stroke-width="5" stroke-linejoin="round"/><circle cx="35" cy="24" r="6.6" fill="#A3D7BC" stroke="#1F4436" stroke-width="3.4"/></svg><span>Solver <small>para Google Sheets</small></span></a>
+        <p>Guías en castellano, ejemplos resueltos y una plantilla gratis para optimizar con Google Sheets. Un proyecto de lanabes.</p>
+      </div>
+      <div>
+        <h2>Guías</h2>
+        <ul>
+          <li><a href="../solver-google-sheets/">Solver en Google Sheets</a></li>
+          <li><a href="../buscar-objetivo-google-sheets/">Buscar objetivo</a></li>
+          <li><a href="../plantilla/">La plantilla gratis</a></li>
+          <li><a href="../privacidad/">Privacidad</a></li>
+          <li><a href="../en/" hreflang="en">English version</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Ejemplos resueltos</h2>
+        <ul>
+          <li><a href="../ejemplos/mezcla-de-produccion/" hreflang="es">Mezcla de producción</a></li>
+          <li><a href="../ejemplos/problema-de-transporte/" hreflang="es">Problema de transporte</a></li>
+          <li><a href="../ejemplos/turnos-de-personal/" hreflang="es">Turnos de personal</a></li>
+          <li><a href="../ejemplos/presupuesto-de-inversiones/" hreflang="es">Presupuesto de inversiones</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="disclaimer">
+      <span>Los ejemplos son inventados para aprender. El resultado de un modelo depende de cómo se plantea: revísalo siempre antes de decidir.</span>
+      <span>Google Sheets es una marca de Google LLC y Excel, de Microsoft. Esta web no está afiliada a ninguna de las dos.</span>
+    </div>
+  </div>
+</footer>
+<script src="../assets/app.js" defer></script>
+
+</body>
+</html>

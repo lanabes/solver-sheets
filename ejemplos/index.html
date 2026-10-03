@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ejemplos resueltos de programación lineal en Google Sheets</title>
+<meta name="description" content="Cuatro problemas de optimización resueltos paso a paso en Google Sheets: mezcla de producción, transporte, turnos y presupuesto.">
+<link rel="canonical" href="https://lanabes.github.io/solver-sheets/ejemplos/">
+<meta name="theme-color" content="#FBFAF6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E1512" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Solver para Google Sheets">
+<meta property="og:title" content="Ejemplos resueltos de programación lineal en Google Sheets">
+<meta property="og:description" content="Cuatro problemas de optimización resueltos paso a paso en Google Sheets: mezcla de producción, transporte, turnos y presupuesto.">
+<meta property="og:url" content="https://lanabes.github.io/solver-sheets/ejemplos/">
+<meta property="og:image" content="https://lanabes.github.io/solver-sheets/assets/og/ejemplos.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/icono.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/icono-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../assets/icono-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400..700&family=Geist+Mono:wght@400..600&display=swap">
+<link rel="stylesheet" href="../assets/estilo.css">
+<script>(function(){var r=document.documentElement;r.classList.add('js');try{var t=localStorage.getItem('tema');if(t==='dark'||t==='light')r.setAttribute('data-theme',t);}catch(e){}})();</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://lanabes.github.io/solver-sheets/"},{"@type":"ListItem","position":2,"name":"Ejemplos","item":"https://lanabes.github.io/solver-sheets/ejemplos/"}]}</script>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../" aria-label="Solver para Google Sheets, inicio"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="15" fill="#1F4436"/><polygon points="16,47 16,19 35,24 48,47" fill="#F2EBDC" stroke="#F2EBDC" stroke-width="5" stroke-linejoin="round"/><circle cx="35" cy="24" r="6.6" fill="#A3D7BC" stroke="#1F4436" stroke-width="3.4"/></svg><span>Solver <small>para Google Sheets</small></span></a>
+    <nav class="nav" id="nav" aria-label="Principal"><a href="../solver-google-sheets/">Solver</a><a href="../buscar-objetivo-google-sheets/">Buscar objetivo</a><a href="../ejemplos/" aria-current="page">Ejemplos</a><a href="../plantilla/">Plantilla</a></nav>
+    <a class="lang-switch" href="../en/" hreflang="en" lang="en" aria-label="English version">EN</a>
+    <button class="icon-btn theme-toggle" type="button" aria-label="Cambiar el tema"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="sun"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4L6 18M18 6l1.4-1.4"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="moon"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
+    <button class="icon-btn menu-btn" type="button" aria-label="Menú" aria-expanded="false" aria-controls="nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <a class="btn btn-primary btn-sm cta-top" href="#avisame">Avísame</a>
+  </div>
+</header>
+<main id="contenido">
+<div class="wrap">
+  <header class="article-head">
+    <ol class="crumbs"><li><a href="../">Inicio</a></li><li aria-current="page">Ejemplos</li></ol>
+    <p class="eyebrow">Ejemplos resueltos</p>
+    <h1>Cuatro problemas típicos, resueltos paso a paso</h1>
+    <p class="lede">Cada ejemplo cuenta el problema, cómo se escribe el modelo en la hoja, la solución y lo que enseña. Todos son inventados para aprender, y todos están listos para resolver en la <a href="../plantilla/">plantilla gratis</a>.</p>
+  </header>
+</div>
+
+<section class="section" style="padding-top: 0" aria-label="Ejemplos">
+  <div class="wrap">
+    <div class="grid grid-2">
+      <a class="card feature" href="../ejemplos/mezcla-de-produccion/" data-reveal>
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 20V10l6 3.5V10l6 3.5V5h6v15H3z"/><path d="M7 17h2M12 17h2M17 9h1"/></svg></span>
+        <span class="tag">Programación lineal entera</span>
+        <h3>Mezcla de producción</h3>
+        <p>Una fábrica, tres productos y un material escaso. Por qué el producto que más deja no se fabrica, y cuánto vale un kilo más de material.</p>
+        <span class="more">8.960 € frente a 6.880 € <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="arrow"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="card feature" href="../ejemplos/problema-de-transporte/" data-reveal="2">
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2.5 6.5h11v9.5h-11zM13.5 10h4l3 3.2V16h-7"/><circle cx="6.5" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg></span>
+        <span class="tag">Programación lineal</span>
+        <h3>Problema de transporte</h3>
+        <p>Tres almacenes y cuatro tiendas. Por qué la ruta más barata no siempre es la buena, y cuánto cuesta de verdad un palé más.</p>
+        <span class="more">1.040 € menos a la semana <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="arrow"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="card feature" href="../ejemplos/turnos-de-personal/" data-reveal="3">
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="9" cy="8.5" r="3.2"/><path d="M3 19.5c.7-3.2 3.1-5 6-5s5.3 1.8 6 5"/><path d="M16 5.6a3 3 0 0 1 0 5.8M18.5 14.8c1.4.8 2.3 2.4 2.6 4.7"/></svg></span>
+        <span class="tag">Programación entera</span>
+        <h3>Turnos de personal</h3>
+        <p>Cinco días de trabajo y dos de descanso. Por qué con un pico de 16 personas hacen falta 17, y por qué redondear cuesta un sueldo.</p>
+        <span class="more">17 personas, no 18 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="arrow"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="card feature" href="../ejemplos/presupuesto-de-inversiones/" data-reveal="4">
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><ellipse cx="9" cy="7" rx="5.5" ry="2.5"/><path d="M3.5 7v4c0 1.4 2.5 2.5 5.5 2.5s5.5-1.1 5.5-2.5V7"/><path d="M9.5 16.3c.9.1 1.8.2 2.5.2 3 0 5.5-1.1 5.5-2.5v-4M14.5 9.7c1.8.3 3 1 3 1.8"/><path d="M3.5 11v4c0 1.4 2.5 2.5 5.5 2.5"/></svg></span>
+        <span class="tag">Variables binarias</span>
+        <h3>Presupuesto de inversiones</h3>
+        <p>Seis proyectos y un presupuesto que no llega. Cómo escribir «si haces esto, necesitas aquello», y por qué el proyecto más grande se queda fuera.</p>
+        <span class="more">45.000 € más de VAN <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="arrow"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" aria-labelledby="empezar">
+  <div class="wrap band">
+    <div>
+      <p class="eyebrow">¿Primera vez?</p>
+      <h2 id="empezar">Empieza por la guía del Solver.</h2>
+      <p class="lede">Explica qué es un problema de optimización con un taller de dos piezas, con un gráfico que puedes mover, y cómo escribirlo en la hoja.</p>
+      <div class="actions"><a class="btn btn-primary" href="../solver-google-sheets/">Leer la guía <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="arrow"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    </div>
+    <div class="card">
+      <h3>Los ejemplos, en tu Google Sheets</h3>
+      <p>La plantilla trae los cuatro ejemplos montados, además del taller de la guía y una tabla en blanco para tu propio problema.</p>
+      <div class="actions" style="margin-top: 18px"><a class="btn btn-primary" href="https://docs.google.com/spreadsheets/d/1wYO8tv6pRsg1gmECqQLtMpFOm7IOn-0MS4rO8Z0BDJQ/copy" target="_blank" rel="noopener" data-plantilla>Hacer una copia de la plantilla <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="arrow"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="avisame" aria-labelledby="avisame-t">
+  <div class="wrap">
+    <div class="waitlist" data-reveal>
+      <div class="waitlist-grid">
+        <div>
+          <p class="eyebrow">Lista de espera</p>
+          <h2 id="avisame-t">¿Lo quieres en todas tus hojas, sin copiar plantillas?</h2>
+          <p class="lede">Estamos valorando hacer un complemento para Google Sheets con el Solver y Buscar objetivo, en castellano y en inglés. Lo haremos si hay interés suficiente. Déjanos tu correo y te avisaremos, una sola vez, si sale.</p>
+          <ul class="perks">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.2 4.2L19 7"/></svg><span>Leería tu modelo tal como lo tienes, con tus propias fórmulas.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.2 4.2L19 7"/></svg><span>Variables enteras y binarias, informes claros y Buscar objetivo.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.2 4.2L19 7"/></svg><span>Resolvería dentro de tu navegador: tus datos no saldrían de tu hoja.</span></li>
+          </ul>
+        </div>
+        <form class="wl-form" data-state="idle" data-endpoint="https://script.google.com/macros/s/AKfycbwQmEJsMEwahu4BLXoV_xvwo-aQ2-lAGDU6h97BB30XY1FvimbSGr1M9hIXH60bJUx9/exec" data-origen="/ejemplos/" novalidate>
+          <div class="wl-fields">
+            <label class="wl-label" for="wl-principal">Tu correo</label>
+            <div class="wl-row">
+              <input id="wl-principal" type="email" name="correo" autocomplete="email" inputmode="email" placeholder="nombre@gmail.com" maxlength="254" required aria-describedby="wl-help-principal wl-err-principal">
+              <button class="btn" type="submit"><span class="wl-spin" aria-hidden="true"></span><span class="label">Avisadme</span></button>
+            </div>
+            <div class="wl-hp" aria-hidden="true"><label>No rellenes este campo <input type="text" name="web" tabindex="-1" autocomplete="off"></label></div>
+            <p class="wl-error" id="wl-err-principal" role="alert" aria-live="assertive"></p>
+            <p class="wl-help" id="wl-help-principal">Solo para avisarte. Sin boletines ni publicidad, y te borras cuando quieras. <a href="../privacidad/">Cómo tratamos tu correo</a>.</p>
+          </div>
+          <div class="wl-done" role="status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.2"/><path class="check" d="M7.8 12.4l2.9 2.9 5.6-6"/></svg><div><strong>Apuntado. Gracias.</strong><span>Si el complemento sale, te escribiremos una sola vez para avisarte.</span></div></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="../"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="15" fill="#1F4436"/><polygon points="16,47 16,19 35,24 48,47" fill="#F2EBDC" stroke="#F2EBDC" stroke-width="5" stroke-linejoin="round"/><circle cx="35" cy="24" r="6.6" fill="#A3D7BC" stroke="#1F4436" stroke-width="3.4"/></svg><span>Solver <small>para Google Sheets</small></span></a>
+        <p>Guías en castellano, ejemplos resueltos y una plantilla gratis para optimizar con Google Sheets. Un proyecto de lanabes.</p>
+      </div>
+      <div>
+        <h2>Guías</h2>
+        <ul>
+          <li><a href="../solver-google-sheets/">Solver en Google Sheets</a></li>
+          <li><a href="../buscar-objetivo-google-sheets/">Buscar objetivo</a></li>
+          <li><a href="../plantilla/">La plantilla gratis</a></li>
+          <li><a href="../privacidad/">Privacidad</a></li>
+          <li><a href="../en/" hreflang="en">English version</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Ejemplos resueltos</h2>
+        <ul>
+          <li><a href="../ejemplos/mezcla-de-produccion/" hreflang="es">Mezcla de producción</a></li>
+          <li><a href="../ejemplos/problema-de-transporte/" hreflang="es">Problema de transporte</a></li>
+          <li><a href="../ejemplos/turnos-de-personal/" hreflang="es">Turnos de personal</a></li>
+          <li><a href="../ejemplos/presupuesto-de-inversiones/" hreflang="es">Presupuesto de inversiones</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="disclaimer">
+      <span>Los ejemplos son inventados para aprender. El resultado de un modelo depende de cómo se plantea: revísalo siempre antes de decidir.</span>
+      <span>Google Sheets es una marca de Google LLC y Excel, de Microsoft. Esta web no está afiliada a ninguna de las dos.</span>
+    </div>
+  </div>
+</footer>
+<script src="../assets/app.js" defer></script>
+
+</body>
+</html>

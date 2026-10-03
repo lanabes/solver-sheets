@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Free Solver template for Google Sheets</title>
+<meta name="description" content="A free Google Sheet that solves linear, integer and binary optimization problems, plus Goal Seek. No sign-up. Your data never leaves your sheet.">
+<link rel="canonical" href="https://lanabes.github.io/solver-sheets/en/template/">
+<link rel="alternate" hreflang="es" href="https://lanabes.github.io/solver-sheets/plantilla/">
+<link rel="alternate" hreflang="en" href="https://lanabes.github.io/solver-sheets/en/template/">
+<link rel="alternate" hreflang="x-default" href="https://lanabes.github.io/solver-sheets/en/template/">
+<meta name="theme-color" content="#FBFAF6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E1512" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:site_name" content="Solver for Google Sheets">
+<meta property="og:title" content="Free Solver template for Google Sheets">
+<meta property="og:description" content="A free Google Sheet that solves linear, integer and binary optimization problems, plus Goal Seek. No sign-up. Your data never leaves your sheet.">
+<meta property="og:url" content="https://lanabes.github.io/solver-sheets/en/template/">
+<meta property="og:image" content="https://lanabes.github.io/solver-sheets/assets/og/en-template.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/icono.svg" type="image/svg+xml">
+<link rel="icon" href="../../assets/icono-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../../assets/icono-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400..700&family=Geist+Mono:wght@400..600&display=swap">
+<link rel="stylesheet" href="../../assets/estilo.css">
+<script>(function(){var r=document.documentElement;r.classList.add('js');try{var t=localStorage.getItem('tema');if(t==='dark'||t==='light')r.setAttribute('data-theme',t);}catch(e){}})();</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Free Solver template for Google Sheets","description":"A free Google Sheet that solves linear, integer and binary optimization problems, plus Goal Seek. No sign-up. Your data never leaves your sheet.","inLanguage":"en","datePublished":"2026-10-02","dateModified":"2026-10-03","mainEntityOfPage":"https://lanabes.github.io/solver-sheets/en/template/","image":"https://lanabes.github.io/solver-sheets/assets/og/en-template.png","author":{"@type":"Organization","name":"lanabes","url":"https://lanabes.github.io/solver-sheets/"},"publisher":{"@type":"Organization","name":"lanabes","url":"https://lanabes.github.io/solver-sheets/","logo":{"@type":"ImageObject","url":"https://lanabes.github.io/solver-sheets/assets/icono-512.png"}}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://lanabes.github.io/solver-sheets/en/"},{"@type":"ListItem","position":2,"name":"Free template","item":"https://lanabes.github.io/solver-sheets/en/template/"}]}</script>
+</head>
+<body>
+<a class="skip" href="#contenido">Skip to content</a>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../../en/" aria-label="Solver for Google Sheets, home"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="15" fill="#1F4436"/><polygon points="16,47 16,19 35,24 48,47" fill="#F2EBDC" stroke="#F2EBDC" stroke-width="5" stroke-linejoin="round"/><circle cx="35" cy="24" r="6.6" fill="#A3D7BC" stroke="#1F4436" stroke-width="3.4"/></svg><span>Solver <small>for Google Sheets</small></span></a>
+    <nav class="nav" id="nav" aria-label="Main"><a href="../../en/solver-google-sheets/">Solver</a><a href="../../en/goal-seek-google-sheets/">Goal Seek</a><a href="../../en/template/" aria-current="page">Template</a></nav>
+    <a class="lang-switch" href="../../plantilla/" hreflang="es" lang="es" aria-label="Versión en español">ES</a>
+    <button class="icon-btn theme-toggle" type="button" aria-label="Change theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="sun"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4L6 18M18 6l1.4-1.4"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="moon"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
+    <button class="icon-btn menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <a class="btn btn-primary btn-sm cta-top" href="#avisame">Notify me</a>
+  </div>
+</header>
+<main id="contenido">
+<div class="wrap">
+  <header class="article-head">
+    <ol class="crumbs"><li><a href="../../en/">Home</a></li><li aria-current="page">Free template</li></ol>
+    <p class="eyebrow">Free · no sign-up · open source</p>
+    <h1>Free Solver template for Google Sheets</h1>
+    <p class="lede">A Google Sheet with a script that solves optimization problems and does Goal Seek. Make a copy in your Google Drive and it’s yours.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="https://docs.google.com/spreadsheets/d/1VkL8--0mcGrZkiEQhltmVe38QTWw7zW-6PERQBRPP9o/copy" target="_blank" rel="noopener" data-plantilla>Make a copy of the template <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="arrow"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn-secondary" href="#how">How it works</a>
+    </div>
+  </header>
+
+  <div class="layout">
+    <article class="article">
+      <h2 id="whats-inside">What’s inside</h2>
+      <div class="table-wrap">
+        <table class="data">
+          <thead><tr><th scope="col">Tab</th><th scope="col">What it has</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Start here</strong></td><td>How it works, in four steps.</td></tr>
+            <tr><td><strong>Workshop</strong></td><td>Two parts and two machines: the example from the <a href="../../en/solver-google-sheets/">Solver guide</a>.</td></tr>
+            <tr><td><strong>Goal Seek</strong></td><td>A loan interest rate and a selling price. <a href="../../en/goal-seek-google-sheets/">Explained here</a>.</td></tr>
+            <tr><td><strong>My model</strong></td><td>A blank table for your own problem.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Plus a <strong>Solver</strong> menu at the top, next to “Help”, with four options: <em>Solve this tab</em>, <em>Goal Seek…</em>, <em>How to use</em> and <em>Restore examples…</em>, in case you change an example tab and want it back. The <a href="../../plantilla/" hreflang="es">Spanish version</a> includes four more worked examples: product mix, transportation, staff scheduling and capital budgeting.</p>
+
+      <h2 id="how">How it works</h2>
+      <ol class="steps">
+        <li><strong>Make a copy.</strong> Click “Make a copy of the template” and then Google’s “Make a copy” button. It’s saved to your Google Drive. Open it on a computer: the Solver menu is designed for Google Sheets in a web browser.</li>
+        <li><strong>Pick a tab.</strong> Adapt the example or use “My model”.</li>
+        <li><strong>Type in your numbers.</strong> One column per variable, with its name, its type and what it adds to the objective. One row per constraint, with how much each variable uses, the sign and the limit.</li>
+        <li><strong>Solve.</strong> From the menu, <span class="menu-path"><span>Solver</span><span>Solve this tab</span></span>. The first time, Google will ask for permission: see just below.</li>
+        <li><strong>Read the result.</strong> The solution appears in the green “Solution” row, the value in “Objective” and the status in “Status”. The “Slack” column shows how much of each resource is left; when it’s 0 it turns green: that’s what holds you back.</li>
+      </ol>
+      <h3>The table rules</h3>
+      <ul>
+        <li><strong>Don’t change the labels in column A</strong> (“Objective”, “Variables”, “Type”, “Min”, “Max”, “Objective coefficients”, “Solution”, “Constraints”). That’s how the script finds each part.</li>
+        <li><strong>To add variables,</strong> insert columns before the “Used” column and name them in the “Variables” row.</li>
+        <li><strong>To add constraints,</strong> write new rows below the existing ones, with no blank rows in between. The “Used” and “Slack” formulas are rebuilt automatically when you solve.</li>
+        <li><strong>Type:</strong> “Continuous” allows decimals; “Integer” only 0, 1, 2…; “Binary” only 0 or 1 (yes or no).</li>
+        <li><strong>Empty Min</strong> means 0 (it can’t be negative). <strong>Empty Max</strong> means no limit.</li>
+        <li><strong>If something is missing or mistyped,</strong> the script tells you which cell to check and takes you there.</li>
+      </ul>
+
+      <h2 id="permission">The first time: Google’s permission</h2>
+      <p>The template runs on an Apps Script script, Google’s system for automating its spreadsheets. The first time you use the Solver menu in your copy, Google asks for permission to run it:</p>
+      <ol class="steps">
+        <li><strong>“Authorization required”.</strong> Click to continue and choose your Google account.</li>
+        <li><strong>“Google hasn’t verified this app”.</strong> That’s normal: the script lives in your own copy and nobody has submitted it for review. Click “Advanced”, at the bottom left, and then “Go to Solver template for Google Sheets (unsafe)”.</li>
+        <li><strong>Review the permissions it asks for and accept them.</strong> They’re only the two in the table below; if there are checkboxes, tick them.</li>
+      </ol>
+      <p>The permissions are the minimum possible:</p>
+      <div class="table-wrap">
+        <table class="data">
+          <thead><tr><th scope="col">Permission</th><th scope="col">What for</th></tr></thead>
+          <tbody>
+            <tr><td>See and edit <strong>only this spreadsheet</strong></td><td>To read your table and write the solution. It can’t open any other spreadsheet or see your Drive.</td></tr>
+            <tr><td>Show panels and dialogs in the spreadsheet</td><td>The Goal Seek panel and the help window.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l7.5 3v5.5c0 4.6-3.2 8.2-7.5 9.5-4.3-1.3-7.5-4.9-7.5-9.5V6z"/><path d="M8.8 12.2l2.3 2.3 4.2-4.6"/></svg><div><p><strong>Your data never leaves your sheet.</strong> The script has no permission to connect to the internet: it can’t send anything to anyone, not even to us. The maths is done by the optimization service Google includes in Apps Script, inside your account.</p></div></div>
+      <p>You can read the whole code before copying, with the button on Google’s copy page that opens the Apps Script file, or in your copy, under <span class="menu-path"><span>Extensions</span><span>Apps Script</span></span>. It’s open source, under the MIT license.</p>
+
+      <h2 id="goal-seek">Goal Seek</h2>
+      <p>Under <span class="menu-path"><span>Solver</span><span>Goal Seek…</span></span> a panel opens on the right with three fields: the formula cell, the target value and the cell to change. “Use selected cell” copies whatever cell you have selected. When you click “Find”, the cell changes until the formula shows your value; if you don’t like it, “Undo” puts it back. There are worked examples in the <a href="../../en/goal-seek-google-sheets/">Goal Seek guide</a>.</p>
+
+      <h2 id="limits">Limits</h2>
+      <ul>
+        <li><strong>Linear problems only.</strong> If your model multiplies variables together, uses powers or <code>IF</code> formulas on the variables, it won’t work. Here’s <a href="../../en/solver-google-sheets/#nonlinear">how to tell</a>.</li>
+        <li><strong>Time.</strong> The template waits up to 60 seconds. Problems with tens or a few hundred variables solve in seconds; with many integer variables time may run out, and it warns you the solution may not be the best one.</li>
+        <li><strong>The model is a table.</strong> The script reads the numbers in the table, not your formulas. If your model is spread across the sheet as formulas, it has to be moved into the table.</li>
+        <li><strong>One tab at a time.</strong> It solves the tab you have open.</li>
+      </ul>
+      <div class="callout warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10.3 4.3L2.6 18a2 2 0 0 0 1.7 3h15.4a2 2 0 0 0 1.7-3L13.7 4.3a2 2 0 0 0-3.4 0z"/><path d="M12 9.5v4.5M12 17.4v.3"/></svg><div><p><strong>The result is only as good as the model.</strong> The script finds the best solution to the table you give it. Check that the table really describes your problem before making any decision with it. The template is provided as is, without warranty.</p></div></div>
+      <p><a class="btn btn-primary" href="https://docs.google.com/spreadsheets/d/1VkL8--0mcGrZkiEQhltmVe38QTWw7zW-6PERQBRPP9o/copy" target="_blank" rel="noopener" data-plantilla>Make a copy of the template <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="arrow"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+    </article>
+    <aside class="aside"><nav class="toc" aria-label="On this page"><p>On this page</p><ol><li><a href="#whats-inside">What’s inside</a></li><li><a href="#how">How it works</a></li><li><a href="#permission">The first time: Google’s permission</a></li><li><a href="#goal-seek">Goal Seek</a></li><li><a href="#limits">Limits</a></li></ol>
+      <div class="aside-cta"><strong>Free template</strong><span>The examples on this page, ready to solve in your Google Sheets.</span><a class="btn btn-primary btn-sm" href="https://docs.google.com/spreadsheets/d/1VkL8--0mcGrZkiEQhltmVe38QTWw7zW-6PERQBRPP9o/copy" target="_blank" rel="noopener" data-plantilla>Make a copy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="arrow"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></nav></aside>
+  </div>
+</div>
+
+<section class="section" id="avisame" aria-labelledby="avisame-t">
+  <div class="wrap">
+    <div class="waitlist" data-reveal>
+      <div class="waitlist-grid">
+        <div>
+          <p class="eyebrow">Waitlist</p>
+          <h2 id="avisame-t">Want it in every sheet, without copying templates?</h2>
+          <p class="lede">We’re considering building a Google Sheets add-on with Solver and Goal Seek. We’ll build it if there’s enough interest. Leave your e-mail and we’ll let you know, just once, if it launches.</p>
+          <ul class="perks">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.2 4.2L19 7"/></svg><span>It would read your model as it is, with your own formulas.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.2 4.2L19 7"/></svg><span>Integer and binary variables, plain-language reports and Goal Seek.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.2 4.2L19 7"/></svg><span>It would solve inside your browser: your data would never leave your sheet.</span></li>
+          </ul>
+        </div>
+        <form class="wl-form" data-state="idle" data-endpoint="https://script.google.com/macros/s/AKfycbwQmEJsMEwahu4BLXoV_xvwo-aQ2-lAGDU6h97BB30XY1FvimbSGr1M9hIXH60bJUx9/exec" data-origen="/en/template/" novalidate>
+          <div class="wl-fields">
+            <label class="wl-label" for="wl-principal">Your e-mail</label>
+            <div class="wl-row">
+              <input id="wl-principal" type="email" name="correo" autocomplete="email" inputmode="email" placeholder="name@gmail.com" maxlength="254" required aria-describedby="wl-help-principal wl-err-principal">
+              <button class="btn" type="submit"><span class="wl-spin" aria-hidden="true"></span><span class="label">Notify me</span></button>
+            </div>
+            <div class="wl-hp" aria-hidden="true"><label>Leave this field empty <input type="text" name="web" tabindex="-1" autocomplete="off"></label></div>
+            <p class="wl-error" id="wl-err-principal" role="alert" aria-live="assertive"></p>
+            <p class="wl-help" id="wl-help-principal">Only to let you know. No newsletters, no ads, and you can unsubscribe anytime. <a href="../../en/privacy/">How we handle your e-mail</a>.</p>
+          </div>
+          <div class="wl-done" role="status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.2"/><path class="check" d="M7.8 12.4l2.9 2.9 5.6-6"/></svg><div><strong>You’re on the list. Thanks.</strong><span>If the add-on launches, we’ll e-mail you once to let you know.</span></div></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="../../en/"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="15" fill="#1F4436"/><polygon points="16,47 16,19 35,24 48,47" fill="#F2EBDC" stroke="#F2EBDC" stroke-width="5" stroke-linejoin="round"/><circle cx="35" cy="24" r="6.6" fill="#A3D7BC" stroke="#1F4436" stroke-width="3.4"/></svg><span>Solver <small>for Google Sheets</small></span></a>
+        <p>Clear guides, worked examples and a free template to optimize with Google Sheets. A lanabes project.</p>
+      </div>
+      <div>
+        <h2>Guides</h2>
+        <ul>
+          <li><a href="../../en/solver-google-sheets/">Solver in Google Sheets</a></li>
+          <li><a href="../../en/goal-seek-google-sheets/">Goal Seek in Google Sheets</a></li>
+          <li><a href="../../en/template/">The free template</a></li>
+          <li><a href="../../en/privacy/">Privacy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>In Spanish</h2>
+        <ul>
+          <li><a href="../../" hreflang="es">Versión en español</a></li>
+          <li><a href="../../ejemplos/" hreflang="es">Worked examples (Spanish)</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="disclaimer">
+      <span>Examples are made up for learning. A model’s result depends on how it is set up: always review it before you decide.</span>
+      <span>Google Sheets is a trademark of Google LLC and Excel of Microsoft. This site is not affiliated with either.</span>
+    </div>
+  </div>
+</footer>
+<script src="../../assets/app.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Turnos de personal con programación entera en Google Sheets</title>
+<meta name="description" content="Ejemplo resuelto: cinco días de trabajo y dos de descanso. Por qué con un pico de 16 personas hacen falta 17, y por qué redondear sale caro.">
+<link rel="canonical" href="https://lanabes.github.io/solver-sheets/ejemplos/turnos-de-personal/">
+<meta name="theme-color" content="#FBFAF6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E1512" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Solver para Google Sheets">
+<meta property="og:title" content="Turnos de personal con programación entera en Google Sheets">
+<meta property="og:description" content="Ejemplo resuelto: cinco días de trabajo y dos de descanso. Por qué con un pico de 16 personas hacen falta 17, y por qué redondear sale caro.">
+<meta property="og:url" content="https://lanabes.github.io/solver-sheets/ejemplos/turnos-de-personal/">
+<meta property="og:image" content="https://lanabes.github.io/solver-sheets/assets/og/turnos.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/icono.svg" type="image/svg+xml">
+<link rel="icon" href="../../assets/icono-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../../assets/icono-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400..700&family=Geist+Mono:wght@400..600&display=swap">
+<link rel="stylesheet" href="../../assets/estilo.css">
+<script>(function(){var r=document.documentElement;r.classList.add('js');try{var t=localStorage.getItem('tema');if(t==='dark'||t==='light')r.setAttribute('data-theme',t);}catch(e){}})();</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Turnos de personal: la plantilla mínima que cubre la semana","description":"Ejemplo resuelto: cinco días de trabajo y dos de descanso. Por qué con un pico de 16 personas hacen falta 17, y por qué redondear sale caro.","inLanguage":"es","datePublished":"2026-10-02","dateModified":"2026-10-03","mainEntityOfPage":"https://lanabes.github.io/solver-sheets/ejemplos/turnos-de-personal/","image":"https://lanabes.github.io/solver-sheets/assets/og/turnos.png","author":{"@type":"Organization","name":"lanabes","url":"https://lanabes.github.io/solver-sheets/"},"publisher":{"@type":"Organization","name":"lanabes","url":"https://lanabes.github.io/solver-sheets/","logo":{"@type":"ImageObject","url":"https://lanabes.github.io/solver-sheets/assets/icono-512.png"}}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://lanabes.github.io/solver-sheets/"},{"@type":"ListItem","position":2,"name":"Ejemplos","item":"https://lanabes.github.io/solver-sheets/ejemplos/"},{"@type":"ListItem","position":3,"name":"Turnos de personal","item":"https://lanabes.github.io/solver-sheets/ejemplos/turnos-de-personal/"}]}</script>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../../" aria-label="Solver para Google Sheets, inicio"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="15" fill="#1F4436"/><polygon points="16,47 16,19 35,24 48,47" fill="#F2EBDC" stroke="#F2EBDC" stroke-width="5" stroke-linejoin="round"/><circle cx="35" cy="24" r="6.6" fill="#A3D7BC" stroke="#1F4436" stroke-width="3.4"/></svg><span>Solver <small>para Google Sheets</small></span></a>
+    <nav class="nav" id="nav" aria-label="Principal"><a href="../../solver-google-sheets/">Solver</a><a href="../../buscar-objetivo-google-sheets/">Buscar objetivo</a><a href="../../ejemplos/">Ejemplos</a><a href="../../plantilla/">Plantilla</a></nav>
+    <a class="lang-switch" href="../../en/" hreflang="en" lang="en" aria-label="English version">EN</a>
+    <button class="icon-btn theme-toggle" type="button" aria-label="Cambiar el tema"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="sun"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4L6 18M18 6l1.4-1.4"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="moon"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
+    <button class="icon-btn menu-btn" type="button" aria-label="Menú" aria-expanded="false" aria-controls="nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <a class="btn btn-primary btn-sm cta-top" href="#avisame">Avísame</a>
+  </div>
+</header>
+<main id="contenido">
+<div class="wrap">
+  <header class="article-head">
+    <ol class="crumbs"><li><a href="../../">Inicio</a></li><li><a href="../../ejemplos/">Ejemplos</a></li><li aria-current="page">Turnos de personal</li></ol>
+    <p class="eyebrow">Ejemplo resuelto</p>
+    <h1>Turnos de personal: la plantilla mínima que cubre la semana</h1>
+    <p class="lede">Un supermercado necesita un mínimo de personas cada día, y cada persona trabaja cinco días seguidos. El día de más trabajo hacen falta 16. La plantilla mínima no es 16.</p>
+    <div class="meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>4 min de lectura</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><time datetime="2026-10-03">Revisado el 3 de octubre de 2026</time></span></div>
+  </header>
+
+  <div class="layout">
+    <article class="article">
+      <div class="callout note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.6v.4"/></svg><div><p>Ejemplo inventado para aprender: las necesidades no son de ninguna empresa real. Está listo en la pestaña «Turnos» de la <a href="../../plantilla/">plantilla</a>.</p></div></div>
+
+      <h2 id="problema">El problema</h2>
+      <p class="first">Un supermercado necesita, como mínimo, estas personas cada día:</p>
+      <div class="table-wrap">
+        <table class="data">
+          <thead><tr><th scope="col"></th><th scope="col" class="n">Lun</th><th scope="col" class="n">Mar</th><th scope="col" class="n">Mié</th><th scope="col" class="n">Jue</th><th scope="col" class="n">Vie</th><th scope="col" class="n">Sáb</th><th scope="col" class="n">Dom</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Personas necesarias</th><td class="n">11</td><td class="n">9</td><td class="n">9</td><td class="n">12</td><td class="n">14</td><td class="n">16</td><td class="n">10</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Cada persona trabaja <strong>cinco días seguidos y descansa los dos siguientes</strong>. ¿Cuántas personas hacen falta como mínimo, y qué día empieza la semana cada una?</p>
+
+      <h2 id="modelo">El modelo</h2>
+      <p>El truco está en elegir bien las variables. No decidimos «quién trabaja el lunes», sino <strong>cuántas personas empiezan su semana cada día</strong>: siete variables, de «empiezan el lunes» a «empiezan el domingo». Tienen que ser enteras, porque no hay medias personas.</p>
+      <p>Quien empieza el jueves trabaja de jueves a lunes y descansa martes y miércoles. Así que el lunes trabajan los que empezaron el jueves, el viernes, el sábado, el domingo y el propio lunes. Esa es la restricción del lunes:</p>
+      <div class="model" role="group" aria-label="El modelo de turnos">
+        <p><span class="k">Minimizar</span> Lun + Mar + Mié + Jue + Vie + Sáb + Dom <span class="c">personas en plantilla</span></p>
+        <p><span class="k">cumpliendo</span> Lun + Jue + Vie + Sáb + Dom ≥ 11 <span class="c">trabajan el lunes</span></p>
+        <p><span class="k"></span> Lun + Mar + Vie + Sáb + Dom ≥ 9 <span class="c">trabajan el martes</span></p>
+        <p><span class="k"></span> … una fila por cada día <span class="c"></span></p>
+        <p><span class="k"></span> todas enteras y ≥ 0 <span class="c">personas completas</span></p>
+      </div>
+      <p>En la plantilla, cada fila tiene un 1 en las cinco columnas de las personas que trabajan ese día. Es una tabla de unos y huecos que, una vez montada, sirve para cualquier semana.</p>
+
+      <h2 id="solucion">La solución</h2>
+      <div class="compare">
+        <div class="best"><p class="k">Plantilla mínima</p><p class="v">17 personas</p><p>El pico del sábado es de 16, pero con 16 no sale.</p></div>
+        <div><p class="k">Redondeando hacia arriba</p><p class="v">18 personas</p><p>Una persona más de lo necesario, todo el año.</p></div>
+      </div>
+      <p>Una forma de organizar a las 17 personas:</p>
+      <div class="table-wrap">
+        <table class="data">
+          <thead><tr><th scope="col"></th><th scope="col" class="n">Lun</th><th scope="col" class="n">Mar</th><th scope="col" class="n">Mié</th><th scope="col" class="n">Jue</th><th scope="col" class="n">Vie</th><th scope="col" class="n">Sáb</th><th scope="col" class="n">Dom</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Empiezan su semana</th><td class="n yes">1</td><td class="n yes">6</td><td class="n">0</td><td class="n yes">5</td><td class="n yes">2</td><td class="n yes">3</td><td class="n">0</td></tr>
+            <tr><th scope="row">Trabajan ese día</th><td class="n">11</td><td class="n">12</td><td class="n">10</td><td class="n">12</td><td class="n">14</td><td class="n">16</td><td class="n">10</td></tr>
+            <tr><th scope="row">Necesarias</th><td class="n">11</td><td class="n">9</td><td class="n">9</td><td class="n">12</td><td class="n">14</td><td class="n">16</td><td class="n">10</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Hay muchas formas de repartir a las 17 personas igual de buenas. Si tu hoja te da otro reparto, compruébalo: si cubre todos los días con 17, también es correcto.</p>
+
+      <h3>Por qué 17 y no 16</h3>
+      <p>Suma las necesidades de la semana: 11 + 9 + 9 + 12 + 14 + 16 + 10 = <strong>81 jornadas</strong>. Cada persona hace 5, así que 16 personas solo dan 80. Falta una jornada, y no hay forma de sacarla sin contratar a alguien más.</p>
+      <p>Esta cuenta rápida no siempre acierta. Si el viernes hicieran falta 16 personas en vez de 14, las jornadas serían 83 y la cuenta diría 17 personas; pero <strong>hacen falta 18</strong>, porque no hay forma de encajar los descansos. Ninguna regla rápida lo ve. El Solver, sí.</p>
+
+      <h3>Por qué no basta con redondear</h3>
+      <p>Si se resuelve con variables continuas (sin marcar «Entera»), el Solver dice que la plantilla mínima es de <strong>16,67 personas</strong>, con cosas como «5,67 personas empiezan el martes». Redondear cada número hacia arriba para cubrir los días da 18 personas. Marcando las variables como enteras, el Solver encuentra un reparto con 17. Redondear te habría costado un sueldo.</p>
+
+      <h2 id="adaptarlo">Cómo adaptarlo a tu caso</h2>
+      <ul>
+        <li><strong>Otros turnos.</strong> Si se trabajan cuatro días seguidos, cambia los unos de cada fila: cada columna tendrá un 1 en los cuatro días que trabaja quien empieza ese día.</li>
+        <li><strong>Distinto coste.</strong> Si quien empieza en fin de semana cobra más, cambia los coeficientes del objetivo: en vez de minimizar personas, minimizarás el coste.</li>
+        <li><strong>Mañana y tarde.</strong> Haz una tabla por turno o añade variables para cada combinación de día y turno.</li>
+      </ul>
+
+      <h2 id="hazlo">Hazlo tú</h2>
+      <ol class="steps">
+        <li><strong>Haz una copia de la plantilla</strong> y abre la pestaña «Turnos».</li>
+        <li><strong>Escribe tus necesidades</strong> en la columna «Límite», una por día.</li>
+        <li><strong>Resuelve</strong> con <span class="menu-path"><span>Solver</span><span>Resolver esta pestaña</span></span>. La columna «Usado» dice cuántas personas trabajan cada día.</li>
+      </ol>
+      <p><a class="btn btn-primary" href="https://docs.google.com/spreadsheets/d/1wYO8tv6pRsg1gmECqQLtMpFOm7IOn-0MS4rO8Z0BDJQ/copy" target="_blank" rel="noopener" data-plantilla>Hacer una copia de la plantilla <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="arrow"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+      <div class="callout ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l7.5 3v5.5c0 4.6-3.2 8.2-7.5 9.5-4.3-1.3-7.5-4.9-7.5-9.5V6z"/><path d="M8.8 12.2l2.3 2.3 4.2-4.6"/></svg><div><p><strong>Revisa el modelo antes de decidir.</strong> Este ejemplo no tiene en cuenta vacaciones, bajas, jornadas parciales ni lo que diga tu convenio. Úsalo como punto de partida, no como cuadrante final.</p></div></div>
+    </article>
+    <aside class="aside"><nav class="toc" aria-label="En esta página"><p>En esta página</p><ol><li><a href="#problema">El problema</a></li><li><a href="#modelo">El modelo</a></li><li><a href="#solucion">La solución</a></li><li><a href="#adaptarlo">Cómo adaptarlo a tu caso</a></li><li><a href="#hazlo">Hazlo tú</a></li></ol>
+      <div class="aside-cta"><strong>Plantilla gratis</strong><span>Los ejemplos de esta web, listos para resolver en tu Google Sheets.</span><a class="btn btn-primary btn-sm" href="https://docs.google.com/spreadsheets/d/1wYO8tv6pRsg1gmECqQLtMpFOm7IOn-0MS4rO8Z0BDJQ/copy" target="_blank" rel="noopener" data-plantilla>Hacer una copia <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="arrow"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></nav></aside>
+  </div>
+</div>
+
+<section class="section" id="avisame" aria-labelledby="avisame-t">
+  <div class="wrap">
+    <div class="waitlist" data-reveal>
+      <div class="waitlist-grid">
+        <div>
+          <p class="eyebrow">Lista de espera</p>
+          <h2 id="avisame-t">¿Lo quieres en todas tus hojas, sin copiar plantillas?</h2>
+          <p class="lede">Estamos valorando hacer un complemento para Google Sheets con el Solver y Buscar objetivo, en castellano y en inglés. Lo haremos si hay interés suficiente. Déjanos tu correo y te avisaremos, una sola vez, si sale.</p>
+          <ul class="perks">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.2 4.2L19 7"/></svg><span>Leería tu modelo tal como lo tienes, con tus propias fórmulas.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.2 4.2L19 7"/></svg><span>Variables enteras y binarias, informes claros y Buscar objetivo.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.2 4.2L19 7"/></svg><span>Resolvería dentro de tu navegador: tus datos no saldrían de tu hoja.</span></li>
+          </ul>
+        </div>
+        <form class="wl-form" data-state="idle" data-endpoint="https://script.google.com/macros/s/AKfycbwQmEJsMEwahu4BLXoV_xvwo-aQ2-lAGDU6h97BB30XY1FvimbSGr1M9hIXH60bJUx9/exec" data-origen="/ejemplos/turnos-de-personal/" novalidate>
+          <div class="wl-fields">
+            <label class="wl-label" for="wl-principal">Tu correo</label>
+            <div class="wl-row">
+              <input id="wl-principal" type="email" name="correo" autocomplete="email" inputmode="email" placeholder="nombre@gmail.com" maxlength="254" required aria-describedby="wl-help-principal wl-err-principal">
+              <button class="btn" type="submit"><span class="wl-spin" aria-hidden="true"></span><span class="label">Avisadme</span></button>
+            </div>
+            <div class="wl-hp" aria-hidden="true"><label>No rellenes este campo <input type="text" name="web" tabindex="-1" autocomplete="off"></label></div>
+            <p class="wl-error" id="wl-err-principal" role="alert" aria-live="assertive"></p>
+            <p class="wl-help" id="wl-help-principal">Solo para avisarte. Sin boletines ni publicidad, y te borras cuando quieras. <a href="../../privacidad/">Cómo tratamos tu correo</a>.</p>
+          </div>
+          <div class="wl-done" role="status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.2"/><path class="check" d="M7.8 12.4l2.9 2.9 5.6-6"/></svg><div><strong>Apuntado. Gracias.</strong><span>Si el complemento sale, te escribiremos una sola vez para avisarte.</span></div></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="../../"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="15" fill="#1F4436"/><polygon points="16,47 16,19 35,24 48,47" fill="#F2EBDC" stroke="#F2EBDC" stroke-width="5" stroke-linejoin="round"/><circle cx="35" cy="24" r="6.6" fill="#A3D7BC" stroke="#1F4436" stroke-width="3.4"/></svg><span>Solver <small>para Google Sheets</small></span></a>
+        <p>Guías en castellano, ejemplos resueltos y una plantilla gratis para optimizar con Google Sheets. Un proyecto de lanabes.</p>
+      </div>
+      <div>
+        <h2>Guías</h2>
+        <ul>
+          <li><a href="../../solver-google-sheets/">Solver en Google Sheets</a></li>
+          <li><a href="../../buscar-objetivo-google-sheets/">Buscar objetivo</a></li>
+          <li><a href="../../plantilla/">La plantilla gratis</a></li>
+          <li><a href="../../privacidad/">Privacidad</a></li>
+          <li><a href="../../en/" hreflang="en">English version</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Ejemplos resueltos</h2>
+        <ul>
+          <li><a href="../../ejemplos/mezcla-de-produccion/" hreflang="es">Mezcla de producción</a></li>
+          <li><a href="../../ejemplos/problema-de-transporte/" hreflang="es">Problema de transporte</a></li>
+          <li><a href="../../ejemplos/turnos-de-personal/" hreflang="es">Turnos de personal</a></li>
+          <li><a href="../../ejemplos/presupuesto-de-inversiones/" hreflang="es">Presupuesto de inversiones</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="disclaimer">
+      <span>Los ejemplos son inventados para aprender. El resultado de un modelo depende de cómo se plantea: revísalo siempre antes de decidir.</span>
+      <span>Google Sheets es una marca de Google LLC y Excel, de Microsoft. Esta web no está afiliada a ninguna de las dos.</span>
+    </div>
+  </div>
+</footer>
+<script src="../../assets/app.js" defer></script>
+
+</body>
+</html>

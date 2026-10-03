@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Goal Seek in Google Sheets: 4 ways to do it</title>
+<meta name="description" content="Google Sheets has no built-in Goal Seek. Four ways to do it: with RATE or NPER, solving it by hand, with Google’s free add-on or with a free template.">
+<link rel="canonical" href="https://lanabes.github.io/solver-sheets/en/goal-seek-google-sheets/">
+<link rel="alternate" hreflang="es" href="https://lanabes.github.io/solver-sheets/buscar-objetivo-google-sheets/">
+<link rel="alternate" hreflang="en" href="https://lanabes.github.io/solver-sheets/en/goal-seek-google-sheets/">
+<link rel="alternate" hreflang="x-default" href="https://lanabes.github.io/solver-sheets/en/goal-seek-google-sheets/">
+<meta name="theme-color" content="#FBFAF6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E1512" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:site_name" content="Solver for Google Sheets">
+<meta property="og:title" content="Goal Seek in Google Sheets: 4 ways to do it">
+<meta property="og:description" content="Google Sheets has no built-in Goal Seek. Four ways to do it: with RATE or NPER, solving it by hand, with Google’s free add-on or with a free template.">
+<meta property="og:url" content="https://lanabes.github.io/solver-sheets/en/goal-seek-google-sheets/">
+<meta property="og:image" content="https://lanabes.github.io/solver-sheets/assets/og/en-goal-seek.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/icono.svg" type="image/svg+xml">
+<link rel="icon" href="../../assets/icono-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../../assets/icono-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400..700&family=Geist+Mono:wght@400..600&display=swap">
+<link rel="stylesheet" href="../../assets/estilo.css">
+<script>(function(){var r=document.documentElement;r.classList.add('js');try{var t=localStorage.getItem('tema');if(t==='dark'||t==='light')r.setAttribute('data-theme',t);}catch(e){}})();</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Goal Seek in Google Sheets: four ways to do it","description":"Google Sheets has no built-in Goal Seek. Four ways to do it: with RATE or NPER, solving it by hand, with Google’s free add-on or with a free template.","inLanguage":"en","datePublished":"2026-10-02","dateModified":"2026-10-03","mainEntityOfPage":"https://lanabes.github.io/solver-sheets/en/goal-seek-google-sheets/","image":"https://lanabes.github.io/solver-sheets/assets/og/en-goal-seek.png","author":{"@type":"Organization","name":"lanabes","url":"https://lanabes.github.io/solver-sheets/"},"publisher":{"@type":"Organization","name":"lanabes","url":"https://lanabes.github.io/solver-sheets/","logo":{"@type":"ImageObject","url":"https://lanabes.github.io/solver-sheets/assets/icono-512.png"}}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","inLanguage":"en","mainEntity":[{"@type":"Question","name":"Is there Goal Seek in Google Sheets?","acceptedAnswer":{"@type":"Answer","text":"Not built in. In 2019 Google released a free add-on called “Goal Seek” that works like Excel’s. You can also use functions that work backwards, solve the formula by hand, or use the Goal Seek panel in our template ."}},{"@type":"Question","name":"Is there a Goal Seek function in Google Sheets?","acceptedAnswer":{"@type":"Answer","text":"There’s no function with that name. For loans and investments, some functions give the answer directly: RATE (the interest rate), NPER (the number of payments) and PV (how much you can borrow). For any other formula you need an add-on or the template."}},{"@type":"Question","name":"Why is the Goal Seek add-on not working?","acceptedAnswer":{"@type":"Answer","text":"First check that the “Set cell” really contains a formula and that the “By changing cell” is a number typed by hand. Recent reviews of the add-on mention slowness and errors when opening the panel. If that happens to you, use RATE or NPER for loans, or the template’s panel."}},{"@type":"Question","name":"Can I use Goal Seek on mobile (Android or iPhone)?","acceptedAnswer":{"@type":"Answer","text":"Functions such as RATE , NPER and PV work on any device, including the Google Sheets app. Google’s instructions for its Goal Seek add-on are for a computer, and the template is used on a computer too."}},{"@type":"Question","name":"Can Goal Seek change multiple cells?","acceptedAnswer":{"@type":"Answer","text":"No: Goal Seek changes a single cell. If you need to change several at once to get the best result within limits, what you’re looking for is Solver. See the Solver in Google Sheets guide ."}},{"@type":"Question","name":"Is Goal Seek the same as Solver?","acceptedAnswer":{"@type":"Answer","text":"No. Goal Seek changes one cell until a formula hits an exact value. Solver changes several cells at once to reach the highest or lowest value while respecting limits."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://lanabes.github.io/solver-sheets/en/"},{"@type":"ListItem","position":2,"name":"Goal Seek in Google Sheets","item":"https://lanabes.github.io/solver-sheets/en/goal-seek-google-sheets/"}]}</script>
+</head>
+<body>
+<a class="skip" href="#contenido">Skip to content</a>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../../en/" aria-label="Solver for Google Sheets, home"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="15" fill="#1F4436"/><polygon points="16,47 16,19 35,24 48,47" fill="#F2EBDC" stroke="#F2EBDC" stroke-width="5" stroke-linejoin="round"/><circle cx="35" cy="24" r="6.6" fill="#A3D7BC" stroke="#1F4436" stroke-width="3.4"/></svg><span>Solver <small>for Google Sheets</small></span></a>
+    <nav class="nav" id="nav" aria-label="Main"><a href="../../en/solver-google-sheets/">Solver</a><a href="../../en/goal-seek-google-sheets/" aria-current="page">Goal Seek</a><a href="../../en/template/">Template</a></nav>
+    <a class="lang-switch" href="../../buscar-objetivo-google-sheets/" hreflang="es" lang="es" aria-label="Versión en español">ES</a>
+    <button class="icon-btn theme-toggle" type="button" aria-label="Change theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="sun"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4L6 18M18 6l1.4-1.4"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="moon"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
+    <button class="icon-btn menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <a class="btn btn-primary btn-sm cta-top" href="#avisame">Notify me</a>
+  </div>
+</header>
+<main id="contenido">
+<div class="wrap">
+  <header class="article-head">
+    <ol class="crumbs"><li><a href="../../en/">Home</a></li><li aria-current="page">Goal Seek in Google Sheets</li></ol>
+    <p class="eyebrow">Guide</p>
+    <h1>Goal Seek in Google Sheets: four ways to do it</h1>
+    <p class="lede">Goal Seek changes one cell until a formula gives the result you want. Excel has it built in; Google Sheets doesn’t. These are the four ways to do it, from the quickest to the most general.</p>
+    <div class="meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>6 min read</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><time datetime="2026-10-03">Updated October 3, 2026</time></span></div>
+  </header>
+
+  <div class="layout">
+    <article class="article">
+      <section class="summary" aria-label="In short">
+        <h2>In short</h2>
+        <ul>
+          <li><strong>If a function already works backwards,</strong> use it: <code>RATE</code>, <code>NPER</code> or <code>PV</code> for loans. It’s the fastest and most exact way.</li>
+          <li><strong>If the formula is simple,</strong> solve for the unknown by hand: it’s one line.</li>
+          <li><strong>For everything else,</strong> Google’s free “Goal Seek” add-on or the Goal Seek panel in our <a href="../../en/template/">template</a>.</li>
+        </ul>
+      </section>
+
+      <h2 id="is-there">Is there Goal Seek in Google Sheets?</h2>
+      <p class="first"><strong>Not built in.</strong> Excel has it under What-If Analysis; Google Sheets has no menu or function by that name. But you can do it in four free ways, explained below with the same example: with a function that works backwards, by solving it by hand, with Google’s Goal Seek add-on, or with the panel in our <a href="../../en/template/">template</a>.</p>
+
+      <h2 id="what-it-does">What Goal Seek does</h2>
+      <p>Normally you type in the data and the formula gives you the result. Goal Seek goes the other way: <strong>you say what result you want and it finds the input that produces it.</strong></p>
+      <p>It always needs three things:</p>
+      <ul>
+        <li><strong>The cell with the formula</strong>: the result you want to fix. In Excel, “Set cell”.</li>
+        <li><strong>The value you want</strong> that formula to show.</li>
+        <li><strong>The cell that can change</strong>: an input typed by hand that the formula depends on. In Excel, “By changing cell”.</li>
+      </ul>
+
+      <h3>The example: what interest rate gives a $280 payment?</h3>
+      <p>You borrow $15,000 over 5 years (60 monthly payments). At 5% a year, the monthly payment is $283.07. Your limit is $280 a month. What interest rate would you need?</p>
+      <figure class="figure">
+        <div class="window">
+          <div class="window-bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="doc">Solver template · Goal Seek</span><span class="menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="4" y="4" width="16" height="16" rx="2.5"/><path d="M4 9.3h16M4 14.6h16M9.3 4v16M14.6 4v16"/></svg> Solver</span></div>
+          <div class="sheet-wrap">
+            <table class="sheet">
+              <caption class="sr-only">A $15,000 loan over 60 months: at 5% interest the payment is $283.07.</caption>
+              <thead><tr><th class="rn" scope="col"><span class="sr-only">Row</span></th><th scope="col">A</th><th scope="col">B</th></tr></thead>
+              <tbody>
+                <tr><td class="rn">6</td><td class="txt">Loan amount</td><td class="n">$15,000</td></tr>
+                <tr><td class="rn">7</td><td class="txt">Term (months)</td><td class="n">60</td></tr>
+                <tr><td class="rn">8</td><td class="txt">Annual interest rate</td><td class="sol">5.00%</td></tr>
+                <tr><td class="rn">9</td><td class="lbl">Monthly payment</td><td class="f">$283.07</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <figcaption>The payment is calculated with <code>PMT</code>. In green, the cell we want to change.</figcaption>
+      </figure>
+      <div class="fx"><span class="fx-tag" aria-hidden="true">fx</span><span class="fx-cell">B9</span><code>=PMT(B8/12,B7,-B6)</code><button class="copy" type="button" aria-label="Copy the formula"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span>Copy</span></button></div>
+      <p>We divide the rate by 12 because payments are monthly, and the loan amount is negative because, for the bank, it’s money going out. The answer is <strong>4.55%</strong>. Here are the four ways to get there.</p>
+
+      <h2 id="function">1. With a function that works backwards</h2>
+      <p>For loans and investments, Google Sheets already has “backwards” functions. If you’re after the interest rate, <code>RATE</code> gives it directly:</p>
+      <div class="fx"><span class="fx-tag" aria-hidden="true">fx</span><code>=RATE(60,-280,15000)*12</code><button class="copy" type="button" aria-label="Copy the formula"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span>Copy</span></button></div>
+      <p>Result: <strong>4.55%</strong> (exactly, 4.552%). We multiply by 12 because <code>RATE</code> returns the monthly rate. The other two most useful ones:</p>
+      <div class="table-wrap">
+        <table class="data">
+          <thead><tr><th scope="col">If you want…</th><th scope="col">Function</th><th scope="col">Example</th></tr></thead>
+          <tbody>
+            <tr><td>How much you can borrow for a given payment</td><td><code>PV</code></td><td>With $280 a month, 60 months and 5%: <code>=PV(5%/12,60,-280)</code> → $14,837.40</td></tr>
+            <tr><td>How many payments it takes</td><td><code>NPER</code></td><td>With $300 a month: <code>=NPER(5%/12,-300,15000)</code> → 56.2, so 57 payments</td></tr>
+            <tr><td>The interest rate</td><td><code>RATE</code></td><td>The example above → 4.55%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>If your case has a function like these, you don’t need anything else: it’s exact and updates automatically when the inputs change.</p>
+
+      <h2 id="algebra">2. Solving it by hand</h2>
+      <p>When the formula is simple arithmetic, solving for the unknown is the cleanest way. An online store example:</p>
+      <p>A product costs you $18.40, shipping is $4.60 and the marketplace keeps 20% of the price. What price do you need to <strong>make $6 per unit</strong>?</p>
+      <div class="model" role="group" aria-label="Solving for the price">
+        <p><span class="k">Profit</span> = Price × (1 − 0.20) − 18.40 − 4.60</p>
+        <p><span class="k">You want</span> 6 = Price × 0.80 − 23</p>
+        <p><span class="k">So</span> Price = (23 + 6) / 0.80 = $36.25</p>
+      </div>
+      <p>In the sheet, with the cost in <code>B2</code>, shipping in <code>B3</code>, the fee in <code>B4</code> and the profit you want in <code>B5</code>:</p>
+      <div class="fx"><span class="fx-tag" aria-hidden="true">fx</span><span class="fx-cell">B6</span><code>=(B2+B3+B5)/(1-B4)</code><button class="copy" type="button" aria-label="Copy the formula"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span>Copy</span></button></div>
+      <p>Solving it by hand has an advantage Goal Seek doesn’t: <strong>the formula stays</strong>. If shipping goes up tomorrow, the price updates by itself.</p>
+
+      <h2 id="add-on">3. With Google’s Goal Seek add-on</h2>
+      <p>In 2019 Google released a free add-on, “Goal Seek”, that does the same as Excel’s. It has millions of installs, but it hasn’t been updated since May 2023.</p>
+      <ol class="steps">
+        <li><strong>Install it.</strong> In your sheet, <span class="menu-path"><span>Extensions</span><span>Add-ons</span><span>Get add-ons</span></span>, search for “Goal Seek” (the one by Google) and click <span class="menu-path"><span>Install</span><span>Continue</span></span>.</li>
+        <li><strong>Open it.</strong> In the <strong>Extensions</strong> menu, find Goal Seek and click “Open”. A panel opens on the right.</li>
+        <li><strong>Fill in the three fields.</strong> Select the payment cell and, next to “Set cell”, click the button to capture it. Type 280 in “To value”. Select the interest rate cell and capture it in “By changing cell”.</li>
+        <li><strong>Click “Solve”.</strong></li>
+      </ol>
+      <p>Other free add-ons do this too, such as SheetWhiz.</p>
+
+      <h2 id="template">4. With the template</h2>
+      <p>Our <a href="../../en/template/">free template</a> includes a Goal Seek panel. It comes with the loan and the price examples ready to try.</p>
+      <ol class="steps">
+        <li><strong>Make a copy</strong> of the template in your Google Drive.</li>
+        <li><strong>Open the panel</strong> from <span class="menu-path"><span>Solver</span><span>Goal Seek…</span></span>.</li>
+        <li><strong>Fill in the three fields:</strong> “Formula cell” (<code>B9</code>), “Target value” (280) and “Cell to change” (<code>B8</code>). “Use selected cell” copies whatever cell you have selected.</li>
+        <li><strong>Click “Find”.</strong> In a couple of seconds the cell changes to 4.55% and the payment becomes $280.00. If you don’t like it, “Undo” puts it back.</li>
+      </ol>
+      <p><a class="btn btn-primary" href="https://docs.google.com/spreadsheets/d/1VkL8--0mcGrZkiEQhltmVe38QTWw7zW-6PERQBRPP9o/copy" target="_blank" rel="noopener" data-plantilla>Make a copy of the template <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="arrow"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+      <p>If your calculation lives in another spreadsheet, copy it into the template: right-click the tab, <span class="menu-path"><span>Copy to</span><span>Existing spreadsheet</span></span>.</p>
+
+      <h2 id="trial">No install at all: trial and error with a table</h2>
+      <p>If you just want a quick idea, type several values in a column and calculate the formula next to them. Where the result crosses your target, that’s the answer:</p>
+      <div class="table-wrap">
+        <table class="data">
+          <thead><tr><th scope="col">Annual rate</th><th scope="col" class="n">Monthly payment</th><th scope="col"></th></tr></thead>
+          <tbody>
+            <tr><td>4.0%</td><td class="n">$276.25</td><td class="muted">below 280</td></tr>
+            <tr><td>4.2%</td><td class="n">$277.60</td><td></td></tr>
+            <tr><td>4.4%</td><td class="n">$278.96</td><td></td></tr>
+            <tr class="total"><td>4.6%</td><td class="n">$280.33</td><td>this is where it passes 280</td></tr>
+            <tr><td>4.8%</td><td class="n">$281.70</td><td></td></tr>
+            <tr><td>5.0%</td><td class="n">$283.07</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>The answer is between 4.4% and 4.6%. Narrowing down between those two values gets you to 4.55%, which is exactly what Goal Seek and the template do under the hood, only much faster.</p>
+
+      <h2 id="errors">Common errors</h2>
+      <h3>“The cell to change contains a formula”</h3>
+      <p>The cell that changes has to be a number typed by hand. If it’s a formula, find the cell it depends on and use that one.</p>
+      <h3>“It can’t find a value”</h3>
+      <p>The result you ask for may be impossible: no payment on a $15,000 loan over 60 months can go below $250, because that would be interest-free. Check that your target makes sense.</p>
+      <h3>“The formula doesn’t change when the cell changes”</h3>
+      <p>The formula doesn’t depend on that cell, or depends on it through a rounding that keeps it fixed. Check that you picked the right two cells.</p>
+      <h3>“It gives me a strange value”</h3>
+      <p>Some formulas have two solutions (for example, those with a square). Goal Seek returns the one closest to the starting value: type a sensible starting value and try again.</p>
+
+      <h2 id="faq">Frequently asked questions</h2>
+      <div class="faq">
+        <details>
+          <summary>Is there Goal Seek in Google Sheets?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>Not built in. In 2019 Google released a free add-on called “Goal Seek” that works like Excel’s. You can also use functions that work backwards, solve the formula by hand, or use the Goal Seek panel in our <a href="../../en/template/">template</a>.</p></div>
+        </details>
+        <details>
+          <summary>Is there a Goal Seek function in Google Sheets?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>There’s no function with that name. For loans and investments, some functions give the answer directly: <code>RATE</code> (the interest rate), <code>NPER</code> (the number of payments) and <code>PV</code> (how much you can borrow). For any other formula you need an add-on or the template.</p></div>
+        </details>
+        <details>
+          <summary>Why is the Goal Seek add-on not working?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>First check that the “Set cell” really contains a formula and that the “By changing cell” is a number typed by hand. Recent reviews of the add-on mention slowness and errors when opening the panel. If that happens to you, use <code>RATE</code> or <code>NPER</code> for loans, or the template’s panel.</p></div>
+        </details>
+        <details>
+          <summary>Can I use Goal Seek on mobile (Android or iPhone)?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>Functions such as <code>RATE</code>, <code>NPER</code> and <code>PV</code> work on any device, including the Google Sheets app. Google’s instructions for its Goal Seek add-on are for a computer, and the template is used on a computer too.</p></div>
+        </details>
+        <details>
+          <summary>Can Goal Seek change multiple cells?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>No: Goal Seek changes a single cell. If you need to change several at once to get the best result within limits, what you’re looking for is Solver. See the <a href="../../en/solver-google-sheets/">Solver in Google Sheets guide</a>.</p></div>
+        </details>
+        <details>
+          <summary>Is Goal Seek the same as Solver?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>No. Goal Seek changes one cell until a formula hits an exact value. Solver changes several cells at once to reach the highest or lowest value while respecting limits.</p></div>
+        </details>
+      </div>
+      <div class="callout ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l7.5 3v5.5c0 4.6-3.2 8.2-7.5 9.5-4.3-1.3-7.5-4.9-7.5-9.5V6z"/><path d="M8.8 12.2l2.3 2.3 4.2-4.6"/></svg><div><p><strong>Always review the result.</strong> Goal Seek finds the value that makes your formula show what you asked for; if the formula is wrong, so is the result.</p></div></div>
+    </article>
+    <aside class="aside"><nav class="toc" aria-label="On this page"><p>On this page</p><ol><li><a href="#is-there">Is there Goal Seek in Google Sheets?</a></li><li><a href="#what-it-does">What Goal Seek does</a></li><li><a href="#function">1. With a function that works backwards</a></li><li><a href="#algebra">2. Solving it by hand</a></li><li><a href="#add-on">3. With Google’s Goal Seek add-on</a></li><li><a href="#template">4. With the template</a></li><li><a href="#trial">No install at all: trial and error with a table</a></li><li><a href="#errors">Common errors</a></li><li><a href="#faq">Frequently asked questions</a></li></ol>
+      <div class="aside-cta"><strong>Free template</strong><span>The examples on this page, ready to solve in your Google Sheets.</span><a class="btn btn-primary btn-sm" href="https://docs.google.com/spreadsheets/d/1VkL8--0mcGrZkiEQhltmVe38QTWw7zW-6PERQBRPP9o/copy" target="_blank" rel="noopener" data-plantilla>Make a copy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="arrow"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></nav></aside>
+  </div>
+</div>
+
+<section class="section" id="avisame" aria-labelledby="avisame-t">
+  <div class="wrap">
+    <div class="waitlist" data-reveal>
+      <div class="waitlist-grid">
+        <div>
+          <p class="eyebrow">Waitlist</p>
+          <h2 id="avisame-t">Want it in every sheet, without copying templates?</h2>
+          <p class="lede">We’re considering building a Google Sheets add-on with Solver and Goal Seek. We’ll build it if there’s enough interest. Leave your e-mail and we’ll let you know, just once, if it launches.</p>
+          <ul class="perks">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.2 4.2L19 7"/></svg><span>It would read your model as it is, with your own formulas.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.2 4.2L19 7"/></svg><span>Integer and binary variables, plain-language reports and Goal Seek.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.2 4.2L19 7"/></svg><span>It would solve inside your browser: your data would never leave your sheet.</span></li>
+          </ul>
+        </div>
+        <form class="wl-form" data-state="idle" data-endpoint="https://script.google.com/macros/s/AKfycbwQmEJsMEwahu4BLXoV_xvwo-aQ2-lAGDU6h97BB30XY1FvimbSGr1M9hIXH60bJUx9/exec" data-origen="/en/goal-seek-google-sheets/" novalidate>
+          <div class="wl-fields">
+            <label class="wl-label" for="wl-principal">Your e-mail</label>
+            <div class="wl-row">
+              <input id="wl-principal" type="email" name="correo" autocomplete="email" inputmode="email" placeholder="name@gmail.com" maxlength="254" required aria-describedby="wl-help-principal wl-err-principal">
+              <button class="btn" type="submit"><span class="wl-spin" aria-hidden="true"></span><span class="label">Notify me</span></button>
+            </div>
+            <div class="wl-hp" aria-hidden="true"><label>Leave this field empty <input type="text" name="web" tabindex="-1" autocomplete="off"></label></div>
+            <p class="wl-error" id="wl-err-principal" role="alert" aria-live="assertive"></p>
+            <p class="wl-help" id="wl-help-principal">Only to let you know. No newsletters, no ads, and you can unsubscribe anytime. <a href="../../en/privacy/">How we handle your e-mail</a>.</p>
+          </div>
+          <div class="wl-done" role="status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.2"/><path class="check" d="M7.8 12.4l2.9 2.9 5.6-6"/></svg><div><strong>You’re on the list. Thanks.</strong><span>If the add-on launches, we’ll e-mail you once to let you know.</span></div></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="../../en/"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="15" fill="#1F4436"/><polygon points="16,47 16,19 35,24 48,47" fill="#F2EBDC" stroke="#F2EBDC" stroke-width="5" stroke-linejoin="round"/><circle cx="35" cy="24" r="6.6" fill="#A3D7BC" stroke="#1F4436" stroke-width="3.4"/></svg><span>Solver <small>for Google Sheets</small></span></a>
+        <p>Clear guides, worked examples and a free template to optimize with Google Sheets. A lanabes project.</p>
+      </div>
+      <div>
+        <h2>Guides</h2>
+        <ul>
+          <li><a href="../../en/solver-google-sheets/">Solver in Google Sheets</a></li>
+          <li><a href="../../en/goal-seek-google-sheets/">Goal Seek in Google Sheets</a></li>
+          <li><a href="../../en/template/">The free template</a></li>
+          <li><a href="../../en/privacy/">Privacy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>In Spanish</h2>
+        <ul>
+          <li><a href="../../" hreflang="es">Versión en español</a></li>
+          <li><a href="../../ejemplos/" hreflang="es">Worked examples (Spanish)</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="disclaimer">
+      <span>Examples are made up for learning. A model’s result depends on how it is set up: always review it before you decide.</span>
+      <span>Google Sheets is a trademark of Google LLC and Excel of Microsoft. This site is not affiliated with either.</span>
+    </div>
+  </div>
+</footer>
+<script src="../../assets/app.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Solver in Google Sheets: how to get it and use it</title>
+<meta name="description" content="Does Google Sheets have a Solver? Not built in. How to get the Excel Solver equivalent for free, set up the model with SUMPRODUCT and solve it, step by step.">
+<link rel="canonical" href="https://lanabes.github.io/solver-sheets/en/solver-google-sheets/">
+<link rel="alternate" hreflang="es" href="https://lanabes.github.io/solver-sheets/solver-google-sheets/">
+<link rel="alternate" hreflang="en" href="https://lanabes.github.io/solver-sheets/en/solver-google-sheets/">
+<link rel="alternate" hreflang="x-default" href="https://lanabes.github.io/solver-sheets/en/solver-google-sheets/">
+<meta name="theme-color" content="#FBFAF6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E1512" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:site_name" content="Solver for Google Sheets">
+<meta property="og:title" content="Solver in Google Sheets: how to get it and use it">
+<meta property="og:description" content="Does Google Sheets have a Solver? Not built in. How to get the Excel Solver equivalent for free, set up the model with SUMPRODUCT and solve it, step by step.">
+<meta property="og:url" content="https://lanabes.github.io/solver-sheets/en/solver-google-sheets/">
+<meta property="og:image" content="https://lanabes.github.io/solver-sheets/assets/og/en-solver.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/icono.svg" type="image/svg+xml">
+<link rel="icon" href="../../assets/icono-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../../assets/icono-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400..700&family=Geist+Mono:wght@400..600&display=swap">
+<link rel="stylesheet" href="../../assets/estilo.css">
+<script>(function(){var r=document.documentElement;r.classList.add('js');try{var t=localStorage.getItem('tema');if(t==='dark'||t==='light')r.setAttribute('data-theme',t);}catch(e){}})();</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Solver in Google Sheets: how to get it and use it, step by step","description":"Does Google Sheets have a Solver? Not built in. How to get the Excel Solver equivalent for free, set up the model with SUMPRODUCT and solve it, step by step.","inLanguage":"en","datePublished":"2026-10-02","dateModified":"2026-10-03","mainEntityOfPage":"https://lanabes.github.io/solver-sheets/en/solver-google-sheets/","image":"https://lanabes.github.io/solver-sheets/assets/og/en-solver.png","author":{"@type":"Organization","name":"lanabes","url":"https://lanabes.github.io/solver-sheets/"},"publisher":{"@type":"Organization","name":"lanabes","url":"https://lanabes.github.io/solver-sheets/","logo":{"@type":"ImageObject","url":"https://lanabes.github.io/solver-sheets/assets/icono-512.png"}}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","inLanguage":"en","mainEntity":[{"@type":"Question","name":"Does Google Sheets have a Solver?","acceptedAnswer":{"@type":"Answer","text":"Not built in: Google Sheets doesn’t include Excel’s Solver, and there’s no menu or function that does the same. You can get it for free in three ways: a script template like ours, the OpenSolver add-on, or downloading the sheet and using Solver in desktop Excel or LibreOffice."}},{"@type":"Question","name":"Is there a Solver add-on or extension for Google Sheets?","acceptedAnswer":{"@type":"Answer","text":"Yes. In Extensions → Add-ons → Get add-ons you’ll find free and freemium options; OpenSolver is the best known. If you’d rather not install an add-on, our template brings its own Solver menu as soon as you make a copy."}},{"@type":"Question","name":"Is there a SOLVER function in Google Sheets?","acceptedAnswer":{"@type":"Answer","text":"No. No Google Sheets function finds a maximum or minimum subject to constraints. What you do have is SUMPRODUCT , which you use to write the model: total profit and how much of each resource is used. To solve it you need the template or an add-on."}},{"@type":"Question","name":"What is the Google Sheets equivalent of Excel Solver?","acceptedAnswer":{"@type":"Answer","text":"There’s no built-in equivalent. The closest are an add-on such as OpenSolver or a template with a script, like ours, which uses the linear optimization service Google includes in Apps Script. Both solve the same kind of problems as Excel’s “Simplex LP” method."}},{"@type":"Question","name":"Why is OpenSolver not working in Google Sheets?","acceptedAnswer":{"@type":"Answer","text":"Its own website says that since June 2021 a change by Google broke it for some users, and that it has trouble when sheet names contain spaces. Try removing the spaces from your tab names, or use the template."}},{"@type":"Question","name":"Can I do linear programming in Google Sheets?","acceptedAnswer":{"@type":"Answer","text":"Yes. Write the model as a table with SUMPRODUCT and solve it with the template or an add-on. Integer and binary (yes/no) variables work too. This guide walks you through an example ."}},{"@type":"Question","name":"Can Google Sheets solve nonlinear problems?","acceptedAnswer":{"@type":"Answer","text":"The template can’t: it solves linear problems, including integer and binary variables. For nonlinear models, desktop Excel’s Solver has the “GRG Nonlinear” method. Here’s how to tell if your problem is linear ."}},{"@type":"Question","name":"Is it free?","acceptedAnswer":{"@type":"Answer","text":"Yes. The template, OpenSolver and LibreOffice are free. Excel’s Solver comes with desktop Excel."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://lanabes.github.io/solver-sheets/en/"},{"@type":"ListItem","position":2,"name":"Solver in Google Sheets","item":"https://lanabes.github.io/solver-sheets/en/solver-google-sheets/"}]}</script>
+</head>
+<body>
+<a class="skip" href="#contenido">Skip to content</a>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../../en/" aria-label="Solver for Google Sheets, home"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="15" fill="#1F4436"/><polygon points="16,47 16,19 35,24 48,47" fill="#F2EBDC" stroke="#F2EBDC" stroke-width="5" stroke-linejoin="round"/><circle cx="35" cy="24" r="6.6" fill="#A3D7BC" stroke="#1F4436" stroke-width="3.4"/></svg><span>Solver <small>for Google Sheets</small></span></a>
+    <nav class="nav" id="nav" aria-label="Main"><a href="../../en/solver-google-sheets/" aria-current="page">Solver</a><a href="../../en/goal-seek-google-sheets/">Goal Seek</a><a href="../../en/template/">Template</a></nav>
+    <a class="lang-switch" href="../../solver-google-sheets/" hreflang="es" lang="es" aria-label="Versión en español">ES</a>
+    <button class="icon-btn theme-toggle" type="button" aria-label="Change theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="sun"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4L6 18M18 6l1.4-1.4"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="moon"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
+    <button class="icon-btn menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <a class="btn btn-primary btn-sm cta-top" href="#avisame">Notify me</a>
+  </div>
+</header>
+<main id="contenido">
+<div class="wrap">
+  <header class="article-head">
+    <ol class="crumbs"><li><a href="../../en/">Home</a></li><li aria-current="page">Solver in Google Sheets</li></ol>
+    <p class="eyebrow">Guide</p>
+    <h1>Solver in Google Sheets: how to get it and use it, step by step</h1>
+    <p class="lede">Google Sheets doesn’t include Excel’s Solver. Here’s how to get it for free, how to use it, with a two-part workshop as the example, and how to read the result.</p>
+    <div class="meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>9 min read</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><time datetime="2026-10-03">Updated October 3, 2026</time></span></div>
+  </header>
+
+  <div class="layout">
+    <article class="article">
+      <section class="summary" aria-label="In short">
+        <h2>In short</h2>
+        <ul>
+          <li>An optimization problem has three parts: <strong>what you decide</strong>, <strong>what you want to achieve</strong> and <strong>what limits you</strong>.</li>
+          <li>In a sheet you write it as a table: one column per decision and one row per limit, using <code>SUMPRODUCT</code>.</li>
+          <li>To solve it for free in Google Sheets: our <a href="../../en/template/">template</a>, the OpenSolver add-on, or download the sheet and use Solver in desktop Excel or LibreOffice.</li>
+          <li>The result is only as good as the model: always review it before you decide.</li>
+        </ul>
+      </section>
+
+      <h2 id="does-it-have">Does Google Sheets have a Solver?</h2>
+      <p class="first"><strong>Not built in.</strong> Excel ships Solver as a free add-in; Google Sheets has no menu or function that does the same. But you can get it for free in three ways, explained below: a <a href="../../en/template/">script template</a> like ours, the OpenSolver add-on, or downloading the sheet and using Solver in desktop Excel or LibreOffice.</p>
+      <p>Before installing anything, it helps to understand what a Solver does. It takes five minutes.</p>
+
+      <h2 id="what-is">What an optimization problem is</h2>
+      <p>Whenever you have to decide how much of several things to do without going over your resources, you have an optimization problem. It always has three parts:</p>
+      <ul>
+        <li><strong>What you decide</strong> (the <em>variables</em>): how many units of each product to make, how many pallets to send down each route, how many people start their week each day.</li>
+        <li><strong>What you want to achieve</strong> (the <em>objective</em>): the highest profit, the lowest cost, the smallest team.</li>
+        <li><strong>What limits you</strong> (the <em>constraints</em>): machine hours, materials, budget, what customers order.</li>
+      </ul>
+      <p>When the objective and the constraints are sums of quantities multiplied by fixed numbers, the problem is a <strong>linear program</strong>. That’s what Excel’s Solver solves with its “Simplex LP” method, and what our template solves. If some decisions must also be whole numbers (people, batches) or a yes or no (approve a project), it’s an <strong>integer program</strong>, and it can be solved too.</p>
+
+      <h3>The example: a workshop with two parts</h3>
+      <p>A workshop makes two parts, A and B. These are its numbers (made up, for learning):</p>
+      <div class="table-wrap">
+        <table class="data">
+          <thead><tr><th scope="col"></th><th scope="col" class="n">Part A</th><th scope="col" class="n">Part B</th><th scope="col" class="n">Available</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Profit per part</th><td class="n">$40</td><td class="n">$30</td><td class="n">—</td></tr>
+            <tr><th scope="row">Lathe hours per part</th><td class="n">2</td><td class="n">1</td><td class="n">100 h a week</td></tr>
+            <tr><th scope="row">Mill hours per part</th><td class="n">1</td><td class="n">1</td><td class="n">80 h a week</td></tr>
+            <tr><th scope="row">What customers order</th><td class="n">40 at most</td><td class="n">no limit</td><td class="n">—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>The question: <strong>how many of each part should it make every week to earn the most?</strong> Written as a model:</p>
+      <div class="model" role="group" aria-label="The workshop model">
+        <p><span class="k">Maximize</span> 40·A + 30·B <span class="c">profit in $</span></p>
+        <p><span class="k">subject to</span> 2·A + B ≤ 100 <span class="c">lathe hours</span></p>
+        <p><span class="k"></span> A + B ≤ 80 <span class="c">mill hours</span></p>
+        <p><span class="k"></span> A ≤ 40 <span class="c">orders for A</span></p>
+        <p><span class="k"></span> A ≥ 0, B ≥ 0 <span class="c">no negative production</span></p>
+      </div>
+      <p>If you think “make as many A as possible, it earns the most”, you get 40 parts A and 20 B: $2,200. That isn’t the best. The best is 20 parts A and 60 B: <strong>$2,600 a week</strong>. The chart below shows why.</p>
+
+      <h2 id="chart">See it in a chart: the best plan is at a corner</h2>
+      <p>With two variables you can draw it. Every point in the green area is a plan the workshop can carry out. The dashed line joins plans with the same profit: the further from the origin, the more profit. The best plan is the last point of the area the line touches, and <strong>it’s always a corner</strong>.</p>
+      <p>Move the profits and watch the best corner jump:</p>
+      <figure class="figure" data-plot>
+        <div class="window">
+          <div class="plot"></div>
+          <div class="legend" aria-hidden="true">
+            <span><i style="background:#B4632F"></i>Lathe</span><span><i style="background:#3C6FA8"></i>Mill</span><span><i style="background:#7B5BA6"></i>Demand for A</span><span><i style="background:currentColor;opacity:.6"></i>Same profit</span>
+          </div>
+          <div class="controls">
+            <div class="control">
+              <label for="pA">Profit per part A <output for="pA">$40</output></label>
+              <input class="range" id="pA" type="range" min="10" max="80" step="5" value="40">
+            </div>
+            <div class="control">
+              <label for="pB">Profit per part B <output for="pB">$30</output></label>
+              <input class="range" id="pB" type="range" min="10" max="80" step="5" value="30">
+            </div>
+            <p class="plot-read" aria-live="polite"></p>
+          </div>
+        </div>
+        <figcaption>If part B earns more than part A, the best plan makes no A at all. If A earns more than twice as much as B, the best plan makes every A customers order. In between, the 20 and 60 mix. <button class="replay" type="button" data-reset><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 12a8 8 0 1 1-2.34-5.66"/><path d="M20 4v5h-5"/></svg>Back to $40 and $30</button></figcaption>
+      </figure>
+      <p>With twenty variables you can’t draw it anymore, but the idea is the same. That’s what a Solver does: it finds the best corner without drawing anything.</p>
+
+      <h2 id="setup">How to use Solver in Google Sheets: the model in your sheet</h2>
+      <p>The clearest layout is a table: <strong>one column per variable</strong> and <strong>one row per constraint</strong>. This is the “Workshop” tab of the template:</p>
+      <figure class="figure">
+        <div class="window">
+          <div class="window-bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="doc">Solver template · Workshop</span><span class="menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="4" y="4" width="16" height="16" rx="2.5"/><path d="M4 9.3h16M4 14.6h16M9.3 4v16M14.6 4v16"/></svg> Solver</span></div>
+          <div class="sheet-wrap">
+            <table class="sheet">
+              <caption class="sr-only">The workshop model written in the sheet, with the solution already calculated.</caption>
+              <thead><tr><th class="rn" scope="col"><span class="sr-only">Row</span></th><th scope="col">A</th><th scope="col">B</th><th scope="col">C</th><th scope="col">D</th><th scope="col">E</th><th scope="col">F</th><th scope="col">G</th></tr></thead>
+              <tbody>
+                <tr><td class="rn">5</td><td class="lbl">Objective</td><td class="txt">Maximize</td><td class="txt muted">Objective value</td><td class="big" colspan="4">$2,600</td></tr>
+                <tr><td class="rn">6</td><td class="lbl">Status</td><td class="status done" colspan="6">✓ Optimal solution</td></tr>
+                <tr><td class="rn">8</td><td class="lbl hd">Variables</td><td class="hd">Part A</td><td class="hd">Part B</td><td colspan="4"></td></tr>
+                <tr><td class="rn">9</td><td class="lbl">Type</td><td class="txt">Continuous</td><td class="txt">Continuous</td><td colspan="4"></td></tr>
+                <tr><td class="rn">10</td><td class="lbl">Min</td><td class="n">0</td><td class="n">0</td><td colspan="4"></td></tr>
+                <tr><td class="rn">11</td><td class="lbl">Max</td><td class="n"></td><td class="n"></td><td colspan="4"></td></tr>
+                <tr><td class="rn">12</td><td class="lbl">Obj. coefficients</td><td class="n">40</td><td class="n">30</td><td colspan="4"></td></tr>
+                <tr><td class="rn">13</td><td class="lbl sol">Solution</td><td class="sol">20</td><td class="sol">60</td><td colspan="4"></td></tr>
+                <tr><td class="rn">15</td><td class="lbl hd">Constraints</td><td class="hd">Part A</td><td class="hd">Part B</td><td class="hd">Used</td><td class="hd">Sign</td><td class="hd">Limit</td><td class="hd">Slack</td></tr>
+                <tr><td class="rn">16</td><td class="txt">Lathe hours</td><td class="n">2</td><td class="n">1</td><td class="f">100</td><td class="sign">≤</td><td class="n">100</td><td class="f ok">0</td></tr>
+                <tr><td class="rn">17</td><td class="txt">Mill hours</td><td class="n">1</td><td class="n">1</td><td class="f">80</td><td class="sign">≤</td><td class="n">80</td><td class="f ok">0</td></tr>
+                <tr><td class="rn">18</td><td class="txt">Part A orders</td><td class="n">1</td><td class="n">0</td><td class="f">20</td><td class="sign">≤</td><td class="n">40</td><td class="f">20</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <figcaption>Grey cells hold formulas. Green is what Solver writes.</figcaption>
+      </figure>
+      <p>The three formulas you need are all the same function, <code>SUMPRODUCT</code>, which multiplies each number in one row by the matching number in another and adds everything up. Total profit, in <code>D5</code>:</p>
+      <div class="fx"><span class="fx-tag" aria-hidden="true">fx</span><span class="fx-cell">D5</span><code>=SUMPRODUCT(B12:C12,B13:C13)</code><button class="copy" type="button" aria-label="Copy the formula"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span>Copy</span></button></div>
+      <p>That is, 40 × 20 + 30 × 60 = 2,600. Lathe hours used, in <code>D16</code>:</p>
+      <div class="fx"><span class="fx-tag" aria-hidden="true">fx</span><span class="fx-cell">D16</span><code>=SUMPRODUCT(B16:C16,$B$13:$C$13)</code><button class="copy" type="button" aria-label="Copy the formula"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><span>Copy</span></button></div>
+      <p>The <code>$</code> signs lock the solution row so you can copy the formula down to every constraint. Slack is what’s left before the limit: <code>=F16-D16</code> when the sign is ≤.</p>
+      <div class="callout note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.6v.4"/></svg><div><p><strong>If your spreadsheet uses a comma for decimals</strong> (for example with a Spanish, French or German locale), separate arguments with semicolons: <code>=SUMPRODUCT(B12:C12;B13:C13)</code>.</p></div></div>
+      <p>Three tips that save trouble:</p>
+      <ul>
+        <li><strong>Same units across a row.</strong> If the limit is in hours, so are the coefficients; don’t mix hours and minutes.</li>
+        <li><strong>One constraint per row,</strong> with its sign written out. “At least” is ≥ and “at most” is ≤.</li>
+        <li><strong>Test the model by hand before solving.</strong> Type a solution you know into the “Solution” row and check that profit and hours come out as expected.</li>
+      </ul>
+
+      <h2 id="get-solver">How to get Solver in Google Sheets: three free ways</h2>
+      <p>There’s no switch to turn on: you have to add it to the sheet. These are the three free ways, from quickest to most work.</p>
+
+      <h3>1. With the free template</h3>
+      <p>It’s a Google Sheet with a script that uses the optimization engine Google includes in its spreadsheets. It comes with this workshop and a blank model for your own problem.</p>
+      <ol class="steps">
+        <li><strong>Make a copy.</strong> Click the button below, then “Make a copy”. It’s saved to your Google Drive.</li>
+        <li><strong>Type in your numbers.</strong> Adapt the example tab or fill in “My model”.</li>
+        <li><strong>Solve.</strong> From the menu, <span class="menu-path"><span>Solver</span><span>Solve this tab</span></span>. The first time, Google asks your permission to run the script in your copy; it’s explained step by step on the <a href="../../en/template/#permission">template page</a>.</li>
+        <li><strong>Read the result</strong> in the green “Solution” row and in “Objective”.</li>
+      </ol>
+      <p><a class="btn btn-primary" href="https://docs.google.com/spreadsheets/d/1VkL8--0mcGrZkiEQhltmVe38QTWw7zW-6PERQBRPP9o/copy" target="_blank" rel="noopener" data-plantilla>Make a copy of the template <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="arrow"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+
+      <h3>2. With the OpenSolver add-on</h3>
+      <p>OpenSolver is free and open source, and has long been the best-known option. To install it:</p>
+      <ol class="steps">
+        <li><strong>Open the add-on store.</strong> In your sheet, <span class="menu-path"><span>Extensions</span><span>Add-ons</span><span>Get add-ons</span></span>.</li>
+        <li><strong>Search for “OpenSolver”</strong> and click <span class="menu-path"><span>Install</span><span>Continue</span></span>.</li>
+        <li><strong>Open it from the Extensions menu.</strong> A side panel opens where you set the objective cell, whether to maximize or minimize, the variable cells (the “Add” button) and the constraints.</li>
+        <li><strong>Click “Solve Model”.</strong></li>
+      </ol>
+      <div class="callout warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10.3 4.3L2.6 18a2 2 0 0 0 1.7 3h15.4a2 2 0 0 0 1.7-3L13.7 4.3a2 2 0 0 0-3.4 0z"/><path d="M12 9.5v4.5M12 17.4v.3"/></svg><div><p><strong>Two things to know first,</strong> both acknowledged on its own website: since June 2021 a change by Google broke it for some users, and it has trouble when sheet names contain spaces. Also, each solve can run for at most 6 minutes, Google’s limit for scripts. It’s maintained by volunteers.</p></div></div>
+
+      <h3>3. With Solver in desktop Excel or LibreOffice</h3>
+      <p>If you have Excel installed, download the sheet with <span class="menu-path"><span>File</span><span>Download</span><span>Microsoft Excel (.xlsx)</span></span> and open it there. Solver comes with Excel, but you have to enable it once in the add-in options. Then it’s on the <strong>Data</strong> tab: choose the objective cell, the changing cells, the constraints and the “Simplex LP” method. Note that Excel for the web has no Solver.</p>
+      <p>LibreOffice Calc is free and has its own Solver under <span class="menu-path"><span>Tools</span><span>Solver</span></span>.</p>
+      <p>And if your company uses a paid Google Workspace plan (Business Standard or higher), Gemini in Sheets can also set up optimization problems since April 2026. Review the model it proposes as carefully as you’d review your own.</p>
+
+      <h2 id="read">How to read the result</h2>
+      <p>For the workshop, Solver answers: <strong>20 parts A and 60 parts B</strong>, for <strong>$2,600</strong> profit a week. The “Slack” column tells the rest of the story:</p>
+      <ul>
+        <li><strong>Lathe and mill: slack 0.</strong> They’re at their limit. They’re the bottlenecks: what holds profit back.</li>
+        <li><strong>Orders for part A: slack 20.</strong> Twenty orders go unfilled, and it doesn’t matter: even if customers ordered more A, you wouldn’t earn more, because there are no hours to make them.</li>
+      </ul>
+      <h3>What is one more hour worth?</h3>
+      <p>It’s the most useful question, and you answer it by solving again with the limit a little higher:</p>
+      <div class="compare">
+        <div><p class="k">With 101 lathe hours</p><p class="v">$2,610</p><p>One more lathe hour is worth <strong>$10</strong>.</p></div>
+        <div class="best"><p class="k">With 81 mill hours</p><p class="v">$2,620</p><p>One more mill hour is worth <strong>$20</strong>, twice as much.</p></div>
+      </div>
+      <p>If you can buy extra hours, start with the mill, as long as an hour costs you less than $20. That value is called the <em>shadow price</em>, and it only holds for small changes: if you add many hours, another constraint becomes the one that binds and you need to solve again.</p>
+      <div class="callout ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l7.5 3v5.5c0 4.6-3.2 8.2-7.5 9.5-4.3-1.3-7.5-4.9-7.5-9.5V6z"/><path d="M8.8 12.2l2.3 2.3 4.2-4.6"/></svg><div><p><strong>Solver finds the best answer to the model you give it, not to your real problem.</strong> If you forget a constraint, the result may be impossible to carry out. Always check that the model describes the problem well before making a decision with it.</p></div></div>
+
+      <h2 id="errors">Common errors and what they mean</h2>
+      <h3>“No feasible solution” (infeasible)</h3>
+      <p>No combination meets every constraint at once. It’s almost always a sign the wrong way round (≥ where ≤ belonged) or an impossible minimum: for example, a contract that requires more than the hours allow. Check the “at least” rows first.</p>
+      <h3>“The objective can grow forever” (unbounded)</h3>
+      <p>A constraint is missing. If nothing limits a variable that adds profit, Solver would make it infinite. It’s usually the maximum demand, the hours or the materials.</p>
+      <h3>“I get decimals and I need whole numbers”</h3>
+      <p>Mark those variables as integer (in the template, “Integer” in the “Type” row). Rounding isn’t enough: it can break a constraint or leave you far from the best result.</p>
+      <h3>“The solution makes no sense”</h3>
+      <p>Solver did its job on an incomplete model. Look for the missing constraint (whatever would stop that plan in real life) or mixed units in a row.</p>
+
+      <h2 id="nonlinear">How to tell if your problem is linear</h2>
+      <p>Your problem is linear if each variable only appears <strong>multiplied by a fixed number and added up</strong>. It stops being linear if:</p>
+      <ul>
+        <li>two variables are multiplied together (for example, price × quantity, if you decide both);</li>
+        <li>there are powers, roots or divisions by a variable;</li>
+        <li>a formula uses <code>IF</code>, <code>MAX</code> or <code>MIN</code> on the variables.</li>
+      </ul>
+      <p>For nonlinear problems, desktop Excel’s Solver has the “GRG Nonlinear” method. Many “if I do this, then that” conditions can be written as linear ones with binary variables.</p>
+
+      <h2 id="faq">Frequently asked questions</h2>
+      <div class="faq">
+        <details>
+          <summary>Does Google Sheets have a Solver?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>Not built in: Google Sheets doesn’t include Excel’s Solver, and there’s no menu or function that does the same. You can get it for free in three ways: a script template like ours, the OpenSolver add-on, or downloading the sheet and using Solver in desktop Excel or LibreOffice.</p></div>
+        </details>
+        <details>
+          <summary>Is there a Solver add-on or extension for Google Sheets?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>Yes. In <em>Extensions → Add-ons → Get add-ons</em> you’ll find free and freemium options; OpenSolver is the best known. If you’d rather not install an add-on, our <a href="../../en/template/">template</a> brings its own Solver menu as soon as you make a copy.</p></div>
+        </details>
+        <details>
+          <summary>Is there a SOLVER function in Google Sheets?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>No. No Google Sheets function finds a maximum or minimum subject to constraints. What you do have is <code>SUMPRODUCT</code>, which you use to write the model: total profit and how much of each resource is used. To solve it you need the template or an add-on.</p></div>
+        </details>
+        <details>
+          <summary>What is the Google Sheets equivalent of Excel Solver?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>There’s no built-in equivalent. The closest are an add-on such as OpenSolver or a template with a script, like ours, which uses the linear optimization service Google includes in Apps Script. Both solve the same kind of problems as Excel’s “Simplex LP” method.</p></div>
+        </details>
+        <details>
+          <summary>Why is OpenSolver not working in Google Sheets?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>Its own website says that since June 2021 a change by Google broke it for some users, and that it has trouble when sheet names contain spaces. Try removing the spaces from your tab names, or use the template.</p></div>
+        </details>
+        <details>
+          <summary>Can I do linear programming in Google Sheets?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>Yes. Write the model as a table with <code>SUMPRODUCT</code> and solve it with the template or an add-on. Integer and binary (yes/no) variables work too. This guide walks you through <a href="#setup">an example</a>.</p></div>
+        </details>
+        <details>
+          <summary>Can Google Sheets solve nonlinear problems?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>The template can’t: it solves linear problems, including integer and binary variables. For nonlinear models, desktop Excel’s Solver has the “GRG Nonlinear” method. Here’s <a href="#nonlinear">how to tell if your problem is linear</a>.</p></div>
+        </details>
+        <details>
+          <summary>Is it free?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>Yes. The template, OpenSolver and LibreOffice are free. Excel’s Solver comes with desktop Excel.</p></div>
+        </details>
+      </div>
+    </article>
+    <aside class="aside"><nav class="toc" aria-label="On this page"><p>On this page</p><ol><li><a href="#does-it-have">Does Google Sheets have a Solver?</a></li><li><a href="#what-is">What an optimization problem is</a></li><li><a href="#chart">See it in a chart: the best plan is at a corner</a></li><li><a href="#setup">How to use Solver in Google Sheets: the model in your sheet</a></li><li><a href="#get-solver">How to get Solver in Google Sheets: three free ways</a></li><li><a href="#read">How to read the result</a></li><li><a href="#errors">Common errors and what they mean</a></li><li><a href="#nonlinear">How to tell if your problem is linear</a></li><li><a href="#faq">Frequently asked questions</a></li></ol>
+      <div class="aside-cta"><strong>Free template</strong><span>The examples on this page, ready to solve in your Google Sheets.</span><a class="btn btn-primary btn-sm" href="https://docs.google.com/spreadsheets/d/1VkL8--0mcGrZkiEQhltmVe38QTWw7zW-6PERQBRPP9o/copy" target="_blank" rel="noopener" data-plantilla>Make a copy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="arrow"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></nav></aside>
+  </div>
+</div>
+
+<section class="section" id="avisame" aria-labelledby="avisame-t">
+  <div class="wrap">
+    <div class="waitlist" data-reveal>
+      <div class="waitlist-grid">
+        <div>
+          <p class="eyebrow">Waitlist</p>
+          <h2 id="avisame-t">Want it in every sheet, without copying templates?</h2>
+          <p class="lede">We’re considering building a Google Sheets add-on with Solver and Goal Seek. We’ll build it if there’s enough interest. Leave your e-mail and we’ll let you know, just once, if it launches.</p>
+          <ul class="perks">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.2 4.2L19 7"/></svg><span>It would read your model as it is, with your own formulas.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.2 4.2L19 7"/></svg><span>Integer and binary variables, plain-language reports and Goal Seek.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.2 4.2L19 7"/></svg><span>It would solve inside your browser: your data would never leave your sheet.</span></li>
+          </ul>
+        </div>
+        <form class="wl-form" data-state="idle" data-endpoint="https://script.google.com/macros/s/AKfycbwQmEJsMEwahu4BLXoV_xvwo-aQ2-lAGDU6h97BB30XY1FvimbSGr1M9hIXH60bJUx9/exec" data-origen="/en/solver-google-sheets/" novalidate>
+          <div class="wl-fields">
+            <label class="wl-label" for="wl-principal">Your e-mail</label>
+            <div class="wl-row">
+              <input id="wl-principal" type="email" name="correo" autocomplete="email" inputmode="email" placeholder="name@gmail.com" maxlength="254" required aria-describedby="wl-help-principal wl-err-principal">
+              <button class="btn" type="submit"><span class="wl-spin" aria-hidden="true"></span><span class="label">Notify me</span></button>
+            </div>
+            <div class="wl-hp" aria-hidden="true"><label>Leave this field empty <input type="text" name="web" tabindex="-1" autocomplete="off"></label></div>
+            <p class="wl-error" id="wl-err-principal" role="alert" aria-live="assertive"></p>
+            <p class="wl-help" id="wl-help-principal">Only to let you know. No newsletters, no ads, and you can unsubscribe anytime. <a href="../../en/privacy/">How we handle your e-mail</a>.</p>
+          </div>
+          <div class="wl-done" role="status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.2"/><path class="check" d="M7.8 12.4l2.9 2.9 5.6-6"/></svg><div><strong>You’re on the list. Thanks.</strong><span>If the add-on launches, we’ll e-mail you once to let you know.</span></div></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="../../en/"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="15" fill="#1F4436"/><polygon points="16,47 16,19 35,24 48,47" fill="#F2EBDC" stroke="#F2EBDC" stroke-width="5" stroke-linejoin="round"/><circle cx="35" cy="24" r="6.6" fill="#A3D7BC" stroke="#1F4436" stroke-width="3.4"/></svg><span>Solver <small>for Google Sheets</small></span></a>
+        <p>Clear guides, worked examples and a free template to optimize with Google Sheets. A lanabes project.</p>
+      </div>
+      <div>
+        <h2>Guides</h2>
+        <ul>
+          <li><a href="../../en/solver-google-sheets/">Solver in Google Sheets</a></li>
+          <li><a href="../../en/goal-seek-google-sheets/">Goal Seek in Google Sheets</a></li>
+          <li><a href="../../en/template/">The free template</a></li>
+          <li><a href="../../en/privacy/">Privacy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>In Spanish</h2>
+        <ul>
+          <li><a href="../../" hreflang="es">Versión en español</a></li>
+          <li><a href="../../ejemplos/" hreflang="es">Worked examples (Spanish)</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="disclaimer">
+      <span>Examples are made up for learning. A model’s result depends on how it is set up: always review it before you decide.</span>
+      <span>Google Sheets is a trademark of Google LLC and Excel of Microsoft. This site is not affiliated with either.</span>
+    </div>
+  </div>
+</footer>
+<script src="../../assets/app.js" defer></script>
+<script src="../../assets/grafico.js" defer></script>
+</body>
+</html>
