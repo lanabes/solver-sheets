@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Solver online gratis: programación lineal y entera sin instalar nada</title>
+<meta name="description" content="Solver online gratis en castellano: maximiza el beneficio o minimiza el coste con restricciones, con variables enteras y binarias. Sin instalar nada ni registrarte, con ejemplos resueltos.">
+<link rel="canonical" href="https://lanabes.github.io/solver-sheets/solver-online/">
+<link rel="alternate" hreflang="es" href="https://lanabes.github.io/solver-sheets/solver-online/">
+<link rel="alternate" hreflang="en" href="https://lanabes.github.io/solver-sheets/en/linear-programming-solver/">
+<link rel="alternate" hreflang="x-default" href="https://lanabes.github.io/solver-sheets/en/linear-programming-solver/">
+<meta name="theme-color" content="#FBFAF6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E1512" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:site_name" content="Solver para Google Sheets">
+<meta property="og:title" content="Solver online gratis: programación lineal y entera sin instalar nada">
+<meta property="og:description" content="Solver online gratis en castellano: maximiza el beneficio o minimiza el coste con restricciones, con variables enteras y binarias. Sin instalar nada ni registrarte, con ejemplos resueltos.">
+<meta property="og:url" content="https://lanabes.github.io/solver-sheets/solver-online/">
+<meta property="og:image" content="https://lanabes.github.io/solver-sheets/assets/og/solver.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/icono.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/icono-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../assets/icono-180.png">
+<link rel="preload" href="../assets/fuentes/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/estilo.css">
+<script>(function(){var r=document.documentElement;r.classList.add('js');try{var t=localStorage.getItem('tema');if(t==='dark'||t==='light')r.setAttribute('data-theme',t);}catch(e){}})();</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Solver online","url":"https://lanabes.github.io/solver-sheets/solver-online/","inLanguage":"es","description":"Solver online gratis en castellano: maximiza el beneficio o minimiza el coste con restricciones, con variables enteras y binarias. Sin instalar nada ni registrarte, con ejemplos resueltos.","applicationCategory":"BusinessApplication","operatingSystem":"Web browser","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"publisher":{"@type":"Organization","name":"lanabes","url":"https://lanabes.github.io/solver-sheets/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","inLanguage":"es","mainEntity":[{"@type":"Question","name":"¿Es gratis?","acceptedAnswer":{"@type":"Answer","text":"Sí. Sin registro, sin límite de usos y sin publicidad."}},{"@type":"Question","name":"¿Mis datos salen de mi navegador?","acceptedAnswer":{"@type":"Answer","text":"No. El problema se resuelve dentro de tu navegador, con un motor que se descarga con la página: no se envía a ningún servidor. Tu último modelo se guarda en tu propio navegador para que no lo pierdas. Solo si pulsas Compartir , el modelo viaja dentro del enlace que tú decides enviar."}},{"@type":"Question","name":"¿Qué tamaño de problema admite?","acceptedAnswer":{"@type":"Answer","text":"Hasta 40 variables y 40 restricciones. Los modelos lineales se resuelven al momento. Con muchas variables enteras o binarias puede tardar: si pasan 8 segundos, te da la mejor solución encontrada y te lo avisa."}},{"@type":"Question","name":"¿Es lo mismo que el Solver de Excel?","acceptedAnswer":{"@type":"Answer","text":"Resuelve los mismos problemas que el método «Simplex LP» del Solver de Excel, también con variables enteras y binarias. No resuelve problemas no lineales: para eso, Excel de escritorio tiene el método «GRG Nonlinear». La guía del Solver explica cómo saber si tu problema es lineal."}},{"@type":"Question","name":"¿Por qué ninguna variable sale negativa?","acceptedAnswer":{"@type":"Answer","text":"Porque, si dejas el mínimo vacío, vale 0, igual que la casilla «Convertir variables sin restricciones en no negativas» del Solver de Excel. Si una variable puede ser negativa, escribe su mínimo, por ejemplo -100 ."}},{"@type":"Question","name":"¿Puedo compartir un problema?","acceptedAnswer":{"@type":"Answer","text":"Sí. Pulsa Compartir : se copia un enlace que abre la herramienta con tu modelo tal cual. Sirve para mandar un ejercicio a clase o pedir una segunda opinión."}},{"@type":"Question","name":"¿Y si quiero resolverlo dentro de Google Sheets?","acceptedAnswer":{"@type":"Answer","text":"Haz una copia de la plantilla gratis : trae su propio menú Solver, usa el motor de Google y escribe la solución en tu hoja."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://lanabes.github.io/solver-sheets/"},{"@type":"ListItem","position":2,"name":"Solver online","item":"https://lanabes.github.io/solver-sheets/solver-online/"}]}</script>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../" aria-label="Solver para Google Sheets, inicio"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="15" fill="#1F4436"/><polygon points="16,47 16,19 35,24 48,47" fill="#F2EBDC" stroke="#F2EBDC" stroke-width="5" stroke-linejoin="round"/><circle cx="35" cy="24" r="6.6" fill="#A3D7BC" stroke="#1F4436" stroke-width="3.4"/></svg><span>Solver <small>para Google Sheets</small></span></a>
+    <nav class="nav" id="nav" aria-label="Principal"><a href="../solver-google-sheets/">Solver</a><a href="../solver-online/" aria-current="page">Solver online</a><a href="../buscar-objetivo-google-sheets/">Buscar objetivo</a><a href="../ejemplos/">Ejemplos</a><a href="../plantilla/">Plantilla</a></nav>
+    <a class="lang-switch" href="../en/linear-programming-solver/" hreflang="en" lang="en" aria-label="English version">EN</a>
+    <button class="icon-btn theme-toggle" type="button" aria-label="Cambiar el tema"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="sun"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4L6 18M18 6l1.4-1.4"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="moon"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
+    <button class="icon-btn menu-btn" type="button" aria-label="Menú" aria-expanded="false" aria-controls="nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <a class="btn btn-primary btn-sm cta-top" href="#avisame">Avísame</a>
+  </div>
+</header>
+<main id="contenido">
+<div class="wrap">
+  <header class="article-head sv-head">
+    <ol class="crumbs"><li><a href="../">Inicio</a></li><li aria-current="page">Solver online</li></ol>
+    <p class="eyebrow">Herramienta gratis</p>
+    <h1>Solver online gratis</h1>
+    <p class="lede">Escribe tu problema en la tabla y pulsa <strong>Resolver</strong>: te dice qué combinación da más beneficio o menos coste sin pasarte de tus límites. Programación lineal y entera, sin instalar nada ni registrarte. Tus datos no salen de tu navegador.</p>
+  </header>
+
+  <div class="sv" data-solver data-motor="../assets/motor.js">
+  <noscript><p class="callout note">El Solver online necesita JavaScript activado.</p></noscript>
+  <script type="application/json" class="sv-datos">{"ejemplos":[{"nombre":"Taller","sentido":"max","unidad":"€ de beneficio a la semana","vars":[{"n":"Pieza A","t":"c","lo":0,"hi":"","c":40},{"n":"Pieza B","t":"c","lo":0,"hi":"","c":30}],"rest":[{"n":"Horas de torno","a":[2,1],"s":"\u003c=","b":100},{"n":"Horas de fresadora","a":[1,1],"s":"\u003c=","b":80},{"n":"Piezas A que piden los clientes","a":[1,0],"s":"\u003c=","b":40}]},{"nombre":"Mezcla de producción","sentido":"max","unidad":"€ de beneficio al mes","vars":[{"n":"Lavavajillas","t":"i","lo":0,"hi":30,"c":180},{"n":"Suavizante","t":"i","lo":0,"hi":40,"c":140},{"n":"Multiusos","t":"i","lo":10,"hi":"","c":120}],"rest":[{"n":"Horas de mezcladora","a":[3,2,1],"s":"\u003c=","b":120},{"n":"Horas de envasadora","a":[2,2,2],"s":"\u003c=","b":140},{"n":"Kilos de tensioactivo","a":[40,20,25],"s":"\u003c=","b":1500}]},{"nombre":"Transporte","sentido":"min","unidad":"€ de transporte a la semana","vars":[{"n":"Zaragoza → Madrid","t":"c","lo":0,"hi":"","c":32},{"n":"Zaragoza → Barcelona","t":"c","lo":0,"hi":"","c":30},{"n":"Zaragoza → Bilbao","t":"c","lo":0,"hi":"","c":30},{"n":"Zaragoza → Málaga","t":"c","lo":0,"hi":"","c":72},{"n":"Valencia → Madrid","t":"c","lo":0,"hi":"","c":36},{"n":"Valencia → Barcelona","t":"c","lo":0,"hi":"","c":35},{"n":"Valencia → Bilbao","t":"c","lo":0,"hi":"","c":61},{"n":"Valencia → Málaga","t":"c","lo":0,"hi":"","c":61},{"n":"Sevilla → Madrid","t":"c","lo":0,"hi":"","c":53},{"n":"Sevilla → Barcelona","t":"c","lo":0,"hi":"","c":100},{"n":"Sevilla → Bilbao","t":"c","lo":0,"hi":"","c":86},{"n":"Sevilla → Málaga","t":"c","lo":0,"hi":"","c":21}],"rest":[{"n":"Palés que salen de Zaragoza","a":[1,1,1,1,"","","","","","","",""],"s":"\u003c=","b":120},{"n":"Palés que salen de Valencia","a":["","","","",1,1,1,1,"","","",""],"s":"\u003c=","b":150},{"n":"Palés que salen de Sevilla","a":["","","","","","","","",1,1,1,1],"s":"\u003c=","b":100},{"n":"Palés que llegan a Madrid","a":[1,"","","",1,"","","",1,"","",""],"s":">=","b":110},{"n":"Palés que llegan a Barcelona","a":["",1,"","","",1,"","","",1,"",""],"s":">=","b":90},{"n":"Palés que llegan a Bilbao","a":["","",1,"","","",1,"","","",1,""],"s":">=","b":70},{"n":"Palés que llegan a Málaga","a":["","","",1,"","","",1,"","","",1],"s":">=","b":80}]},{"nombre":"Turnos","sentido":"min","unidad":"personas en plantilla","vars":[{"n":"Empiezan el lunes","t":"i","lo":0,"hi":"","c":1},{"n":"Empiezan el martes","t":"i","lo":0,"hi":"","c":1},{"n":"Empiezan el miércoles","t":"i","lo":0,"hi":"","c":1},{"n":"Empiezan el jueves","t":"i","lo":0,"hi":"","c":1},{"n":"Empiezan el viernes","t":"i","lo":0,"hi":"","c":1},{"n":"Empiezan el sábado","t":"i","lo":0,"hi":"","c":1},{"n":"Empiezan el domingo","t":"i","lo":0,"hi":"","c":1}],"rest":[{"n":"Personas trabajando el lunes","a":[1,"","",1,1,1,1],"s":">=","b":11},{"n":"Personas trabajando el martes","a":[1,1,"","",1,1,1],"s":">=","b":9},{"n":"Personas trabajando el miércoles","a":[1,1,1,"","",1,1],"s":">=","b":9},{"n":"Personas trabajando el jueves","a":[1,1,1,1,"","",1],"s":">=","b":12},{"n":"Personas trabajando el viernes","a":[1,1,1,1,1,"",""],"s":">=","b":14},{"n":"Personas trabajando el sábado","a":["",1,1,1,1,1,""],"s":">=","b":16},{"n":"Personas trabajando el domingo","a":["","",1,1,1,1,1],"s":">=","b":10}]},{"nombre":"Presupuesto","sentido":"max","unidad":"miles de € de VAN","vars":[{"n":"Línea de envasado","t":"b","lo":0,"hi":1,"c":120},{"n":"Almacén automático","t":"b","lo":0,"hi":1,"c":90},{"n":"Placas solares","t":"b","lo":0,"hi":1,"c":60},{"n":"Software de planificación","t":"b","lo":0,"hi":1,"c":45},{"n":"Ampliar la nave","t":"b","lo":0,"hi":1,"c":150},{"n":"Formación","t":"b","lo":0,"hi":1,"c":25}],"rest":[{"n":"Inversión del año 1 (miles de €)","a":[80,50,40,15,100,10],"s":"\u003c=","b":200},{"n":"Inversión del año 2 (miles de €)","a":[20,30,"",15,60,10],"s":"\u003c=","b":90},{"n":"Nave solo con línea de envasado","a":[-1,"","","",1,""],"s":"\u003c=","b":0},{"n":"Almacén solo con software","a":["",1,"",-1,"",""],"s":"\u003c=","b":0}]}],"plantilla":"https://docs.google.com/spreadsheets/d/1wYO8tv6pRsg1gmECqQLtMpFOm7IOn-0MS4rO8Z0BDJQ/copy"}</script>
+</div>
+
+  <div class="layout sv-after">
+    <article class="article">
+      <h2 id="como">Cómo se usa</h2>
+      <ol class="steps">
+        <li><strong>Elige si quieres maximizar o minimizar.</strong> El beneficio, el coste, las horas, las personas…</li>
+        <li><strong>Una columna por cada decisión.</strong> Son las <em>variables</em>: cuántas unidades de cada producto, cuántos palés por cada ruta. Ponles nombre y escribe en la fila «Objetivo» lo que aporta cada unidad.</li>
+        <li><strong>Una fila por cada límite.</strong> Son las <em>restricciones</em>: cuánto gasta cada decisión, el signo (≤, ≥ o =) y el límite. Por ejemplo, las horas de máquina o el presupuesto.</li>
+        <li><strong>Marca las decisiones enteras.</strong> Las que cuentan personas o lotes, como «Entera»; las de sí o no (aprobar un proyecto), como «Binaria».</li>
+        <li><strong>Pulsa Resolver.</strong> O Ctrl + Intro. La solución aparece en la fila verde, con lo usado y la holgura de cada límite.</li>
+      </ol>
+      <p>¿No sabes por dónde empezar? Abre el menú <strong>Ejemplo</strong>: trae cinco problemas resueltos, los mismos que explicamos en <a href="../ejemplos/">ejemplos</a>.</p>
+
+      <h2 id="que-resuelve">Qué problemas resuelve</h2>
+      <p class="first">Todos los que se escriben como <strong>sumas de cantidades multiplicadas por números fijos</strong>: lo que en clase se llama programación lineal, y programación entera cuando algunas decisiones tienen que ser números enteros o un sí o un no. Por ejemplo:</p>
+      <ul>
+        <li><a href="../ejemplos/mezcla-de-produccion/">Mezcla de producción</a>: qué fabricar cuando un material escasea.</li>
+        <li><a href="../ejemplos/problema-de-transporte/">Transporte</a>: qué almacén sirve a cada tienda para gastar lo mínimo.</li>
+        <li><a href="../ejemplos/turnos-de-personal/">Turnos de personal</a>: la plantilla mínima que cubre toda la semana.</li>
+        <li><a href="../ejemplos/presupuesto-de-inversiones/">Presupuesto de inversiones</a>: qué proyectos aprobar con el dinero que hay.</li>
+      </ul>
+      <p>No resuelve problemas <strong>no lineales</strong>: cuando dos decisiones se multiplican entre sí o hay potencias. Aquí tienes <a href="../solver-google-sheets/#no-lineal">cómo saber si tu problema es lineal</a>.</p>
+
+      <h2 id="leer">Cómo leer el resultado</h2>
+      <ul>
+        <li><strong>Solución</strong> (fila verde): cuánto de cada decisión. Es el mejor plan posible para el modelo que has escrito.</li>
+        <li><strong>Valor del objetivo</strong>: el beneficio, el coste o lo que estés optimizando con ese plan.</li>
+        <li><strong>Holgura 0</strong> (en verde oscuro): ese límite está agotado. Es un cuello de botella: si pudieras ampliarlo, el resultado mejoraría. Para saber cuánto vale una unidad más, súbelo un poco y vuelve a resolver.</li>
+        <li><strong>Holgura mayor que 0</strong>: sobra. Ampliar ese límite no cambiaría nada.</li>
+      </ul>
+      <div class="callout ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l7.5 3v5.5c0 4.6-3.2 8.2-7.5 9.5-4.3-1.3-7.5-4.9-7.5-9.5V6z"/><path d="M8.8 12.2l2.3 2.3 4.2-4.6"/></svg><div><p><strong>La respuesta es tan buena como el modelo.</strong> Si falta un límite, el plan puede ser imposible de cumplir. Revisa que la tabla describe de verdad tu problema antes de decidir nada con ella.</p></div></div>
+
+      <h2 id="sheets">De aquí a tu Google Sheets</h2>
+      <p>Si tus datos ya viven en una hoja de cálculo, la <a href="../plantilla/">plantilla gratis</a> hace lo mismo dentro de Google Sheets: copias la hoja, escribes el modelo en la misma tabla y la solución aparece en tu hoja, con el motor de optimización de Google.</p>
+      <p><a class="btn btn-primary" href="https://docs.google.com/spreadsheets/d/1wYO8tv6pRsg1gmECqQLtMpFOm7IOn-0MS4rO8Z0BDJQ/copy" target="_blank" rel="noopener" data-plantilla>Hacer una copia de la plantilla <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="arrow"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+
+      <h2 id="preguntas">Preguntas frecuentes</h2>
+      <div class="faq">
+        <details>
+          <summary>¿Es gratis?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>Sí. Sin registro, sin límite de usos y sin publicidad.</p></div>
+        </details>
+        <details>
+          <summary>¿Mis datos salen de mi navegador?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>No. El problema se resuelve dentro de tu navegador, con un motor que se descarga con la página: no se envía a ningún servidor. Tu último modelo se guarda en tu propio navegador para que no lo pierdas. Solo si pulsas <em>Compartir</em>, el modelo viaja dentro del enlace que tú decides enviar.</p></div>
+        </details>
+        <details>
+          <summary>¿Qué tamaño de problema admite?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>Hasta 40 variables y 40 restricciones. Los modelos lineales se resuelven al momento. Con muchas variables enteras o binarias puede tardar: si pasan 8 segundos, te da la mejor solución encontrada y te lo avisa.</p></div>
+        </details>
+        <details>
+          <summary>¿Es lo mismo que el Solver de Excel?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>Resuelve los mismos problemas que el método «Simplex LP» del Solver de Excel, también con variables enteras y binarias. No resuelve problemas no lineales: para eso, Excel de escritorio tiene el método «GRG Nonlinear». La <a href="../solver-google-sheets/#no-lineal">guía del Solver</a> explica cómo saber si tu problema es lineal.</p></div>
+        </details>
+        <details>
+          <summary>¿Por qué ninguna variable sale negativa?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>Porque, si dejas el mínimo vacío, vale 0, igual que la casilla «Convertir variables sin restricciones en no negativas» del Solver de Excel. Si una variable puede ser negativa, escribe su mínimo, por ejemplo <code>-100</code>.</p></div>
+        </details>
+        <details>
+          <summary>¿Puedo compartir un problema?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>Sí. Pulsa <em>Compartir</em>: se copia un enlace que abre la herramienta con tu modelo tal cual. Sirve para mandar un ejercicio a clase o pedir una segunda opinión.</p></div>
+        </details>
+        <details>
+          <summary>¿Y si quiero resolverlo dentro de Google Sheets?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>Haz una copia de la <a href="../plantilla/">plantilla gratis</a>: trae su propio menú Solver, usa el motor de Google y escribe la solución en tu hoja.</p></div>
+        </details>
+      </div>
+    </article>
+    <aside class="aside"><nav class="toc" aria-label="En esta página"><p>En esta página</p><ol><li><a href="#como">Cómo se usa</a></li><li><a href="#que-resuelve">Qué problemas resuelve</a></li><li><a href="#leer">Cómo leer el resultado</a></li><li><a href="#sheets">De aquí a tu Google Sheets</a></li><li><a href="#preguntas">Preguntas frecuentes</a></li></ol>
+      <div class="aside-cta"><strong>Plantilla gratis</strong><span>Los ejemplos de esta web, listos para resolver en tu Google Sheets.</span><a class="btn btn-primary btn-sm" href="https://docs.google.com/spreadsheets/d/1wYO8tv6pRsg1gmECqQLtMpFOm7IOn-0MS4rO8Z0BDJQ/copy" target="_blank" rel="noopener" data-plantilla>Hacer una copia <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="arrow"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></nav></aside>
+  </div>
+</div>
+
+<section class="section" id="avisame" aria-labelledby="avisame-t">
+  <div class="wrap">
+    <div class="waitlist" data-reveal>
+      <div class="waitlist-grid">
+        <div>
+          <p class="eyebrow">Lista de espera</p>
+          <h2 id="avisame-t">¿Lo quieres en todas tus hojas, sin copiar plantillas?</h2>
+          <p class="lede">Estamos valorando hacer un complemento para Google Sheets con el Solver y Buscar objetivo, en castellano y en inglés. Lo haremos si hay interés suficiente. <strong>Si te apuntas, lo pruebas gratis antes que nadie:</strong> te escribiremos una sola vez, si sale, con tu acceso.</p>
+          <ul class="perks">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.2 4.2L19 7"/></svg><span>Leería tu modelo tal como lo tienes, con tus propias fórmulas.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.2 4.2L19 7"/></svg><span>Variables enteras y binarias, informes claros y Buscar objetivo.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.2 4.2L19 7"/></svg><span>Resolvería dentro de tu navegador: tus datos no saldrían de tu hoja.</span></li>
+          </ul>
+        </div>
+        <form class="wl-form" data-state="idle" data-endpoint="https://script.google.com/macros/s/AKfycbwQmEJsMEwahu4BLXoV_xvwo-aQ2-lAGDU6h97BB30XY1FvimbSGr1M9hIXH60bJUx9/exec" data-origen="/solver-online/" novalidate>
+          <div class="wl-fields">
+            <label class="wl-label" for="wl-principal">Tu correo</label>
+            <div class="wl-row">
+              <input id="wl-principal" type="email" name="correo" autocomplete="email" inputmode="email" placeholder="nombre@gmail.com" maxlength="254" required aria-describedby="wl-help-principal wl-err-principal">
+              <button class="btn" type="submit"><span class="wl-spin" aria-hidden="true"></span><span class="label">Quiero probarlo</span></button>
+            </div>
+            <div class="wl-hp" aria-hidden="true"><label>No rellenes este campo <input type="text" name="web" tabindex="-1" autocomplete="off"></label></div>
+            <p class="wl-error" id="wl-err-principal" role="alert" aria-live="assertive"></p>
+            <p class="wl-help" id="wl-help-principal">Gratis y sin compromiso. Sin boletines ni publicidad, y te borras cuando quieras. <a href="../privacidad/">Cómo tratamos tu correo</a>.</p>
+          </div>
+          <div class="wl-done" role="status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.2"/><path class="check" d="M7.8 12.4l2.9 2.9 5.6-6"/></svg><div><strong>Apuntado. Gracias.</strong><span>Si el complemento sale, te escribiremos una sola vez con tu acceso anticipado gratis.</span></div></div>
+          <div class="wl-uso" role="group" aria-labelledby="wl-uso-t-principal">
+            <p class="wl-uso-t" id="wl-uso-t-principal">Una última cosa, si quieres: ¿para qué lo usarías?</p>
+            <div class="wl-chips"><button class="wl-chip" type="button" data-uso="produccion" aria-pressed="false">Producción o mezclas</button><button class="wl-chip" type="button" data-uso="transporte" aria-pressed="false">Transporte o rutas</button><button class="wl-chip" type="button" data-uso="turnos" aria-pressed="false">Turnos de personal</button><button class="wl-chip" type="button" data-uso="presupuesto" aria-pressed="false">Presupuestos e inversiones</button><button class="wl-chip" type="button" data-uso="estudios" aria-pressed="false">Clase o estudios</button><button class="wl-chip" type="button" data-uso="otro" aria-pressed="false">Otra cosa</button></div>
+            <p class="wl-uso-ok" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="../"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="15" fill="#1F4436"/><polygon points="16,47 16,19 35,24 48,47" fill="#F2EBDC" stroke="#F2EBDC" stroke-width="5" stroke-linejoin="round"/><circle cx="35" cy="24" r="6.6" fill="#A3D7BC" stroke="#1F4436" stroke-width="3.4"/></svg><span>Solver <small>para Google Sheets</small></span></a>
+        <p>Guías en castellano, ejemplos resueltos y una plantilla gratis para optimizar con Google Sheets. Un proyecto de lanabes.</p>
+      </div>
+      <div>
+        <h2>Guías</h2>
+        <ul>
+          <li><a href="../solver-google-sheets/">Solver en Google Sheets</a></li>
+          <li><a href="../buscar-objetivo-google-sheets/">Buscar objetivo</a></li>
+          <li><a href="../opensolver-google-sheets/">OpenSolver no funciona</a></li>
+          <li><a href="../solver-online/">Solver online gratis</a></li>
+          <li><a href="../plantilla/">La plantilla gratis</a></li>
+          <li><a href="../privacidad/">Privacidad</a></li>
+          <li><a href="../en/" hreflang="en">English version</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Ejemplos resueltos</h2>
+        <ul>
+          <li><a href="../ejemplos/mezcla-de-produccion/" hreflang="es">Mezcla de producción</a></li>
+          <li><a href="../ejemplos/problema-de-transporte/" hreflang="es">Problema de transporte</a></li>
+          <li><a href="../ejemplos/turnos-de-personal/" hreflang="es">Turnos de personal</a></li>
+          <li><a href="../ejemplos/presupuesto-de-inversiones/" hreflang="es">Presupuesto de inversiones</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="disclaimer">
+      <span>Los ejemplos son inventados para aprender. El resultado de un modelo depende de cómo se plantea: revísalo siempre antes de decidir.</span>
+      <span>Google Sheets es una marca de Google LLC y Excel, de Microsoft. Esta web no está afiliada a ninguna de las dos.</span>
+    </div>
+  </div>
+</footer>
+<script src="../assets/app.js" defer></script>
+<script src="../assets/motor.js" defer></script>
+<script src="../assets/solver.js" defer></script>
+</body>
+</html>

@@ -13,12 +13,14 @@ Guías gratis en castellano e inglés, ejemplos resueltos y una plantilla gratis
 - [Goal Seek in Google Sheets: four ways to do it](https://lanabes.github.io/solver-sheets/en/goal-seek-google-sheets/)
 - [OpenSolver for Google Sheets not working? What to check, and a free alternative](https://lanabes.github.io/solver-sheets/en/opensolver-google-sheets/)
 - [Free Solver template for Google Sheets](https://lanabes.github.io/solver-sheets/en/template/)
+- [Free online linear programming solver](https://lanabes.github.io/solver-sheets/en/linear-programming-solver/)
 
 ## Castellano
 
 - [Solver y Buscar objetivo en Google Sheets, en castellano](https://lanabes.github.io/solver-sheets/)
 - [Solver en Google Sheets: cómo instalarlo y usarlo, paso a paso](https://lanabes.github.io/solver-sheets/solver-google-sheets/)
 - [OpenSolver no funciona en Google Sheets: qué revisar y una alternativa gratis](https://lanabes.github.io/solver-sheets/opensolver-google-sheets/)
+- [Solver online gratis](https://lanabes.github.io/solver-sheets/solver-online/)
 - [Buscar objetivo en Google Sheets: cuatro formas de hacerlo](https://lanabes.github.io/solver-sheets/buscar-objetivo-google-sheets/)
 - [Ejemplos resueltos de programación lineal en Google Sheets](https://lanabes.github.io/solver-sheets/ejemplos/)
 - [Mezcla de producción: qué fabricar cuando un material escasea](https://lanabes.github.io/solver-sheets/ejemplos/mezcla-de-produccion/)

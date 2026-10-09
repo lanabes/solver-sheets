@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Free online linear programming solver (LP and integer)</title>
+<meta name="description" content="Free online Solver: maximize profit or minimize cost subject to constraints, with integer and binary variables. Like Excel’s Simplex LP, in your browser, with no install and no sign-up.">
+<link rel="canonical" href="https://lanabes.github.io/solver-sheets/en/linear-programming-solver/">
+<link rel="alternate" hreflang="es" href="https://lanabes.github.io/solver-sheets/solver-online/">
+<link rel="alternate" hreflang="en" href="https://lanabes.github.io/solver-sheets/en/linear-programming-solver/">
+<link rel="alternate" hreflang="x-default" href="https://lanabes.github.io/solver-sheets/en/linear-programming-solver/">
+<meta name="theme-color" content="#FBFAF6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E1512" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:site_name" content="Solver for Google Sheets">
+<meta property="og:title" content="Free online linear programming solver (LP and integer)">
+<meta property="og:description" content="Free online Solver: maximize profit or minimize cost subject to constraints, with integer and binary variables. Like Excel’s Simplex LP, in your browser, with no install and no sign-up.">
+<meta property="og:url" content="https://lanabes.github.io/solver-sheets/en/linear-programming-solver/">
+<meta property="og:image" content="https://lanabes.github.io/solver-sheets/assets/og/en-solver.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/icono.svg" type="image/svg+xml">
+<link rel="icon" href="../../assets/icono-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../../assets/icono-180.png">
+<link rel="preload" href="../../assets/fuentes/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../assets/estilo.css">
+<script>(function(){var r=document.documentElement;r.classList.add('js');try{var t=localStorage.getItem('tema');if(t==='dark'||t==='light')r.setAttribute('data-theme',t);}catch(e){}})();</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Online linear programming solver","url":"https://lanabes.github.io/solver-sheets/en/linear-programming-solver/","inLanguage":"en","description":"Free online Solver: maximize profit or minimize cost subject to constraints, with integer and binary variables. Like Excel’s Simplex LP, in your browser, with no install and no sign-up.","applicationCategory":"BusinessApplication","operatingSystem":"Web browser","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"publisher":{"@type":"Organization","name":"lanabes","url":"https://lanabes.github.io/solver-sheets/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","inLanguage":"en","mainEntity":[{"@type":"Question","name":"Is it free?","acceptedAnswer":{"@type":"Answer","text":"Yes. No sign-up, no usage limits and no ads."}},{"@type":"Question","name":"Does my data leave my browser?","acceptedAnswer":{"@type":"Answer","text":"No. The problem is solved inside your browser by an engine that downloads with the page: nothing is sent to any server. Your last model is kept in your own browser so you don’t lose it. Only if you click Share does the model travel inside the link you choose to send."}},{"@type":"Question","name":"How big a problem can it solve?","acceptedAnswer":{"@type":"Answer","text":"Up to 40 variables and 40 constraints. Linear models solve instantly. With many integer or binary variables it can take longer: after 8 seconds it gives you the best solution found so far and tells you so."}},{"@type":"Question","name":"Is it the same as Excel’s Solver?","acceptedAnswer":{"@type":"Answer","text":"It solves the same problems as the “Simplex LP” method in Excel’s Solver, including integer and binary variables. It doesn’t solve nonlinear problems: for those, desktop Excel has the “GRG Nonlinear” method. The Solver guide explains how to tell if your problem is linear."}},{"@type":"Question","name":"Why does no variable come out negative?","acceptedAnswer":{"@type":"Answer","text":"Because an empty minimum means 0, just like Excel Solver’s “Make Unconstrained Variables Non-Negative” box. If a variable can be negative, type its minimum, for example -100 ."}},{"@type":"Question","name":"Can I share a problem?","acceptedAnswer":{"@type":"Answer","text":"Yes. Click Share : it copies a link that opens the tool with your model exactly as it is. Handy for sending an exercise to a class or asking for a second opinion."}},{"@type":"Question","name":"What if I want to solve it inside Google Sheets?","acceptedAnswer":{"@type":"Answer","text":"Make a copy of the free template : it brings its own Solver menu, uses Google’s engine and writes the solution into your sheet."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://lanabes.github.io/solver-sheets/en/"},{"@type":"ListItem","position":2,"name":"Online solver","item":"https://lanabes.github.io/solver-sheets/en/linear-programming-solver/"}]}</script>
+</head>
+<body>
+<a class="skip" href="#contenido">Skip to content</a>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../../en/" aria-label="Solver for Google Sheets, home"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="15" fill="#1F4436"/><polygon points="16,47 16,19 35,24 48,47" fill="#F2EBDC" stroke="#F2EBDC" stroke-width="5" stroke-linejoin="round"/><circle cx="35" cy="24" r="6.6" fill="#A3D7BC" stroke="#1F4436" stroke-width="3.4"/></svg><span>Solver <small>for Google Sheets</small></span></a>
+    <nav class="nav" id="nav" aria-label="Main"><a href="../../en/solver-google-sheets/">Solver</a><a href="../../en/linear-programming-solver/" aria-current="page">Online solver</a><a href="../../en/goal-seek-google-sheets/">Goal Seek</a><a href="../../en/template/">Template</a></nav>
+    <a class="lang-switch" href="../../solver-online/" hreflang="es" lang="es" aria-label="Versión en español">ES</a>
+    <button class="icon-btn theme-toggle" type="button" aria-label="Change theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="sun"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4L6 18M18 6l1.4-1.4"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="moon"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
+    <button class="icon-btn menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <a class="btn btn-primary btn-sm cta-top" href="#avisame">Notify me</a>
+  </div>
+</header>
+<main id="contenido">
+<div class="wrap">
+  <header class="article-head sv-head">
+    <ol class="crumbs"><li><a href="../../en/">Home</a></li><li aria-current="page">Online solver</li></ol>
+    <p class="eyebrow">Free tool</p>
+    <h1>Free online linear programming solver</h1>
+    <p class="lede">Type your problem into the table and click <strong>Solve</strong>: it finds the mix that gives the most profit or the least cost without breaking your limits. Linear and integer programming, with nothing to install and no sign-up. Your data never leaves your browser.</p>
+  </header>
+
+  <div class="sv" data-solver data-motor="../../assets/motor.js">
+  <noscript><p class="callout note">The online Solver needs JavaScript turned on.</p></noscript>
+  <script type="application/json" class="sv-datos">{"ejemplos":[{"nombre":"Workshop","sentido":"max","unidad":"$ profit a week","vars":[{"n":"Part A","t":"c","lo":0,"hi":"","c":40},{"n":"Part B","t":"c","lo":0,"hi":"","c":30}],"rest":[{"n":"Lathe hours","a":[2,1],"s":"\u003c=","b":100},{"n":"Mill hours","a":[1,1],"s":"\u003c=","b":80},{"n":"Part A orders","a":[1,0],"s":"\u003c=","b":40}]},{"nombre":"Product mix","sentido":"max","unidad":"profit a month","vars":[{"n":"Dish soap","t":"i","lo":0,"hi":30,"c":180},{"n":"Softener","t":"i","lo":0,"hi":40,"c":140},{"n":"All-purpose cleaner","t":"i","lo":10,"hi":"","c":120}],"rest":[{"n":"Mixer hours","a":[3,2,1],"s":"\u003c=","b":120},{"n":"Filling-line hours","a":[2,2,2],"s":"\u003c=","b":140},{"n":"Surfactant (kg)","a":[40,20,25],"s":"\u003c=","b":1500}]},{"nombre":"Transportation","sentido":"min","unidad":"transport cost a week","vars":[{"n":"Zaragoza → Madrid","t":"c","lo":0,"hi":"","c":32},{"n":"Zaragoza → Barcelona","t":"c","lo":0,"hi":"","c":30},{"n":"Zaragoza → Bilbao","t":"c","lo":0,"hi":"","c":30},{"n":"Zaragoza → Málaga","t":"c","lo":0,"hi":"","c":72},{"n":"Valencia → Madrid","t":"c","lo":0,"hi":"","c":36},{"n":"Valencia → Barcelona","t":"c","lo":0,"hi":"","c":35},{"n":"Valencia → Bilbao","t":"c","lo":0,"hi":"","c":61},{"n":"Valencia → Málaga","t":"c","lo":0,"hi":"","c":61},{"n":"Sevilla → Madrid","t":"c","lo":0,"hi":"","c":53},{"n":"Sevilla → Barcelona","t":"c","lo":0,"hi":"","c":100},{"n":"Sevilla → Bilbao","t":"c","lo":0,"hi":"","c":86},{"n":"Sevilla → Málaga","t":"c","lo":0,"hi":"","c":21}],"rest":[{"n":"Pallets out of Zaragoza","a":[1,1,1,1,"","","","","","","",""],"s":"\u003c=","b":120},{"n":"Pallets out of Valencia","a":["","","","",1,1,1,1,"","","",""],"s":"\u003c=","b":150},{"n":"Pallets out of Sevilla","a":["","","","","","","","",1,1,1,1],"s":"\u003c=","b":100},{"n":"Pallets into Madrid","a":[1,"","","",1,"","","",1,"","",""],"s":">=","b":110},{"n":"Pallets into Barcelona","a":["",1,"","","",1,"","","",1,"",""],"s":">=","b":90},{"n":"Pallets into Bilbao","a":["","",1,"","","",1,"","","",1,""],"s":">=","b":70},{"n":"Pallets into Málaga","a":["","","",1,"","","",1,"","","",1],"s":">=","b":80}]},{"nombre":"Staff scheduling","sentido":"min","unidad":"people on staff","vars":[{"n":"Start on Monday","t":"i","lo":0,"hi":"","c":1},{"n":"Start on Tuesday","t":"i","lo":0,"hi":"","c":1},{"n":"Start on Wednesday","t":"i","lo":0,"hi":"","c":1},{"n":"Start on Thursday","t":"i","lo":0,"hi":"","c":1},{"n":"Start on Friday","t":"i","lo":0,"hi":"","c":1},{"n":"Start on Saturday","t":"i","lo":0,"hi":"","c":1},{"n":"Start on Sunday","t":"i","lo":0,"hi":"","c":1}],"rest":[{"n":"Working on Monday","a":[1,"","",1,1,1,1],"s":">=","b":11},{"n":"Working on Tuesday","a":[1,1,"","",1,1,1],"s":">=","b":9},{"n":"Working on Wednesday","a":[1,1,1,"","",1,1],"s":">=","b":9},{"n":"Working on Thursday","a":[1,1,1,1,"","",1],"s":">=","b":12},{"n":"Working on Friday","a":[1,1,1,1,1,"",""],"s":">=","b":14},{"n":"Working on Saturday","a":["",1,1,1,1,1,""],"s":">=","b":16},{"n":"Working on Sunday","a":["","",1,1,1,1,1],"s":">=","b":10}]},{"nombre":"Capital budgeting","sentido":"max","unidad":"thousand NPV","vars":[{"n":"Packaging line","t":"b","lo":0,"hi":1,"c":120},{"n":"Automated warehouse","t":"b","lo":0,"hi":1,"c":90},{"n":"Solar panels","t":"b","lo":0,"hi":1,"c":60},{"n":"Planning software","t":"b","lo":0,"hi":1,"c":45},{"n":"Expand the plant","t":"b","lo":0,"hi":1,"c":150},{"n":"Training","t":"b","lo":0,"hi":1,"c":25}],"rest":[{"n":"Year 1 investment (thousands)","a":[80,50,40,15,100,10],"s":"\u003c=","b":200},{"n":"Year 2 investment (thousands)","a":[20,30,"",15,60,10],"s":"\u003c=","b":90},{"n":"Plant only with packaging line","a":[-1,"","","",1,""],"s":"\u003c=","b":0},{"n":"Warehouse only with software","a":["",1,"",-1,"",""],"s":"\u003c=","b":0}]}],"plantilla":"https://docs.google.com/spreadsheets/d/1VkL8--0mcGrZkiEQhltmVe38QTWw7zW-6PERQBRPP9o/copy"}</script>
+</div>
+
+  <div class="layout sv-after">
+    <article class="article">
+      <h2 id="how">How to use it</h2>
+      <ol class="steps">
+        <li><strong>Choose maximize or minimize.</strong> Profit, cost, hours, people…</li>
+        <li><strong>One column per decision.</strong> These are the <em>variables</em>: how many units of each product, how many pallets down each route. Name them and type what each unit adds in the “Objective” row.</li>
+        <li><strong>One row per limit.</strong> These are the <em>constraints</em>: how much each decision uses, the sign (≤, ≥ or =) and the limit. Machine hours or budget, for example.</li>
+        <li><strong>Mark whole-number decisions.</strong> The ones that count people or batches as “Integer”; yes-or-no ones (approve a project) as “Binary”.</li>
+        <li><strong>Click Solve.</strong> Or Ctrl + Enter. The solution appears in the green row, with what each limit uses and its slack.</li>
+      </ol>
+      <p>Not sure where to start? Open the <strong>Example</strong> menu: it has five solved problems, from a two-part workshop to staff scheduling.</p>
+
+      <h2 id="what">What problems it solves</h2>
+      <p class="first">Any problem written as <strong>sums of quantities multiplied by fixed numbers</strong>: linear programming, and integer programming when some decisions must be whole numbers or a yes or no. For example:</p>
+      <ul>
+        <li><strong>Product mix</strong>: what to make when a material is scarce.</li>
+        <li><strong>Transportation</strong>: which warehouse should supply each store to spend the least.</li>
+        <li><strong>Staff scheduling</strong>: the smallest team that covers the whole week.</li>
+        <li><strong>Capital budgeting</strong>: which projects to approve with the money available.</li>
+      </ul>
+      <p>All four are in the Example menu, and explained step by step <a href="../../ejemplos/" hreflang="es">in Spanish</a>. It doesn’t solve <strong>nonlinear</strong> problems, where two decisions multiply each other or there are powers. Here’s <a href="../../en/solver-google-sheets/#nonlinear">how to tell if your problem is linear</a>.</p>
+
+      <h2 id="read">How to read the result</h2>
+      <ul>
+        <li><strong>Solution</strong> (green row): how much of each decision. It’s the best possible plan for the model you wrote.</li>
+        <li><strong>Objective value</strong>: the profit, cost or whatever you’re optimizing, with that plan.</li>
+        <li><strong>Slack 0</strong> (in dark green): that limit is used up. It’s a bottleneck: if you could raise it, the result would improve. To find out what one more unit is worth, raise it a little and solve again.</li>
+        <li><strong>Slack above 0</strong>: there’s some left over. Raising that limit wouldn’t change anything.</li>
+      </ul>
+      <div class="callout ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l7.5 3v5.5c0 4.6-3.2 8.2-7.5 9.5-4.3-1.3-7.5-4.9-7.5-9.5V6z"/><path d="M8.8 12.2l2.3 2.3 4.2-4.6"/></svg><div><p><strong>The answer is only as good as the model.</strong> If a limit is missing, the plan may be impossible to carry out. Check the table really describes your problem before you decide anything with it.</p></div></div>
+
+      <h2 id="sheets">From here to your Google Sheets</h2>
+      <p>If your data already lives in a spreadsheet, the <a href="../../en/template/">free template</a> does the same inside Google Sheets: copy the sheet, write the model in the same table and the solution appears in your sheet, using Google’s optimization engine.</p>
+      <p><a class="btn btn-primary" href="https://docs.google.com/spreadsheets/d/1VkL8--0mcGrZkiEQhltmVe38QTWw7zW-6PERQBRPP9o/copy" target="_blank" rel="noopener" data-plantilla>Make a copy of the template <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="arrow"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+
+      <h2 id="faq">Frequently asked questions</h2>
+      <div class="faq">
+        <details>
+          <summary>Is it free?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>Yes. No sign-up, no usage limits and no ads.</p></div>
+        </details>
+        <details>
+          <summary>Does my data leave my browser?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>No. The problem is solved inside your browser by an engine that downloads with the page: nothing is sent to any server. Your last model is kept in your own browser so you don’t lose it. Only if you click <em>Share</em> does the model travel inside the link you choose to send.</p></div>
+        </details>
+        <details>
+          <summary>How big a problem can it solve?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>Up to 40 variables and 40 constraints. Linear models solve instantly. With many integer or binary variables it can take longer: after 8 seconds it gives you the best solution found so far and tells you so.</p></div>
+        </details>
+        <details>
+          <summary>Is it the same as Excel’s Solver?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>It solves the same problems as the “Simplex LP” method in Excel’s Solver, including integer and binary variables. It doesn’t solve nonlinear problems: for those, desktop Excel has the “GRG Nonlinear” method. The <a href="../../en/solver-google-sheets/#nonlinear">Solver guide</a> explains how to tell if your problem is linear.</p></div>
+        </details>
+        <details>
+          <summary>Why does no variable come out negative?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>Because an empty minimum means 0, just like Excel Solver’s “Make Unconstrained Variables Non-Negative” box. If a variable can be negative, type its minimum, for example <code>-100</code>.</p></div>
+        </details>
+        <details>
+          <summary>Can I share a problem?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>Yes. Click <em>Share</em>: it copies a link that opens the tool with your model exactly as it is. Handy for sending an exercise to a class or asking for a second opinion.</p></div>
+        </details>
+        <details>
+          <summary>What if I want to solve it inside Google Sheets?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>Make a copy of the <a href="../../en/template/">free template</a>: it brings its own Solver menu, uses Google’s engine and writes the solution into your sheet.</p></div>
+        </details>
+      </div>
+    </article>
+    <aside class="aside"><nav class="toc" aria-label="On this page"><p>On this page</p><ol><li><a href="#how">How to use it</a></li><li><a href="#what">What problems it solves</a></li><li><a href="#read">How to read the result</a></li><li><a href="#sheets">From here to your Google Sheets</a></li><li><a href="#faq">Frequently asked questions</a></li></ol>
+      <div class="aside-cta"><strong>Free template</strong><span>The examples on this page, ready to solve in your Google Sheets.</span><a class="btn btn-primary btn-sm" href="https://docs.google.com/spreadsheets/d/1VkL8--0mcGrZkiEQhltmVe38QTWw7zW-6PERQBRPP9o/copy" target="_blank" rel="noopener" data-plantilla>Make a copy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="arrow"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></nav></aside>
+  </div>
+</div>
+
+<section class="section" id="avisame" aria-labelledby="avisame-t">
+  <div class="wrap">
+    <div class="waitlist" data-reveal>
+      <div class="waitlist-grid">
+        <div>
+          <p class="eyebrow">Waitlist</p>
+          <h2 id="avisame-t">Want it in every sheet, without copying templates?</h2>
+          <p class="lede">We’re considering building a Google Sheets add-on with Solver and Goal Seek. We’ll build it if there’s enough interest. <strong>Join the list and you’ll try it free before anyone else:</strong> we’ll e-mail you just once, if it launches, with your access.</p>
+          <ul class="perks">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.2 4.2L19 7"/></svg><span>It would read your model as it is, with your own formulas.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.2 4.2L19 7"/></svg><span>Integer and binary variables, plain-language reports and Goal Seek.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.2 4.2L19 7"/></svg><span>It would solve inside your browser: your data would never leave your sheet.</span></li>
+          </ul>
+        </div>
+        <form class="wl-form" data-state="idle" data-endpoint="https://script.google.com/macros/s/AKfycbwQmEJsMEwahu4BLXoV_xvwo-aQ2-lAGDU6h97BB30XY1FvimbSGr1M9hIXH60bJUx9/exec" data-origen="/en/linear-programming-solver/" novalidate>
+          <div class="wl-fields">
+            <label class="wl-label" for="wl-principal">Your e-mail</label>
+            <div class="wl-row">
+              <input id="wl-principal" type="email" name="correo" autocomplete="email" inputmode="email" placeholder="name@gmail.com" maxlength="254" required aria-describedby="wl-help-principal wl-err-principal">
+              <button class="btn" type="submit"><span class="wl-spin" aria-hidden="true"></span><span class="label">Get early access</span></button>
+            </div>
+            <div class="wl-hp" aria-hidden="true"><label>Leave this field empty <input type="text" name="web" tabindex="-1" autocomplete="off"></label></div>
+            <p class="wl-error" id="wl-err-principal" role="alert" aria-live="assertive"></p>
+            <p class="wl-help" id="wl-help-principal">Free, no strings attached. No newsletters, no ads, and you can unsubscribe anytime. <a href="../../en/privacy/">How we handle your e-mail</a>.</p>
+          </div>
+          <div class="wl-done" role="status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.2"/><path class="check" d="M7.8 12.4l2.9 2.9 5.6-6"/></svg><div><strong>You’re on the list. Thanks.</strong><span>If the add-on launches, we’ll e-mail you once with your free early access.</span></div></div>
+          <div class="wl-uso" role="group" aria-labelledby="wl-uso-t-principal">
+            <p class="wl-uso-t" id="wl-uso-t-principal">One last thing, if you like: what would you use it for?</p>
+            <div class="wl-chips"><button class="wl-chip" type="button" data-uso="produccion" aria-pressed="false">Production or blending</button><button class="wl-chip" type="button" data-uso="transporte" aria-pressed="false">Transport or routing</button><button class="wl-chip" type="button" data-uso="turnos" aria-pressed="false">Staff scheduling</button><button class="wl-chip" type="button" data-uso="presupuesto" aria-pressed="false">Budgets and investments</button><button class="wl-chip" type="button" data-uso="estudios" aria-pressed="false">Coursework or study</button><button class="wl-chip" type="button" data-uso="otro" aria-pressed="false">Something else</button></div>
+            <p class="wl-uso-ok" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="../../en/"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="15" fill="#1F4436"/><polygon points="16,47 16,19 35,24 48,47" fill="#F2EBDC" stroke="#F2EBDC" stroke-width="5" stroke-linejoin="round"/><circle cx="35" cy="24" r="6.6" fill="#A3D7BC" stroke="#1F4436" stroke-width="3.4"/></svg><span>Solver <small>for Google Sheets</small></span></a>
+        <p>Clear guides, worked examples and a free template to optimize with Google Sheets. A lanabes project.</p>
+      </div>
+      <div>
+        <h2>Guides</h2>
+        <ul>
+          <li><a href="../../en/solver-google-sheets/">Solver in Google Sheets</a></li>
+          <li><a href="../../en/goal-seek-google-sheets/">Goal Seek in Google Sheets</a></li>
+          <li><a href="../../en/opensolver-google-sheets/">OpenSolver not working?</a></li>
+          <li><a href="../../en/linear-programming-solver/">Free online solver</a></li>
+          <li><a href="../../en/template/">The free template</a></li>
+          <li><a href="../../en/privacy/">Privacy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>In Spanish</h2>
+        <ul>
+          <li><a href="../../" hreflang="es">Versión en español</a></li>
+          <li><a href="../../ejemplos/" hreflang="es">Worked examples (Spanish)</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="disclaimer">
+      <span>Examples are made up for learning. A model’s result depends on how it is set up: always review it before you decide.</span>
+      <span>Google Sheets is a trademark of Google LLC and Excel of Microsoft. This site is not affiliated with either.</span>
+    </div>
+  </div>
+</footer>
+<script src="../../assets/app.js" defer></script>
+<script src="../../assets/motor.js" defer></script>
+<script src="../../assets/solver.js" defer></script>
+</body>
+</html>
