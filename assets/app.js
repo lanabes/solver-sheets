@@ -17,6 +17,7 @@
     yaEstaba: 'You were already on the list with that e-mail. We’ll let you know once, when it launches.',
     invalido: 'That e-mail doesn’t look valid. Please check it.',
     fallo: 'Couldn’t save it right now. Check your connection and try again.',
+    usoGracias: 'Thanks: it helps us decide what to build first.', usoFallo: 'Couldn’t save it. Tap your answer again.',
     sinResolver: 'Not solved yet', resolviendo: 'Solving…', optima: '✓ Optimal solution',
     dinero: function (n) { return '$' + String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ','); },
   } : {
@@ -28,6 +29,7 @@
     yaEstaba: 'Ya estabas en la lista con ese correo. Te avisaremos una sola vez, cuando salga.',
     invalido: 'Ese correo no parece válido. Revísalo, por favor.',
     fallo: 'No se ha podido guardar ahora mismo. Comprueba tu conexión y vuelve a intentarlo.',
+    usoGracias: 'Gracias: nos ayuda a decidir qué hacer primero.', usoFallo: 'No se ha podido guardar. Vuelve a pulsar tu respuesta.',
     sinResolver: 'Sin resolver todavía', resolviendo: 'Resolviendo…', optima: '✓ Solución óptima',
     dinero: function (n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ' €'; },
   };
@@ -223,6 +225,7 @@
           if (j && j.ok) {
             var hecho = form.querySelector('.wl-done span');
             if (hecho && j.yaEstaba && !reintentos) hecho.textContent = L.yaEstaba;
+            form.setAttribute('data-correo', correo);
             estado('done');
             var titulo = form.querySelector('.wl-done strong');
             if (titulo) { titulo.setAttribute('tabindex', '-1'); titulo.focus(); }
@@ -237,6 +240,39 @@
           clearTimeout(aviso);
           estado('error', L.fallo);
         });
+    });
+  });
+
+  /* Después de apuntarse: «¿para qué lo usarías?», un clic y opcional. Solo manda una
+     palabra de una lista cerrada; el servidor descarta cualquier otra. */
+  document.querySelectorAll('.wl-uso').forEach(function (grupo) {
+    var form = grupo.closest('.wl-form');
+    var ok = grupo.querySelector('.wl-uso-ok');
+    var chips = grupo.querySelectorAll('.wl-chip');
+    var envio = 0;
+    var mandar = function (datos) {
+      return fetch(form.getAttribute('data-endpoint'), { method: 'POST', body: datos })
+        .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+        .then(function (j) { if (!j || !j.ok) throw new Error('respuesta'); });
+    };
+    chips.forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        var correo = form.getAttribute('data-correo');
+        if (!correo) return;
+        chips.forEach(function (c) { c.setAttribute('aria-pressed', c === chip ? 'true' : 'false'); });
+        grupo.setAttribute('data-hecho', '');
+        ok.textContent = L.usoGracias;
+        var este = ++envio;
+        var datos = new URLSearchParams();
+        datos.set('correo', correo);
+        datos.set('accion', 'uso');
+        datos.set('uso', chip.getAttribute('data-uso'));
+        datos.set('web', '');
+        // Como en el alta: Google a veces guarda y responde 404, así que un reintento.
+        mandar(datos)
+          .catch(function () { return new Promise(function (s) { setTimeout(s, 800); }).then(function () { return mandar(datos); }); })
+          .catch(function () { if (este === envio) ok.textContent = L.usoFallo; });
+      });
     });
   });
 

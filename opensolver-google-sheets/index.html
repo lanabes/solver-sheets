@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>OpenSolver no funciona en Google Sheets: soluciones y alternativa gratis</title>
+<meta name="description" content="¿OpenSolver no aparece o falla en Google Sheets? Sus fallos reconocidos desde 2021, seis comprobaciones que arreglan los casos habituales y una alternativa gratis que resuelve dentro de tu hoja.">
+<link rel="canonical" href="https://lanabes.github.io/solver-sheets/opensolver-google-sheets/">
+<link rel="alternate" hreflang="es" href="https://lanabes.github.io/solver-sheets/opensolver-google-sheets/">
+<link rel="alternate" hreflang="en" href="https://lanabes.github.io/solver-sheets/en/opensolver-google-sheets/">
+<link rel="alternate" hreflang="x-default" href="https://lanabes.github.io/solver-sheets/en/opensolver-google-sheets/">
+<meta name="theme-color" content="#FBFAF6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E1512" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="es_ES">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:site_name" content="Solver para Google Sheets">
+<meta property="og:title" content="OpenSolver no funciona en Google Sheets: soluciones y alternativa gratis">
+<meta property="og:description" content="¿OpenSolver no aparece o falla en Google Sheets? Sus fallos reconocidos desde 2021, seis comprobaciones que arreglan los casos habituales y una alternativa gratis que resuelve dentro de tu hoja.">
+<meta property="og:url" content="https://lanabes.github.io/solver-sheets/opensolver-google-sheets/">
+<meta property="og:image" content="https://lanabes.github.io/solver-sheets/assets/og/solver.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/icono.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/icono-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../assets/icono-180.png">
+<link rel="preload" href="../assets/fuentes/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/estilo.css">
+<script>(function(){var r=document.documentElement;r.classList.add('js');try{var t=localStorage.getItem('tema');if(t==='dark'||t==='light')r.setAttribute('data-theme',t);}catch(e){}})();</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"OpenSolver no funciona en Google Sheets: qué revisar y una alternativa gratis","description":"¿OpenSolver no aparece o falla en Google Sheets? Sus fallos reconocidos desde 2021, seis comprobaciones que arreglan los casos habituales y una alternativa gratis que resuelve dentro de tu hoja.","inLanguage":"es","datePublished":"2026-10-09","dateModified":"2026-10-09","mainEntityOfPage":"https://lanabes.github.io/solver-sheets/opensolver-google-sheets/","image":"https://lanabes.github.io/solver-sheets/assets/og/solver.png","author":{"@type":"Organization","name":"lanabes","url":"https://lanabes.github.io/solver-sheets/"},"publisher":{"@type":"Organization","name":"lanabes","url":"https://lanabes.github.io/solver-sheets/","logo":{"@type":"ImageObject","url":"https://lanabes.github.io/solver-sheets/assets/icono-512.png"}}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","inLanguage":"es","mainEntity":[{"@type":"Question","name":"¿Por qué no me funciona OpenSolver en Google Sheets?","acceptedAnswer":{"@type":"Answer","text":"Su propia web reconoce dos fallos: desde junio de 2021, un cambio de Google lo estropeó para parte de los usuarios, y desde noviembre de 2022 da problemas cuando el nombre de una pestaña tiene espacios. Además, cada resolución se corta a los 6 minutos, el límite de Google para los scripts. Quita los espacios de las pestañas, recarga y, si sigue fallando, usa una alternativa como nuestra plantilla gratis ."}},{"@type":"Question","name":"¿Por qué no aparece OpenSolver en el menú Extensiones?","acceptedAnswer":{"@type":"Answer","text":"Casi siempre es porque el complemento no está activado en ese archivo, porque falta recargar la página o porque tienes abiertas varias cuentas de Google a la vez. Revisa Extensiones → Complementos → Gestionar complementos , recarga la página y prueba en una ventana privada con una sola cuenta. Con una cuenta del trabajo o del centro de estudios, puede que el administrador haya bloqueado los complementos."}},{"@type":"Question","name":"¿Sigue manteniéndose OpenSolver para Google Sheets?","acceptedAnswer":{"@type":"Answer","text":"Su web dice que la versión para Google Sheets la mantienen voluntarios y pide más; el fallo de junio de 2021 sigue apuntado como pendiente. La versión para Excel es otro producto, más completo."}},{"@type":"Question","name":"¿Mi modelo es privado si uso OpenSolver?","acceptedAnswer":{"@type":"Answer","text":"Depende del motor. Glop, SCIP y GLPK resuelven sin publicar tu modelo. Pero la propia web de OpenSolver avisa de que enviar un modelo al servidor NEOS lo hace público, y NEOS pide un correo. No uses NEOS con datos confidenciales."}},{"@type":"Question","name":"¿Qué uso en vez de OpenSolver en Google Sheets?","acceptedAnswer":{"@type":"Answer","text":"Una opción gratis y sin instalar ningún complemento es nuestra plantilla del Solver : copias la hoja y trae su propio menú Solver, con el motor de optimización que incluye Google. También puedes descargar la hoja y usar el Solver de Excel de escritorio o de LibreOffice, o probar alguno de los complementos nuevos del Marketplace."}},{"@type":"Question","name":"¿OpenSolver para Google Sheets resuelve problemas no lineales?","acceptedAnswer":{"@type":"Answer","text":"No de verdad: los motores que ofrece en Google Sheets son para modelos lineales y enteros, y sus autores han dicho que no añadirán motores no lineales a la versión de Sheets. Una de sus reseñas de 2026 se queja justo de eso. Para modelos no lineales, el Solver de Excel de escritorio tiene el método GRG Nonlinear."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://lanabes.github.io/solver-sheets/"},{"@type":"ListItem","position":2,"name":"OpenSolver no funciona","item":"https://lanabes.github.io/solver-sheets/opensolver-google-sheets/"}]}</script>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../" aria-label="Solver para Google Sheets, inicio"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="15" fill="#1F4436"/><polygon points="16,47 16,19 35,24 48,47" fill="#F2EBDC" stroke="#F2EBDC" stroke-width="5" stroke-linejoin="round"/><circle cx="35" cy="24" r="6.6" fill="#A3D7BC" stroke="#1F4436" stroke-width="3.4"/></svg><span>Solver <small>para Google Sheets</small></span></a>
+    <nav class="nav" id="nav" aria-label="Principal"><a href="../solver-google-sheets/">Solver</a><a href="../buscar-objetivo-google-sheets/">Buscar objetivo</a><a href="../ejemplos/">Ejemplos</a><a href="../plantilla/">Plantilla</a></nav>
+    <a class="lang-switch" href="../en/opensolver-google-sheets/" hreflang="en" lang="en" aria-label="English version">EN</a>
+    <button class="icon-btn theme-toggle" type="button" aria-label="Cambiar el tema"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="sun"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4L6 18M18 6l1.4-1.4"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="moon"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
+    <button class="icon-btn menu-btn" type="button" aria-label="Menú" aria-expanded="false" aria-controls="nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <a class="btn btn-primary btn-sm cta-top" href="#avisame">Avísame</a>
+  </div>
+</header>
+<main id="contenido">
+<div class="wrap">
+  <header class="article-head">
+    <ol class="crumbs"><li><a href="../">Inicio</a></li><li aria-current="page">OpenSolver no funciona</li></ol>
+    <p class="eyebrow">Solución de problemas</p>
+    <h1>OpenSolver no funciona en Google Sheets: qué revisar y una alternativa gratis</h1>
+    <p class="lede">OpenSolver es gratis, de código abierto y lo usan más de 630.000 personas, pero en Google Sheets falla a menudo al abrirse o al resolver. Aquí tienes por qué pasa, qué puedes probar en cinco minutos y qué usar si aun así no funciona.</p>
+    <div class="meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>6 min de lectura</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><time datetime="2026-10-09">Revisado el 9 de octubre de 2026</time></span></div>
+  </header>
+
+  <div class="layout">
+    <article class="article">
+      <section class="summary" aria-label="En resumen">
+        <h2>En resumen</h2>
+        <ul>
+          <li>No es cosa tuya: la propia web de OpenSolver reconoce un fallo causado por un cambio de Google en <strong>junio de 2021</strong> y otro con las <strong>pestañas que tienen espacios en el nombre</strong>.</li>
+          <li>Prueba primero: quita los espacios de las pestañas, recarga, revisa <em>Gestionar complementos</em> y usa una sola cuenta de Google.</li>
+          <li>Si sigue fallando, la salida más rápida es una <a href="../plantilla/">plantilla gratis</a> que resuelve dentro de tu hoja con el motor de Google, sin instalar nada.</li>
+        </ul>
+      </section>
+
+      <h2 id="por-que">Por qué falla OpenSolver en Google Sheets</h2>
+      <p class="first">OpenSolver nació como complemento de Excel en la Universidad de Auckland, y su versión para Google Sheets es otro producto, más pequeño. Su <a href="https://opensolver.org/opensolver-for-google-sheets/" rel="noopener" hreflang="en">página oficial</a> (en inglés) es muy sincera sobre cómo está:</p>
+      <ul>
+        <li><strong>Roto para parte de los usuarios desde el 21 de junio de 2021.</strong> Dice que Google cambió algo en su código, y no da fecha de arreglo.</li>
+        <li><strong>Las pestañas con espacios en el nombre</strong> dan problemas (apuntado desde noviembre de 2022).</li>
+        <li><strong>Un límite de 6 minutos por resolución</strong>, que es el de Google para los scripts. Los modelos grandes se cortan, aunque puede retomar un modelo guardado cuando te lo pregunta.</li>
+        <li><strong>No admite rangos en varias zonas</strong>, como <code>A1:A2,A4:A5</code>: Google Sheets no los permite.</li>
+        <li><strong>Lo mantienen voluntarios</strong>, y la página pide más.</li>
+      </ul>
+      <p>Su ficha del Marketplace cuenta lo mismo: más de 631.000 instalaciones, pero <strong>2,5 estrellas</strong> con 317 valoraciones (octubre de 2026), con reseñas recientes como «la opción no aparece en Extensiones».</p>
+
+      <h2 id="comprobaciones">Seis comprobaciones que arreglan los casos habituales</h2>
+      <p>Ve por orden: las primeras cuestan segundos.</p>
+      <ol class="steps">
+        <li><strong>Recarga la página.</strong> Los menús de los complementos se añaden al abrir el archivo. Si lo instalaste con la hoja abierta, puede que el menú aún no esté.</li>
+        <li><strong>Comprueba que está activado en este archivo.</strong> Ve a <span class="menu-path"><span>Extensiones</span><span>Complementos</span><span>Gestionar complementos</span></span>, busca OpenSolver, abre sus opciones y comprueba que «Usar en este documento» está marcado.</li>
+        <li><strong>Usa una sola cuenta de Google.</strong> Tener abiertas varias cuentas de Google en el mismo navegador es un motivo clásico de que los paneles de los complementos no se abran o pidan permiso una y otra vez. Prueba en una ventana privada, solo con la cuenta dueña del archivo.</li>
+        <li><strong>Quita los espacios de los nombres de las pestañas.</strong> «Plan de producción» pasa a «Plan_de_produccion». Después vuelve a abrir OpenSolver y comprueba que el modelo sigue apuntando a las celdas correctas.</li>
+        <li><strong>Pon cada rango en un solo bloque.</strong> Si tus variables o restricciones están en varias zonas, añade cada zona por separado con el botón «Add» en vez de escribir <code>A1:A2,A4:A5</code>.</li>
+        <li><strong>Reduce el modelo si se para a los 6 minutos.</strong> Acepta la oferta de retomarlo o divide el modelo. Lo que suele hacerlo lento son las variables enteras.</li>
+      </ol>
+      <div class="callout warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10.3 4.3L2.6 18a2 2 0 0 0 1.7 3h15.4a2 2 0 0 0 1.7-3L13.7 4.3a2 2 0 0 0-3.4 0z"/><path d="M12 9.5v4.5M12 17.4v.3"/></svg><div><p><strong>Cuidado con la opción NEOS.</strong> OpenSolver puede mandar el modelo al servidor NEOS para resolverlo con Cbc. Su propia web avisa de que un modelo enviado a NEOS se hace público, y NEOS pide un correo. No lo uses con números confidenciales.</p></div></div>
+      <p>Con una cuenta del trabajo o del centro de estudios, si el complemento ni siquiera aparece en el catálogo, puede que el administrador haya bloqueado los complementos. Solo él puede cambiarlo.</p>
+
+      <h2 id="alternativa">La alternativa gratis: resolver dentro de tu propia hoja</h2>
+      <p>Si OpenSolver sigue sin abrirse, no lo necesitas para resolver un modelo lineal. Los scripts de las hojas de Google traen de serie un servicio de optimización lineal que resuelve modelos lineales y enteros. Nuestra <a href="../plantilla/">plantilla gratis</a> lo usa directamente:</p>
+      <ol class="steps">
+        <li><strong>Haz una copia.</strong> Se guarda en tu Google Drive con su propio menú <strong>Solver</strong>. No se instala nada en tu cuenta.</li>
+        <li><strong>Escribe tu modelo como una tabla:</strong> una columna por cada decisión, la fila del objetivo y una fila por cada restricción, con su signo y su límite.</li>
+        <li><strong>Solver → Resolver esta pestaña.</strong> La solución aparece en la fila «Solución», con la holgura de cada restricción.</li>
+      </ol>
+      <p><a class="btn btn-primary" href="https://docs.google.com/spreadsheets/d/1wYO8tv6pRsg1gmECqQLtMpFOm7IOn-0MS4rO8Z0BDJQ/copy" target="_blank" rel="noopener" data-plantilla>Hacer una copia de la plantilla <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="arrow"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+
+      <h3>Cómo se comparan</h3>
+      <div class="table-wrap">
+        <table class="data">
+          <thead><tr><th scope="col"></th><th scope="col">OpenSolver para Sheets</th><th scope="col">Nuestra plantilla</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Cómo se consigue</th><td>Complemento del Marketplace</td><td>Copiando una hoja de Google</td></tr>
+            <tr><th scope="row">Cómo se escribe el modelo</th><td>Celdas y fórmulas de tu hoja</td><td>Una tabla: decisiones en columnas, restricciones en filas</td></tr>
+            <tr><th scope="row">Modelos lineales y enteros</th><td>Sí</td><td>Sí, también con variables sí/no (binarias)</td></tr>
+            <tr><th scope="row">Modelos no lineales</th><td>No</td><td>No</td></tr>
+            <tr><th scope="row">Adónde van tus datos</th><td>Se quedan en Google, salvo con NEOS (público)</td><td>Se quedan en tu hoja: el script no tiene permiso para conectarse a internet</td></tr>
+            <tr><th scope="row">Fallos conocidos</th><td>Abiertos desde 2021 y 2022</td><td>Actualizada en octubre de 2026</td></tr>
+            <tr><th scope="row">Precio</th><td>Gratis</td><td>Gratis</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Dicho con sinceridad: si tu modelo de OpenSolver está hecho con muchas fórmulas repartidas por la hoja, pasarlo a una tabla lleva un rato. Copias el número que multiplica a cada decisión en cada fórmula. A cambio, en la tabla los errores saltan a la vista.</p>
+
+      <h3>Pasar un modelo de OpenSolver a la plantilla, paso a paso</h3>
+      <ol class="steps">
+        <li><strong>Las decisiones</strong> (las «variable cells» de OpenSolver): una columna cada una en la fila «Variables», con un nombre claro.</li>
+        <li><strong>El objetivo</strong> (su «objective cell»): si es <code>=SUMAPRODUCTO(beneficios; cantidades)</code>, copia cada beneficio debajo de su decisión en la fila del objetivo y elige Maximizar o Minimizar.</li>
+        <li><strong>Cada restricción:</strong> una fila con cuánto gasta cada decisión, el signo (≤, ≥ o =) y el límite.</li>
+        <li><strong>Decisiones enteras o de sí/no:</strong> márcalas como «Entera» o «Binaria» en la fila «Tipo».</li>
+      </ol>
+      <p>La <a href="../solver-google-sheets/">guía del Solver</a> recorre un ejemplo completo, un taller con dos piezas y dos máquinas, y explica cómo leer el resultado. Y en <a href="../ejemplos/">ejemplos</a> tienes cuatro problemas más resueltos: mezcla de producción, transporte, turnos y presupuesto.</p>
+
+      <h2 id="otras-salidas">Otras salidas</h2>
+      <ul>
+        <li><strong>Excel de escritorio o LibreOffice.</strong> Descarga la hoja como .xlsx y usa el Solver allí. Excel en el navegador no tiene Solver.</li>
+        <li><strong>Complementos nuevos.</strong> En 2026 han llegado al Marketplace varios solvers de pago o con plan gratis limitado. Mira qué permite su plan gratis antes de montar tu modelo en uno.</li>
+        <li><strong>Gemini en Sheets</strong>, en los planes de pago de Google Workspace y de Google AI, plantea problemas de optimización desde abril de 2026. Revisa el modelo que propone con el mismo cuidado que el tuyo.</li>
+      </ul>
+      <div class="callout ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l7.5 3v5.5c0 4.6-3.2 8.2-7.5 9.5-4.3-1.3-7.5-4.9-7.5-9.5V6z"/><path d="M8.8 12.2l2.3 2.3 4.2-4.6"/></svg><div><p><strong>Uses la herramienta que uses, la respuesta es tan buena como el modelo.</strong> Si falta una restricción, el plan puede ser imposible de cumplir. Revisa el modelo antes de decidir nada con él.</p></div></div>
+
+      <h2 id="preguntas">Preguntas frecuentes</h2>
+      <div class="faq">
+        <details>
+          <summary>¿Por qué no me funciona OpenSolver en Google Sheets?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>Su propia web reconoce dos fallos: desde junio de 2021, un cambio de Google lo estropeó para parte de los usuarios, y desde noviembre de 2022 da problemas cuando el nombre de una pestaña tiene espacios. Además, cada resolución se corta a los 6 minutos, el límite de Google para los scripts. Quita los espacios de las pestañas, recarga y, si sigue fallando, usa una alternativa como nuestra <a href="../plantilla/">plantilla gratis</a>.</p></div>
+        </details>
+        <details>
+          <summary>¿Por qué no aparece OpenSolver en el menú Extensiones?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>Casi siempre es porque el complemento no está activado en ese archivo, porque falta recargar la página o porque tienes abiertas varias cuentas de Google a la vez. Revisa <em>Extensiones → Complementos → Gestionar complementos</em>, recarga la página y prueba en una ventana privada con una sola cuenta. Con una cuenta del trabajo o del centro de estudios, puede que el administrador haya bloqueado los complementos.</p></div>
+        </details>
+        <details>
+          <summary>¿Sigue manteniéndose OpenSolver para Google Sheets?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>Su web dice que la versión para Google Sheets la mantienen voluntarios y pide más; el fallo de junio de 2021 sigue apuntado como pendiente. La versión para Excel es otro producto, más completo.</p></div>
+        </details>
+        <details>
+          <summary>¿Mi modelo es privado si uso OpenSolver?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>Depende del motor. Glop, SCIP y GLPK resuelven sin publicar tu modelo. Pero la propia web de OpenSolver avisa de que enviar un modelo al servidor NEOS lo hace público, y NEOS pide un correo. No uses NEOS con datos confidenciales.</p></div>
+        </details>
+        <details>
+          <summary>¿Qué uso en vez de OpenSolver en Google Sheets?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>Una opción gratis y sin instalar ningún complemento es nuestra <a href="../plantilla/">plantilla del Solver</a>: copias la hoja y trae su propio menú Solver, con el motor de optimización que incluye Google. También puedes descargar la hoja y usar el Solver de Excel de escritorio o de LibreOffice, o probar alguno de los complementos nuevos del Marketplace.</p></div>
+        </details>
+        <details>
+          <summary>¿OpenSolver para Google Sheets resuelve problemas no lineales?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>No de verdad: los motores que ofrece en Google Sheets son para modelos lineales y enteros, y sus autores han dicho que no añadirán motores no lineales a la versión de Sheets. Una de sus reseñas de 2026 se queja justo de eso. Para modelos no lineales, el Solver de Excel de escritorio tiene el método GRG Nonlinear.</p></div>
+        </details>
+      </div>
+    </article>
+    <aside class="aside"><nav class="toc" aria-label="En esta página"><p>En esta página</p><ol><li><a href="#por-que">Por qué falla OpenSolver en Google Sheets</a></li><li><a href="#comprobaciones">Seis comprobaciones que arreglan los casos habituales</a></li><li><a href="#alternativa">La alternativa gratis: resolver dentro de tu propia hoja</a></li><li><a href="#otras-salidas">Otras salidas</a></li><li><a href="#preguntas">Preguntas frecuentes</a></li></ol>
+      <div class="aside-cta"><strong>Plantilla gratis</strong><span>Los ejemplos de esta web, listos para resolver en tu Google Sheets.</span><a class="btn btn-primary btn-sm" href="https://docs.google.com/spreadsheets/d/1wYO8tv6pRsg1gmECqQLtMpFOm7IOn-0MS4rO8Z0BDJQ/copy" target="_blank" rel="noopener" data-plantilla>Hacer una copia <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="arrow"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></nav></aside>
+  </div>
+</div>
+
+<section class="section" id="avisame" aria-labelledby="avisame-t">
+  <div class="wrap">
+    <div class="waitlist" data-reveal>
+      <div class="waitlist-grid">
+        <div>
+          <p class="eyebrow">Lista de espera</p>
+          <h2 id="avisame-t">¿Lo quieres en todas tus hojas, sin copiar plantillas?</h2>
+          <p class="lede">Estamos valorando hacer un complemento para Google Sheets con el Solver y Buscar objetivo, en castellano y en inglés. Lo haremos si hay interés suficiente. <strong>Si te apuntas, lo pruebas gratis antes que nadie:</strong> te escribiremos una sola vez, si sale, con tu acceso.</p>
+          <ul class="perks">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.2 4.2L19 7"/></svg><span>Leería tu modelo tal como lo tienes, con tus propias fórmulas.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.2 4.2L19 7"/></svg><span>Variables enteras y binarias, informes claros y Buscar objetivo.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.2 4.2L19 7"/></svg><span>Resolvería dentro de tu navegador: tus datos no saldrían de tu hoja.</span></li>
+          </ul>
+        </div>
+        <form class="wl-form" data-state="idle" data-endpoint="https://script.google.com/macros/s/AKfycbwQmEJsMEwahu4BLXoV_xvwo-aQ2-lAGDU6h97BB30XY1FvimbSGr1M9hIXH60bJUx9/exec" data-origen="/opensolver-google-sheets/" novalidate>
+          <div class="wl-fields">
+            <label class="wl-label" for="wl-principal">Tu correo</label>
+            <div class="wl-row">
+              <input id="wl-principal" type="email" name="correo" autocomplete="email" inputmode="email" placeholder="nombre@gmail.com" maxlength="254" required aria-describedby="wl-help-principal wl-err-principal">
+              <button class="btn" type="submit"><span class="wl-spin" aria-hidden="true"></span><span class="label">Quiero probarlo</span></button>
+            </div>
+            <div class="wl-hp" aria-hidden="true"><label>No rellenes este campo <input type="text" name="web" tabindex="-1" autocomplete="off"></label></div>
+            <p class="wl-error" id="wl-err-principal" role="alert" aria-live="assertive"></p>
+            <p class="wl-help" id="wl-help-principal">Gratis y sin compromiso. Sin boletines ni publicidad, y te borras cuando quieras. <a href="../privacidad/">Cómo tratamos tu correo</a>.</p>
+          </div>
+          <div class="wl-done" role="status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.2"/><path class="check" d="M7.8 12.4l2.9 2.9 5.6-6"/></svg><div><strong>Apuntado. Gracias.</strong><span>Si el complemento sale, te escribiremos una sola vez con tu acceso anticipado gratis.</span></div></div>
+          <div class="wl-uso" role="group" aria-labelledby="wl-uso-t-principal">
+            <p class="wl-uso-t" id="wl-uso-t-principal">Una última cosa, si quieres: ¿para qué lo usarías?</p>
+            <div class="wl-chips"><button class="wl-chip" type="button" data-uso="produccion" aria-pressed="false">Producción o mezclas</button><button class="wl-chip" type="button" data-uso="transporte" aria-pressed="false">Transporte o rutas</button><button class="wl-chip" type="button" data-uso="turnos" aria-pressed="false">Turnos de personal</button><button class="wl-chip" type="button" data-uso="presupuesto" aria-pressed="false">Presupuestos e inversiones</button><button class="wl-chip" type="button" data-uso="estudios" aria-pressed="false">Clase o estudios</button><button class="wl-chip" type="button" data-uso="otro" aria-pressed="false">Otra cosa</button></div>
+            <p class="wl-uso-ok" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="../"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="15" fill="#1F4436"/><polygon points="16,47 16,19 35,24 48,47" fill="#F2EBDC" stroke="#F2EBDC" stroke-width="5" stroke-linejoin="round"/><circle cx="35" cy="24" r="6.6" fill="#A3D7BC" stroke="#1F4436" stroke-width="3.4"/></svg><span>Solver <small>para Google Sheets</small></span></a>
+        <p>Guías en castellano, ejemplos resueltos y una plantilla gratis para optimizar con Google Sheets. Un proyecto de lanabes.</p>
+      </div>
+      <div>
+        <h2>Guías</h2>
+        <ul>
+          <li><a href="../solver-google-sheets/">Solver en Google Sheets</a></li>
+          <li><a href="../buscar-objetivo-google-sheets/">Buscar objetivo</a></li>
+          <li><a href="../opensolver-google-sheets/">OpenSolver no funciona</a></li>
+          <li><a href="../plantilla/">La plantilla gratis</a></li>
+          <li><a href="../privacidad/">Privacidad</a></li>
+          <li><a href="../en/" hreflang="en">English version</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Ejemplos resueltos</h2>
+        <ul>
+          <li><a href="../ejemplos/mezcla-de-produccion/" hreflang="es">Mezcla de producción</a></li>
+          <li><a href="../ejemplos/problema-de-transporte/" hreflang="es">Problema de transporte</a></li>
+          <li><a href="../ejemplos/turnos-de-personal/" hreflang="es">Turnos de personal</a></li>
+          <li><a href="../ejemplos/presupuesto-de-inversiones/" hreflang="es">Presupuesto de inversiones</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="disclaimer">
+      <span>Los ejemplos son inventados para aprender. El resultado de un modelo depende de cómo se plantea: revísalo siempre antes de decidir.</span>
+      <span>Google Sheets es una marca de Google LLC y Excel, de Microsoft. Esta web no está afiliada a ninguna de las dos.</span>
+    </div>
+  </div>
+</footer>
+<script src="../assets/app.js" defer></script>
+
+</body>
+</html>

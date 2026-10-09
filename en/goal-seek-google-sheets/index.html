@@ -217,7 +217,7 @@
         <div>
           <p class="eyebrow">Waitlist</p>
           <h2 id="avisame-t">Want it in every sheet, without copying templates?</h2>
-          <p class="lede">We’re considering building a Google Sheets add-on with Solver and Goal Seek. We’ll build it if there’s enough interest. Leave your e-mail and we’ll let you know, just once, if it launches.</p>
+          <p class="lede">We’re considering building a Google Sheets add-on with Solver and Goal Seek. We’ll build it if there’s enough interest. <strong>Join the list and you’ll try it free before anyone else:</strong> we’ll e-mail you just once, if it launches, with your access.</p>
           <ul class="perks">
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.2 4.2L19 7"/></svg><span>It would read your model as it is, with your own formulas.</span></li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.2 4.2L19 7"/></svg><span>Integer and binary variables, plain-language reports and Goal Seek.</span></li>
@@ -229,13 +229,18 @@
             <label class="wl-label" for="wl-principal">Your e-mail</label>
             <div class="wl-row">
               <input id="wl-principal" type="email" name="correo" autocomplete="email" inputmode="email" placeholder="name@gmail.com" maxlength="254" required aria-describedby="wl-help-principal wl-err-principal">
-              <button class="btn" type="submit"><span class="wl-spin" aria-hidden="true"></span><span class="label">Notify me</span></button>
+              <button class="btn" type="submit"><span class="wl-spin" aria-hidden="true"></span><span class="label">Get early access</span></button>
             </div>
             <div class="wl-hp" aria-hidden="true"><label>Leave this field empty <input type="text" name="web" tabindex="-1" autocomplete="off"></label></div>
             <p class="wl-error" id="wl-err-principal" role="alert" aria-live="assertive"></p>
-            <p class="wl-help" id="wl-help-principal">Only to let you know. No newsletters, no ads, and you can unsubscribe anytime. <a href="../../en/privacy/">How we handle your e-mail</a>.</p>
+            <p class="wl-help" id="wl-help-principal">Free, no strings attached. No newsletters, no ads, and you can unsubscribe anytime. <a href="../../en/privacy/">How we handle your e-mail</a>.</p>
           </div>
-          <div class="wl-done" role="status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.2"/><path class="check" d="M7.8 12.4l2.9 2.9 5.6-6"/></svg><div><strong>You’re on the list. Thanks.</strong><span>If the add-on launches, we’ll e-mail you once to let you know.</span></div></div>
+          <div class="wl-done" role="status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.2"/><path class="check" d="M7.8 12.4l2.9 2.9 5.6-6"/></svg><div><strong>You’re on the list. Thanks.</strong><span>If the add-on launches, we’ll e-mail you once with your free early access.</span></div></div>
+          <div class="wl-uso" role="group" aria-labelledby="wl-uso-t-principal">
+            <p class="wl-uso-t" id="wl-uso-t-principal">One last thing, if you like: what would you use it for?</p>
+            <div class="wl-chips"><button class="wl-chip" type="button" data-uso="produccion" aria-pressed="false">Production or blending</button><button class="wl-chip" type="button" data-uso="transporte" aria-pressed="false">Transport or routing</button><button class="wl-chip" type="button" data-uso="turnos" aria-pressed="false">Staff scheduling</button><button class="wl-chip" type="button" data-uso="presupuesto" aria-pressed="false">Budgets and investments</button><button class="wl-chip" type="button" data-uso="estudios" aria-pressed="false">Coursework or study</button><button class="wl-chip" type="button" data-uso="otro" aria-pressed="false">Something else</button></div>
+            <p class="wl-uso-ok" role="status" aria-live="polite"></p>
+          </div>
         </form>
       </div>
     </div>
@@ -255,6 +260,7 @@
         <ul>
           <li><a href="../../en/solver-google-sheets/">Solver in Google Sheets</a></li>
           <li><a href="../../en/goal-seek-google-sheets/">Goal Seek in Google Sheets</a></li>
+          <li><a href="../../en/opensolver-google-sheets/">OpenSolver not working?</a></li>
           <li><a href="../../en/template/">The free template</a></li>
           <li><a href="../../en/privacy/">Privacy</a></li>
         </ul>

@@ -137,7 +137,7 @@
         <div>
           <p class="eyebrow">Lista de espera</p>
           <h2 id="avisame-t">¿Lo quieres en todas tus hojas, sin copiar plantillas?</h2>
-          <p class="lede">Estamos valorando hacer un complemento para Google Sheets con el Solver y Buscar objetivo, en castellano y en inglés. Lo haremos si hay interés suficiente. Déjanos tu correo y te avisaremos, una sola vez, si sale.</p>
+          <p class="lede">Estamos valorando hacer un complemento para Google Sheets con el Solver y Buscar objetivo, en castellano y en inglés. Lo haremos si hay interés suficiente. <strong>Si te apuntas, lo pruebas gratis antes que nadie:</strong> te escribiremos una sola vez, si sale, con tu acceso.</p>
           <ul class="perks">
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.2 4.2L19 7"/></svg><span>Leería tu modelo tal como lo tienes, con tus propias fórmulas.</span></li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.2 4.2L19 7"/></svg><span>Variables enteras y binarias, informes claros y Buscar objetivo.</span></li>
@@ -149,13 +149,18 @@
             <label class="wl-label" for="wl-principal">Tu correo</label>
             <div class="wl-row">
               <input id="wl-principal" type="email" name="correo" autocomplete="email" inputmode="email" placeholder="nombre@gmail.com" maxlength="254" required aria-describedby="wl-help-principal wl-err-principal">
-              <button class="btn" type="submit"><span class="wl-spin" aria-hidden="true"></span><span class="label">Avisadme</span></button>
+              <button class="btn" type="submit"><span class="wl-spin" aria-hidden="true"></span><span class="label">Quiero probarlo</span></button>
             </div>
             <div class="wl-hp" aria-hidden="true"><label>No rellenes este campo <input type="text" name="web" tabindex="-1" autocomplete="off"></label></div>
             <p class="wl-error" id="wl-err-principal" role="alert" aria-live="assertive"></p>
-            <p class="wl-help" id="wl-help-principal">Solo para avisarte. Sin boletines ni publicidad, y te borras cuando quieras. <a href="../../privacidad/">Cómo tratamos tu correo</a>.</p>
+            <p class="wl-help" id="wl-help-principal">Gratis y sin compromiso. Sin boletines ni publicidad, y te borras cuando quieras. <a href="../../privacidad/">Cómo tratamos tu correo</a>.</p>
           </div>
-          <div class="wl-done" role="status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.2"/><path class="check" d="M7.8 12.4l2.9 2.9 5.6-6"/></svg><div><strong>Apuntado. Gracias.</strong><span>Si el complemento sale, te escribiremos una sola vez para avisarte.</span></div></div>
+          <div class="wl-done" role="status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.2"/><path class="check" d="M7.8 12.4l2.9 2.9 5.6-6"/></svg><div><strong>Apuntado. Gracias.</strong><span>Si el complemento sale, te escribiremos una sola vez con tu acceso anticipado gratis.</span></div></div>
+          <div class="wl-uso" role="group" aria-labelledby="wl-uso-t-principal">
+            <p class="wl-uso-t" id="wl-uso-t-principal">Una última cosa, si quieres: ¿para qué lo usarías?</p>
+            <div class="wl-chips"><button class="wl-chip" type="button" data-uso="produccion" aria-pressed="false">Producción o mezclas</button><button class="wl-chip" type="button" data-uso="transporte" aria-pressed="false">Transporte o rutas</button><button class="wl-chip" type="button" data-uso="turnos" aria-pressed="false">Turnos de personal</button><button class="wl-chip" type="button" data-uso="presupuesto" aria-pressed="false">Presupuestos e inversiones</button><button class="wl-chip" type="button" data-uso="estudios" aria-pressed="false">Clase o estudios</button><button class="wl-chip" type="button" data-uso="otro" aria-pressed="false">Otra cosa</button></div>
+            <p class="wl-uso-ok" role="status" aria-live="polite"></p>
+          </div>
         </form>
       </div>
     </div>
@@ -175,6 +180,7 @@
         <ul>
           <li><a href="../../solver-google-sheets/">Solver en Google Sheets</a></li>
           <li><a href="../../buscar-objetivo-google-sheets/">Buscar objetivo</a></li>
+          <li><a href="../../opensolver-google-sheets/">OpenSolver no funciona</a></li>
           <li><a href="../../plantilla/">La plantilla gratis</a></li>
           <li><a href="../../privacidad/">Privacidad</a></li>
           <li><a href="../../en/" hreflang="en">English version</a></li>
