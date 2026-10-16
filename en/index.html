@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Solver and Goal Seek for Google Sheets: guides and template</title>
-<meta name="description" content="How to do in Google Sheets what Excel’s Solver and Goal Seek do: clear guides, a worked example and a free template that solves the problem for you.">
+<title>Google Sheets Solver: free template, online solver and guides</title>
+<meta name="description" content="How to use Solver in Google Sheets for free: a template with its own Solver menu, an online solver and step-by-step guides. Goal Seek too. No sign-up.">
 <link rel="canonical" href="https://lanabes.github.io/solver-sheets/en/">
 <link rel="alternate" hreflang="es" href="https://lanabes.github.io/solver-sheets/">
 <link rel="alternate" hreflang="en" href="https://lanabes.github.io/solver-sheets/en/">
@@ -16,7 +16,7 @@
 <meta property="og:locale:alternate" content="es_ES">
 <meta property="og:site_name" content="Solver for Google Sheets">
 <meta property="og:title" content="The best answer, right in your sheet: Solver and Goal Seek for Google Sheets">
-<meta property="og:description" content="How to do in Google Sheets what Excel’s Solver and Goal Seek do: clear guides, a worked example and a free template that solves the problem for you.">
+<meta property="og:description" content="How to use Solver in Google Sheets for free: a template with its own Solver menu, an online solver and step-by-step guides. Goal Seek too. No sign-up.">
 <meta property="og:url" content="https://lanabes.github.io/solver-sheets/en/">
 <meta property="og:image" content="https://lanabes.github.io/solver-sheets/assets/og/en-home.png">
 <meta property="og:image:width" content="1200">
@@ -28,7 +28,7 @@
 <link rel="preload" href="../assets/fuentes/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../assets/estilo.css">
 <script>(function(){var r=document.documentElement;r.classList.add('js');try{var t=localStorage.getItem('tema');if(t==='dark'||t==='light')r.setAttribute('data-theme',t);}catch(e){}})();</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Solver para Google Sheets","url":"https://lanabes.github.io/solver-sheets/en/","inLanguage":"en","description":"How to do in Google Sheets what Excel’s Solver and Goal Seek do: clear guides, a worked example and a free template that solves the problem for you.","publisher":{"@type":"Organization","name":"lanabes","url":"https://lanabes.github.io/solver-sheets/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Solver para Google Sheets","url":"https://lanabes.github.io/solver-sheets/en/","inLanguage":"en","description":"How to use Solver in Google Sheets for free: a template with its own Solver menu, an online solver and step-by-step guides. Goal Seek too. No sign-up.","publisher":{"@type":"Organization","name":"lanabes","url":"https://lanabes.github.io/solver-sheets/"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","inLanguage":"en","mainEntity":[{"@type":"Question","name":"Does Google Sheets have a Solver?","acceptedAnswer":{"@type":"Answer","text":"Not built in. Excel ships the Solver add-in for free; Google Sheets has no menu or function that does the same. You can still get it for free in three ways: a script template like ours, the OpenSolver add-on, or downloading the sheet and using Solver in desktop Excel or LibreOffice. All three are explained in the Solver guide ."}},{"@type":"Question","name":"Does Google Sheets have Goal Seek?","acceptedAnswer":{"@type":"Answer","text":"Not built in either. Google offers a free add-on called “Goal Seek”. Often you don’t even need it: a function like RATE or a bit of algebra gives the answer directly. See the Goal Seek guide ."}},{"@type":"Question","name":"Is the template really free?","acceptedAnswer":{"@type":"Answer","text":"Yes. It’s a Google Sheet with an open-source script. No sign-up, no e-mail, no payment details. You make a copy and it’s yours."}},{"@type":"Question","name":"Does my data leave my sheet?","acceptedAnswer":{"@type":"Answer","text":"No. The script runs inside your own Google account and can only read and write the spreadsheet it lives in. It sends nothing anywhere, not even to us."}},{"@type":"Question","name":"How big a problem can it solve?","acceptedAnswer":{"@type":"Answer","text":"Classroom problems and the day-to-day problems of a small business: tens or a few hundred variables, in seconds. Models with many integer variables can take longer; the template waits up to 60 seconds and tells you if the solution might not be the best one."}},{"@type":"Question","name":"What if my problem isn’t linear?","acceptedAnswer":{"@type":"Answer","text":"The template solves linear problems: each variable is multiplied by a fixed number and added up. If your model multiplies variables together or uses powers, you need another method, such as GRG Nonlinear in desktop Excel’s Solver. The guide explains how to tell if your problem is linear ."}}]}</script>
 </head>
 <body>

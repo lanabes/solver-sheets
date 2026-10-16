@@ -8,7 +8,7 @@ Guías gratis en castellano e inglés, ejemplos resueltos y una plantilla gratis
 
 ## English
 
-- [Solver and Goal Seek for Google Sheets: guides and template](https://lanabes.github.io/solver-sheets/en/)
+- [Google Sheets Solver: free template, online solver and guides](https://lanabes.github.io/solver-sheets/en/)
 - [Solver in Google Sheets: how to get it and use it, step by step](https://lanabes.github.io/solver-sheets/en/solver-google-sheets/)
 - [Goal Seek in Google Sheets: four ways to do it](https://lanabes.github.io/solver-sheets/en/goal-seek-google-sheets/)
 - [OpenSolver for Google Sheets not working? What to check, and a free alternative](https://lanabes.github.io/solver-sheets/en/opensolver-google-sheets/)
@@ -17,7 +17,7 @@ Guías gratis en castellano e inglés, ejemplos resueltos y una plantilla gratis
 
 ## Castellano
 
-- [Solver y Buscar objetivo en Google Sheets, en castellano](https://lanabes.github.io/solver-sheets/)
+- [Solver y Buscar objetivo en Google Sheets, gratis en castellano](https://lanabes.github.io/solver-sheets/)
 - [Solver en Google Sheets: cómo instalarlo y usarlo, paso a paso](https://lanabes.github.io/solver-sheets/solver-google-sheets/)
 - [OpenSolver no funciona en Google Sheets: qué revisar y una alternativa gratis](https://lanabes.github.io/solver-sheets/opensolver-google-sheets/)
 - [Solver online gratis](https://lanabes.github.io/solver-sheets/solver-online/)
