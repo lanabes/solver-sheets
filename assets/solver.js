@@ -88,7 +88,15 @@
   var CLAVE = 'solver-online-' + (EN ? 'en' : 'es');
   try {
     var h = location.hash.match(/[#&]m=([^&]+)/);
-    if (h) { var m = b64.de(h[1]); if (valido(m)) { modelo = m; ejemploActual = -1; } }
+    if (h) {
+      var m = b64.de(h[1]);
+      if (valido(m)) {
+        modelo = m; ejemploActual = -1;
+        // Si el enlace trae un ejemplo tal cual (los botones de las guías), se muestra como tal.
+        var txt = JSON.stringify(m);
+        datos.ejemplos.forEach(function (e, i) { if (JSON.stringify(e) === txt) ejemploActual = i; });
+      }
+    }
   } catch (e) { /* enlace roto: se ignora */ }
   if (!modelo) {
     try {

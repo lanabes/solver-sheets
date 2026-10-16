@@ -866,3 +866,7 @@ a.card:hover .more svg { transform: translateX(3px); }
   .sv-sheet th.sv-first, .sv-sheet .lbl, .sv-sheet th.sv-rn { min-width: 150px; width: auto; }
 }
 @media (prefers-reduced-motion: reduce) { .sv-card, .sv-toast, .sv-seg button { animation: none; transition: none; } }
+
+/* Botón dentro de un recuadro (callout) de las guías */
+.callout .cta-line { margin-top: 14px; }
+.callout .cta-line .btn { --h: 42px; padding: 0 18px; font-size: 15px; }
