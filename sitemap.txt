@@ -9,11 +9,15 @@ https://lanabes.github.io/solver-sheets/ejemplos/problema-de-transporte/
 https://lanabes.github.io/solver-sheets/ejemplos/turnos-de-personal/
 https://lanabes.github.io/solver-sheets/ejemplos/presupuesto-de-inversiones/
 https://lanabes.github.io/solver-sheets/plantilla/
+https://lanabes.github.io/solver-sheets/complemento/
 https://lanabes.github.io/solver-sheets/en/
 https://lanabes.github.io/solver-sheets/en/solver-google-sheets/
 https://lanabes.github.io/solver-sheets/en/goal-seek-google-sheets/
 https://lanabes.github.io/solver-sheets/en/opensolver-google-sheets/
 https://lanabes.github.io/solver-sheets/en/template/
+https://lanabes.github.io/solver-sheets/en/add-on/
 https://lanabes.github.io/solver-sheets/en/linear-programming-solver/
+https://lanabes.github.io/solver-sheets/en/terms/
 https://lanabes.github.io/solver-sheets/en/privacy/
 https://lanabes.github.io/solver-sheets/privacidad/
+https://lanabes.github.io/solver-sheets/condiciones/

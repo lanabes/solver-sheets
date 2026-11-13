@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Solver add-on for Google Sheets: free, with sensitivity reports</title>
+<meta name="description" content="Excel-style Solver and Goal Seek in the Extensions menu of any sheet: your own formulas, up to 200 variables free, answer and sensitivity reports.">
+<link rel="canonical" href="https://lanabes.github.io/solver-sheets/en/add-on/">
+<link rel="alternate" hreflang="es" href="https://lanabes.github.io/solver-sheets/complemento/">
+<link rel="alternate" hreflang="en" href="https://lanabes.github.io/solver-sheets/en/add-on/">
+<link rel="alternate" hreflang="x-default" href="https://lanabes.github.io/solver-sheets/en/add-on/">
+<meta name="theme-color" content="#FBFAF6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E1512" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:site_name" content="Solver for Google Sheets">
+<meta property="og:title" content="Solver add-on for Google Sheets: free, with sensitivity reports">
+<meta property="og:description" content="Excel-style Solver and Goal Seek in the Extensions menu of any sheet: your own formulas, up to 200 variables free, answer and sensitivity reports.">
+<meta property="og:url" content="https://lanabes.github.io/solver-sheets/en/add-on/">
+<meta property="og:image" content="https://lanabes.github.io/solver-sheets/assets/og/en-home.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/icono.svg" type="image/svg+xml">
+<link rel="icon" href="../../assets/icono-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../../assets/icono-180.png">
+<link rel="preload" href="../../assets/fuentes/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../assets/estilo.css">
+<script>(function(){var r=document.documentElement;r.classList.add('js');try{var t=localStorage.getItem('tema');if(t==='dark'||t==='light')r.setAttribute('data-theme',t);}catch(e){}})();</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"The Solver add-on for Google Sheets","description":"Excel-style Solver and Goal Seek in the Extensions menu of any sheet: your own formulas, up to 200 variables free, answer and sensitivity reports.","inLanguage":"en","datePublished":"2026-10-31","dateModified":"2026-11-13","mainEntityOfPage":"https://lanabes.github.io/solver-sheets/en/add-on/","image":"https://lanabes.github.io/solver-sheets/assets/og/en-home.png","author":{"@type":"Organization","name":"lanabes","url":"https://lanabes.github.io/solver-sheets/"},"publisher":{"@type":"Organization","name":"lanabes","url":"https://lanabes.github.io/solver-sheets/","logo":{"@type":"ImageObject","url":"https://lanabes.github.io/solver-sheets/assets/icono-512.png"}}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","inLanguage":"en","mainEntity":[{"@type":"Question","name":"How much does the Solver add-on cost?","acceptedAnswer":{"@type":"Answer","text":"Today it’s free, with no sign-up and no daily solve limit, for models of up to 200 variables and 500 constraints. If we ever add paid options, we’ll say so on this page first, and nothing will ever be charged unless you buy it."}},{"@type":"Question","name":"Does my data leave my spreadsheet?","acceptedAnswer":{"@type":"Answer","text":"It never reaches us. The add-on runs inside your Google account, can only read and write the spreadsheet you have open, and solves with the optimization service built into Google. It uses no servers of its own and has no permission to connect anywhere else."}},{"@type":"Question","name":"Does it solve nonlinear models, like Excel’s GRG?","acceptedAnswer":{"@type":"Answer","text":"No. It solves linear models with continuous, integer or binary variables: the equivalent of Excel’s “Simplex LP” method. If a formula multiplies two changing cells, it tells you which one instead of returning a wrong answer."}},{"@type":"Question","name":"What is the sensitivity report?","acceptedAnswer":{"@type":"Answer","text":"The same as Excel’s: for each constraint, how much the objective would improve with one more unit of the resource (the shadow price) and how far that holds; for each variable, how far its coefficient can move without changing the solution. The add-on adds a plain-English reading underneath. Like in Excel, it only exists when every variable is continuous."}},{"@type":"Question","name":"How is it different from the free template?","acceptedAnswer":{"@type":"Answer","text":"The template has its own table layout: you copy the sheet and type your problem into it. The add-on works on any sheet of yours, with your model as it is and your own formulas, like Excel’s Solver."}},{"@type":"Question","name":"Does it work with OpenSolver or Excel’s Solver?","acceptedAnswer":{"@type":"Answer","text":"It’s independent of both. If you come from Excel, the sidebar will feel familiar: objective cell, max, min or value, changing cells and constraints. If OpenSolver keeps failing, see why that happens ."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://lanabes.github.io/solver-sheets/en/"},{"@type":"ListItem","position":2,"name":"The add-on","item":"https://lanabes.github.io/solver-sheets/en/add-on/"}]}</script>
+</head>
+<body>
+<a class="skip" href="#contenido">Skip to content</a>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../../en/" aria-label="Solver for Google Sheets, home"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="15" fill="#1F4436"/><polygon points="16,47 16,19 35,24 48,47" fill="#F2EBDC" stroke="#F2EBDC" stroke-width="5" stroke-linejoin="round"/><circle cx="35" cy="24" r="6.6" fill="#A3D7BC" stroke="#1F4436" stroke-width="3.4"/></svg><span>Solver <small>for Google Sheets</small></span></a>
+    <nav class="nav" id="nav" aria-label="Main"><a href="../../en/solver-google-sheets/">Solver</a><a href="../../en/linear-programming-solver/">Online solver</a><a href="../../en/goal-seek-google-sheets/">Goal Seek</a><a href="../../en/template/">Template</a><a href="../../en/add-on/" aria-current="page">Add-on</a></nav>
+    <a class="lang-switch" href="../../complemento/" hreflang="es" lang="es" aria-label="Versión en español">ES</a>
+    <button class="icon-btn theme-toggle" type="button" aria-label="Change theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="sun"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4L6 18M18 6l1.4-1.4"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="moon"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
+    <button class="icon-btn menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <a class="btn btn-primary btn-sm cta-top" href="#avisame">Notify me</a>
+  </div>
+</header>
+<main id="contenido">
+<div class="wrap">
+  <header class="article-head">
+    <ol class="crumbs"><li><a href="../../en/">Home</a></li><li aria-current="page">The add-on</li></ol>
+    <p class="eyebrow">Add-on · free</p>
+    <h1>The Solver add-on for Google Sheets</h1>
+    <p class="lede">Excel’s Solver, inside any Google Sheets spreadsheet: pick the objective cell, the changing cells and the limits, and click “Solve”. It reads your own formulas as they are, creates answer and sensitivity reports, and comes with Goal Seek too.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="#avisame">Notify me when it’s on the Marketplace</a>
+      <a class="btn btn-secondary" href="#how">How to use it</a>
+    </div>
+    <div class="meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>5 min read</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><time datetime="2026-11-13">Updated November 13, 2026</time></span></div>
+  </header>
+
+  <div class="layout">
+    <article class="article">
+      <section class="summary" aria-label="In short">
+        <h2>In short</h2>
+        <ul>
+          <li><strong>Free up to 200 variables and 500 constraints</strong>, no daily solve limit, no sign-up.</li>
+          <li><strong>Excel-style reports</strong>: answer and sensitivity (shadow prices, reduced costs and ranges), with a plain-English reading.</li>
+          <li><strong>Your data never reaches us</strong>: it runs in your Google account and only touches the open spreadsheet.</li>
+        </ul>
+      </section>
+
+      <div class="callout note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.6v.4"/></svg><div><p><strong>Status, November 13, 2026:</strong> the add-on is finished and we’re preparing it for Google Workspace Marketplace, where Google reviews every add-on before accepting it. Join the list below and we’ll e-mail you once, the day it launches. Meanwhile, the <a href="../../en/template/">free template</a> and the <a href="../../en/linear-programming-solver/">online solver</a> already work.</p></div></div>
+
+      <h2 id="what">What it does</h2>
+      <p class="first">It finds the values that give the best possible result (more profit, less cost, fewer hours) without breaking the limits you set. Use it for production mixes, transport, staff scheduling, budgets and any split of a resource that can’t cover everything. If you’re not sure how to set up a problem, the <a href="../../en/solver-google-sheets/">Solver guide</a> walks you through it.</p>
+      <ul>
+        <li><strong>Works on your sheet as it is.</strong> No need to copy the model into a special layout: it reads the objective and constraints from your own formulas (SUMPRODUCT, SUM, sums and products by numbers, references across tabs).</li>
+        <li><strong>Continuous, integer and binary variables</strong> (yes/no), with the “Make unconstrained variables non-negative” checkbox, as in Excel.</li>
+        <li><strong>Max, min or a specific value</strong> for the objective cell.</li>
+        <li><strong>Explains why it can’t</strong>: if there’s no solution, if the objective can grow forever or if a formula isn’t linear, it tells you which cell and leaves the sheet as it was.</li>
+        <li><strong>One-click Undo</strong> puts the previous values back.</li>
+        <li><strong>Goal Seek</strong> included, for when you just want one formula to hit a value by changing one cell.</li>
+        <li><strong>Remembers the model</strong> for each spreadsheet: close it, come back, it’s still there.</li>
+      </ul>
+
+      <h2 id="reports">Answer and sensitivity reports</h2>
+      <p class="first">After solving, two buttons create each report in a new tab, with the same columns as Excel’s:</p>
+      <div class="table-wrap">
+        <table class="data">
+          <thead><tr><th scope="col">Report</th><th scope="col">What it tells you</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Answer</strong></td><td>The objective and each changing cell before and after, and every constraint with its final value, whether it’s binding, and its slack.</td></tr>
+            <tr><td><strong>Sensitivity</strong></td><td>Each constraint’s shadow price (how much one more unit improves the objective) and how far it holds; each variable’s reduced cost and how far its coefficient can move without changing the solution.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Under the tables, a reading in plain sentences. For the workshop example in the guide: <em>“Each extra unit of ‘Lathe hours’ changes the objective by 10, as long as it doesn’t rise by more than 20.”</em> Every cell shows up with its name, taken from the labels in its row and column, as in Excel.</p>
+      <p>As in Excel, sensitivity only exists when every variable is continuous: with integer or binary variables, the add-on creates the answer report and explains why there’s no sensitivity.</p>
+
+      <h2 id="comparison">Compared with other add-ons</h2>
+      <p class="first">What each listing on Google Workspace Marketplace says, checked on November 13, 2026:</p>
+      <div class="table-wrap">
+        <table class="data">
+          <thead><tr><th scope="col"></th><th scope="col">This add-on</th><th scope="col">SolveSheet, free</th><th scope="col">Maxable, free</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Variables</th><td><strong>200</strong></td><td>10</td><td>5</td></tr>
+            <tr><th scope="row">Constraints</th><td><strong>500</strong></td><td>5</td><td>5 rows</td></tr>
+            <tr><th scope="row">Solves</th><td><strong>No limit</strong></td><td>No limit stated for Simplex LP; 3 cloud solves a month</td><td>10 a day</td></tr>
+            <tr><th scope="row">Sensitivity report</th><td><strong>Yes</strong></td><td>Pro plan only ($49 a year)</td><td>Not in its listing</td></tr>
+            <tr><th scope="row">Spanish interface</th><td><strong>Yes</strong></td><td>No</td><td>No</td></tr>
+            <tr><th scope="row">Price to remove limits</th><td>Not needed</td><td>$49 or $129 a year</td><td>$39 a year</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>SolveSheet also solves nonlinear models on its server, in its paid plans; this add-on doesn’t. If you spot something out of date, write to <a href="mailto:rubenblanquez@gmail.com">rubenblanquez@gmail.com</a> and we’ll fix it.</p>
+
+      <h2 id="how">How to use it</h2>
+      <ol class="steps">
+        <li><strong>Open the sidebar.</strong> In your spreadsheet, <span class="menu-path"><span>Extensions</span><span>Solver</span><span>Solver…</span></span>. The first time, Google asks for permission: the add-on can only see and edit the spreadsheet you have open and show its sidebar.</li>
+        <li><strong>Objective cell.</strong> The one with the formula you want to maximize or minimize (or bring to a value). Select it in the sheet and click the selection button next to the field.</li>
+        <li><strong>Changing cells.</strong> Your decisions: how many units, how many people, how much money. They must be numbers typed by hand or empty. Choose whether they’re continuous, integer or binary.</li>
+        <li><strong>Constraints.</strong> A range, the sign and the limit: for example <code>D9:D11 ≤ E9:E11</code> compares three rows at once. The limit can be a number or a cell.</li>
+        <li><strong>Solve.</strong> The add-on writes the solution into your cells and shows the objective value, which constraints are binding and the report buttons. Not convinced? “Undo”.</li>
+      </ol>
+      <div class="callout ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l7.5 3v5.5c0 4.6-3.2 8.2-7.5 9.5-4.3-1.3-7.5-4.9-7.5-9.5V6z"/><path d="M8.8 12.2l2.3 2.3 4.2-4.6"/></svg><div><p><strong>First time?</strong> In the sidebar, “Insert a worked example” creates a tab with the workshop from the guide, ready to go. Click “Solve” and you’ll see the answer (2,600) in a second.</p></div></div>
+
+      <h2 id="limits">Limits and good practice</h2>
+      <ul>
+        <li>Up to <strong>200 changing cells</strong> and <strong>500 constraints</strong> (each cell of a range counts as one).</li>
+        <li>To read your model, the add-on changes the cells one at a time and watches your formulas respond: it takes about a second per changing cell. When it finishes, the sheet is either as it was or holds the solution.</li>
+        <li>The model must be <strong>linear</strong>: no multiplying two changing cells together, and no IF, MAX or powers that depend on them.</li>
+        <li>If the sheet has random formulas (RAND) or formulas that depend on the time, the answer may not be stable.</li>
+      </ul>
+
+      <h2 id="help">Help and contact</h2>
+      <p class="first">If something doesn’t work or you miss a feature, write to <a href="mailto:rubenblanquez@gmail.com">rubenblanquez@gmail.com</a> with a screenshot and, if you can, a copy of the sheet without confidential data. We answer in English and Spanish.</p>
+      <p>The terms of use are in <a href="../../en/terms/">Terms</a>, and what we do (and don’t do) with data is in <a href="../../en/privacy/#add-on">Privacy</a>.</p>
+
+      <h2 id="faq">Frequently asked questions</h2>
+      <div class="faq">
+        <details>
+          <summary>How much does the Solver add-on cost?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>Today it’s free, with no sign-up and no daily solve limit, for models of up to 200 variables and 500 constraints. If we ever add paid options, we’ll say so on this page first, and nothing will ever be charged unless you buy it.</p></div>
+        </details>
+        <details>
+          <summary>Does my data leave my spreadsheet?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>It never reaches us. The add-on runs inside your Google account, can only read and write the spreadsheet you have open, and solves with the optimization service built into Google. It uses no servers of its own and has no permission to connect anywhere else.</p></div>
+        </details>
+        <details>
+          <summary>Does it solve nonlinear models, like Excel’s GRG?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>No. It solves linear models with continuous, integer or binary variables: the equivalent of Excel’s “Simplex LP” method. If a formula multiplies two changing cells, it tells you which one instead of returning a wrong answer.</p></div>
+        </details>
+        <details>
+          <summary>What is the sensitivity report?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>The same as Excel’s: for each constraint, how much the objective would improve with one more unit of the resource (the shadow price) and how far that holds; for each variable, how far its coefficient can move without changing the solution. The add-on adds a plain-English reading underneath. Like in Excel, it only exists when every variable is continuous.</p></div>
+        </details>
+        <details>
+          <summary>How is it different from the free template?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>The <a href="../../en/template/">template</a> has its own table layout: you copy the sheet and type your problem into it. The add-on works on any sheet of yours, with your model as it is and your own formulas, like Excel’s Solver.</p></div>
+        </details>
+        <details>
+          <summary>Does it work with OpenSolver or Excel’s Solver?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>It’s independent of both. If you come from Excel, the sidebar will feel familiar: objective cell, max, min or value, changing cells and constraints. If OpenSolver keeps failing, see <a href="../../en/opensolver-google-sheets/">why that happens</a>.</p></div>
+        </details>
+      </div>
+      <div class="callout warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10.3 4.3L2.6 18a2 2 0 0 0 1.7 3h15.4a2 2 0 0 0 1.7-3L13.7 4.3a2 2 0 0 0-3.4 0z"/><path d="M12 9.5v4.5M12 17.4v.3"/></svg><div><p><strong>The answer is only as good as the model.</strong> If a constraint is missing or a number is wrong, the solution may be impossible to carry out. Always review it before you decide anything with it.</p></div></div>
+    </article>
+    <aside class="aside"><nav class="toc" aria-label="On this page"><p>On this page</p><ol><li><a href="#what">What it does</a></li><li><a href="#reports">Answer and sensitivity reports</a></li><li><a href="#comparison">Compared with other add-ons</a></li><li><a href="#how">How to use it</a></li><li><a href="#limits">Limits and good practice</a></li><li><a href="#help">Help and contact</a></li><li><a href="#faq">Frequently asked questions</a></li></ol>
+      <div class="aside-cta"><strong>Free template</strong><span>The examples on this page, ready to solve in your Google Sheets.</span><a class="btn btn-primary btn-sm" href="https://docs.google.com/spreadsheets/d/1VkL8--0mcGrZkiEQhltmVe38QTWw7zW-6PERQBRPP9o/copy" target="_blank" rel="noopener" data-plantilla>Make a copy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="arrow"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></nav></aside>
+  </div>
+</div>
+
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="../../en/"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="15" fill="#1F4436"/><polygon points="16,47 16,19 35,24 48,47" fill="#F2EBDC" stroke="#F2EBDC" stroke-width="5" stroke-linejoin="round"/><circle cx="35" cy="24" r="6.6" fill="#A3D7BC" stroke="#1F4436" stroke-width="3.4"/></svg><span>Solver <small>for Google Sheets</small></span></a>
+        <p>Clear guides, worked examples and a free template to optimize with Google Sheets. A lanabes project.</p>
+      </div>
+      <div>
+        <h2>Guides</h2>
+        <ul>
+          <li><a href="../../en/solver-google-sheets/">Solver in Google Sheets</a></li>
+          <li><a href="../../en/goal-seek-google-sheets/">Goal Seek in Google Sheets</a></li>
+          <li><a href="../../en/opensolver-google-sheets/">OpenSolver not working?</a></li>
+          <li><a href="../../en/linear-programming-solver/">Free online solver</a></li>
+          <li><a href="../../en/template/">The free template</a></li>
+          <li><a href="../../en/add-on/">The add-on</a></li>
+          <li><a href="../../en/privacy/">Privacy</a></li>
+          <li><a href="../../en/terms/">Terms of use</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>In Spanish</h2>
+        <ul>
+          <li><a href="../../" hreflang="es">Versión en español</a></li>
+          <li><a href="../../ejemplos/" hreflang="es">Worked examples (Spanish)</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="disclaimer">
+      <span>Examples are made up for learning. A model’s result depends on how it is set up: always review it before you decide.</span>
+      <span>Google Sheets is a trademark of Google LLC and Excel of Microsoft. This site is not affiliated with either.</span>
+    </div>
+  </div>
+</footer>
+<script src="../../assets/app.js" defer></script>
+
+</body>
+</html>

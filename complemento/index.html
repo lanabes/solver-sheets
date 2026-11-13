@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Complemento Solver para Google Sheets, gratis y en castellano</title>
+<meta name="description" content="Solver y Buscar objetivo en el menú Extensiones de cualquier hoja: tus fórmulas, hasta 200 variables gratis, informes de sensibilidad y en castellano.">
+<link rel="canonical" href="https://lanabes.github.io/solver-sheets/complemento/">
+<link rel="alternate" hreflang="es" href="https://lanabes.github.io/solver-sheets/complemento/">
+<link rel="alternate" hreflang="en" href="https://lanabes.github.io/solver-sheets/en/add-on/">
+<link rel="alternate" hreflang="x-default" href="https://lanabes.github.io/solver-sheets/en/add-on/">
+<meta name="theme-color" content="#FBFAF6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E1512" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="es_ES">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:site_name" content="Solver para Google Sheets">
+<meta property="og:title" content="Complemento Solver para Google Sheets, gratis y en castellano">
+<meta property="og:description" content="Solver y Buscar objetivo en el menú Extensiones de cualquier hoja: tus fórmulas, hasta 200 variables gratis, informes de sensibilidad y en castellano.">
+<meta property="og:url" content="https://lanabes.github.io/solver-sheets/complemento/">
+<meta property="og:image" content="https://lanabes.github.io/solver-sheets/assets/og/solver.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/icono.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/icono-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../assets/icono-180.png">
+<link rel="preload" href="../assets/fuentes/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/estilo.css">
+<script>(function(){var r=document.documentElement;r.classList.add('js');try{var t=localStorage.getItem('tema');if(t==='dark'||t==='light')r.setAttribute('data-theme',t);}catch(e){}})();</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"El complemento Solver para Google Sheets","description":"Solver y Buscar objetivo en el menú Extensiones de cualquier hoja: tus fórmulas, hasta 200 variables gratis, informes de sensibilidad y en castellano.","inLanguage":"es","datePublished":"2026-10-31","dateModified":"2026-11-13","mainEntityOfPage":"https://lanabes.github.io/solver-sheets/complemento/","image":"https://lanabes.github.io/solver-sheets/assets/og/solver.png","author":{"@type":"Organization","name":"lanabes","url":"https://lanabes.github.io/solver-sheets/"},"publisher":{"@type":"Organization","name":"lanabes","url":"https://lanabes.github.io/solver-sheets/","logo":{"@type":"ImageObject","url":"https://lanabes.github.io/solver-sheets/assets/icono-512.png"}}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","inLanguage":"es","mainEntity":[{"@type":"Question","name":"¿Cuánto cuesta el complemento Solver?","acceptedAnswer":{"@type":"Answer","text":"Hoy es gratis, sin registro y sin límite de resoluciones al día, con modelos de hasta 200 variables y 500 restricciones. Si un día añadimos opciones de pago, lo diremos antes en esta página y nunca se cobrará nada sin que tú lo compres."}},{"@type":"Question","name":"¿Mis datos salen de mi hoja?","acceptedAnswer":{"@type":"Answer","text":"No llegan a nosotros. El complemento se ejecuta dentro de tu cuenta de Google, solo puede leer y escribir la hoja que tienes abierta y resuelve con el servicio de optimización que incluye Google. No usa servidores propios ni tiene permiso para conectarse a otros sitios."}},{"@type":"Question","name":"¿Resuelve modelos no lineales, como el GRG de Excel?","acceptedAnswer":{"@type":"Answer","text":"No. Resuelve modelos lineales, con variables continuas, enteras o binarias: el equivalente al método «Simplex LP» de Excel. Si una fórmula multiplica dos celdas que cambian, te dice cuál es en vez de devolver un resultado equivocado."}},{"@type":"Question","name":"¿Qué es el informe de sensibilidad?","acceptedAnswer":{"@type":"Answer","text":"El mismo que el de Excel: para cada restricción, cuánto mejoraría el objetivo con una unidad más del recurso (el precio sombra) y hasta dónde vale ese número; y para cada variable, entre qué valores puede moverse su coeficiente sin que cambie la solución. El complemento añade debajo una lectura en frases normales. Solo existe si todas las variables son continuas, igual que en Excel."}},{"@type":"Question","name":"¿En qué se diferencia de la plantilla gratis?","acceptedAnswer":{"@type":"Answer","text":"La plantilla trae su propio formato de tabla: copias la hoja y escribes ahí tu problema. El complemento funciona en cualquier hoja tuya, con tu modelo tal como lo tienes y tus propias fórmulas, como el Solver de Excel."}},{"@type":"Question","name":"¿Funciona con OpenSolver o con el Solver de Excel?","acceptedAnswer":{"@type":"Answer","text":"Es independiente de los dos. Si vienes de Excel, el panel te resultará conocido: celda objetivo, máximo, mínimo o valor, celdas que cambian y restricciones. Si OpenSolver te falla, mira también por qué pasa ."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://lanabes.github.io/solver-sheets/"},{"@type":"ListItem","position":2,"name":"El complemento","item":"https://lanabes.github.io/solver-sheets/complemento/"}]}</script>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../" aria-label="Solver para Google Sheets, inicio"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="15" fill="#1F4436"/><polygon points="16,47 16,19 35,24 48,47" fill="#F2EBDC" stroke="#F2EBDC" stroke-width="5" stroke-linejoin="round"/><circle cx="35" cy="24" r="6.6" fill="#A3D7BC" stroke="#1F4436" stroke-width="3.4"/></svg><span>Solver <small>para Google Sheets</small></span></a>
+    <nav class="nav" id="nav" aria-label="Principal"><a href="../solver-google-sheets/">Solver</a><a href="../solver-online/">Solver online</a><a href="../buscar-objetivo-google-sheets/">Buscar objetivo</a><a href="../ejemplos/">Ejemplos</a><a href="../plantilla/">Plantilla</a><a href="../complemento/" aria-current="page">Complemento</a></nav>
+    <a class="lang-switch" href="../en/add-on/" hreflang="en" lang="en" aria-label="English version">EN</a>
+    <button class="icon-btn theme-toggle" type="button" aria-label="Cambiar el tema"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="sun"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4L6 18M18 6l1.4-1.4"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="moon"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
+    <button class="icon-btn menu-btn" type="button" aria-label="Menú" aria-expanded="false" aria-controls="nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <a class="btn btn-primary btn-sm cta-top" href="#avisame">Avísame</a>
+  </div>
+</header>
+<main id="contenido">
+<div class="wrap">
+  <header class="article-head">
+    <ol class="crumbs"><li><a href="../">Inicio</a></li><li aria-current="page">El complemento</li></ol>
+    <p class="eyebrow">Complemento · gratis · en castellano</p>
+    <h1>El complemento Solver para Google Sheets</h1>
+    <p class="lede">El Solver de Excel, dentro de cualquier hoja de Google: eliges la celda objetivo, las celdas que cambian y los límites, y pulsas «Resolver». Lee tus fórmulas tal como las tienes, crea los informes de respuestas y de sensibilidad, y trae también Buscar objetivo.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="#avisame">Avísame cuando esté en el Marketplace</a>
+      <a class="btn btn-secondary" href="#como">Cómo se usa</a>
+    </div>
+    <div class="meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>5 min de lectura</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><time datetime="2026-11-13">Revisado el 13 de noviembre de 2026</time></span></div>
+  </header>
+
+  <div class="layout">
+    <article class="article">
+      <section class="summary" aria-label="En resumen">
+        <h2>En resumen</h2>
+        <ul>
+          <li><strong>Gratis hasta 200 variables y 500 restricciones</strong>, sin límite de resoluciones al día y sin registro.</li>
+          <li><strong>Informes como los de Excel</strong>: respuestas y sensibilidad (precios sombra, costes reducidos y rangos), con una lectura en palabras normales.</li>
+          <li><strong>Tus datos no nos llegan</strong>: se ejecuta en tu cuenta de Google y solo toca la hoja abierta.</li>
+        </ul>
+      </section>
+
+      <div class="callout note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.6v.4"/></svg><div><p><strong>Estado, 13 de noviembre de 2026:</strong> el complemento está terminado y lo estamos preparando para publicarlo en Google Workspace Marketplace, donde Google revisa cada complemento antes de aceptarlo. Apúntate abajo y te escribimos una sola vez, el día que salga. Mientras tanto, la <a href="../plantilla/">plantilla gratis</a> y el <a href="../solver-online/">Solver online</a> ya funcionan.</p></div></div>
+
+      <h2 id="que-hace">Qué hace</h2>
+      <p class="first">Encuentra los valores que dan el mejor resultado posible (más beneficio, menos coste, menos horas) sin pasarse de los límites que le pones. Sirve para mezclas de producción, transporte, turnos de personal, presupuestos y cualquier reparto de un recurso que no llega para todo. Si no sabes cómo plantear un problema, la <a href="../solver-google-sheets/">guía del Solver</a> lo explica paso a paso.</p>
+      <ul>
+        <li><strong>Trabaja con tu hoja tal como está.</strong> No hay que copiar el modelo a ningún formato: lee el objetivo y las restricciones de tus propias fórmulas (SUMAPRODUCTO, SUMA, sumas y productos por números, referencias entre pestañas).</li>
+        <li><strong>Variables continuas, enteras y binarias</strong> (sí o no), con la casilla «Convertir las variables sin restricciones en no negativas», como en Excel.</li>
+        <li><strong>Máximo, mínimo o un valor concreto</strong> para la celda objetivo.</li>
+        <li><strong>Explica por qué no puede</strong>: si no hay ninguna solución, si el objetivo puede crecer sin fin o si una fórmula no es lineal, te dice qué celda y deja la hoja como estaba.</li>
+        <li><strong>Deshacer</strong> con un clic: vuelve a poner los valores de antes.</li>
+        <li><strong>Buscar objetivo</strong> incluido, para cuando solo quieres que una fórmula llegue a un valor cambiando una celda.</li>
+        <li><strong>Recuerda el modelo</strong> de cada hoja de cálculo: lo cierras y al volver sigue ahí.</li>
+      </ul>
+
+      <h2 id="informes">Los informes de respuestas y de sensibilidad</h2>
+      <p class="first">Después de resolver, dos botones crean cada informe en una pestaña nueva, con las mismas columnas que los de Excel:</p>
+      <div class="table-wrap">
+        <table class="data">
+          <thead><tr><th scope="col">Informe</th><th scope="col">Qué cuenta</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Respuestas</strong></td><td>El valor del objetivo y de cada celda antes y después, y cada restricción con su valor final, si está al límite o con margen, y su holgura.</td></tr>
+            <tr><td><strong>Sensibilidad</strong></td><td>El precio sombra de cada restricción (cuánto mejora el objetivo con una unidad más) y hasta dónde vale; el coste reducido de cada variable y entre qué valores puede moverse su coeficiente sin que cambie la solución.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Debajo de las tablas, una lectura en frases normales. En el ejemplo del taller de la guía, por ejemplo: <em>«Cada unidad más de “Horas de torno” cambia el objetivo en 10, mientras no suba más de 20.»</em> Cada celda aparece con su nombre, sacado de los textos de su fila y su columna, como en Excel.</p>
+      <p>Igual que en Excel, la sensibilidad solo existe cuando todas las variables son continuas: con variables enteras o binarias, el complemento crea el informe de respuestas y explica por qué no hay sensibilidad.</p>
+
+      <h2 id="comparativa">Comparado con otros complementos</h2>
+      <p class="first">Lo que dice la ficha de cada uno en Google Workspace Marketplace, consultada el 13 de noviembre de 2026:</p>
+      <div class="table-wrap">
+        <table class="data">
+          <thead><tr><th scope="col"></th><th scope="col">Este complemento</th><th scope="col">SolveSheet, gratis</th><th scope="col">Maxable, gratis</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Variables</th><td><strong>200</strong></td><td>10</td><td>5</td></tr>
+            <tr><th scope="row">Restricciones</th><td><strong>500</strong></td><td>5</td><td>5 filas</td></tr>
+            <tr><th scope="row">Resoluciones</th><td><strong>Sin límite</strong></td><td>No indica límite para Simplex LP; 3 al mes en la nube</td><td>10 al día</td></tr>
+            <tr><th scope="row">Informe de sensibilidad</th><td><strong>Sí</strong></td><td>Solo en el plan Pro (49 $ al año)</td><td>No aparece en su ficha</td></tr>
+            <tr><th scope="row">En castellano</th><td><strong>Sí</strong></td><td>No</td><td>No</td></tr>
+            <tr><th scope="row">Precio para quitar límites</th><td>No hace falta</td><td>49 $ o 129 $ al año</td><td>39 $ al año</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>SolveSheet resuelve además modelos no lineales en su servidor, en sus planes de pago; este complemento, no. Si encuentras un dato desactualizado, escríbenos a <a href="mailto:rubenblanquez@gmail.com">rubenblanquez@gmail.com</a> y lo corregimos.</p>
+
+      <h2 id="como">Cómo se usa</h2>
+      <ol class="steps">
+        <li><strong>Abre el panel.</strong> En tu hoja, <span class="menu-path"><span>Extensiones</span><span>Solver</span><span>Solver…</span></span>. La primera vez, Google te pide permiso: el complemento solo puede ver y cambiar la hoja que tienes abierta y mostrar su panel.</li>
+        <li><strong>Celda objetivo.</strong> La que tiene la fórmula que quieres hacer máxima o mínima (o llevar a un valor). Selecciónala en la hoja y pulsa el botón de la selección, junto al campo.</li>
+        <li><strong>Celdas que cambian.</strong> Las decisiones: cuántas unidades, cuántas personas, cuánto dinero. Tienen que ser números escritos a mano o estar vacías. Elige si son continuas, enteras o binarias.</li>
+        <li><strong>Restricciones.</strong> Un rango, el signo y el límite: por ejemplo <code>D9:D11 ≤ E9:E11</code> compara tres filas de golpe. El límite puede ser un número o una celda.</li>
+        <li><strong>Resolver.</strong> El complemento escribe la solución en tus celdas y te enseña el valor del objetivo, qué restricciones están al límite y los botones de los informes. Si no te convence, «Deshacer».</li>
+      </ol>
+      <div class="callout ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l7.5 3v5.5c0 4.6-3.2 8.2-7.5 9.5-4.3-1.3-7.5-4.9-7.5-9.5V6z"/><path d="M8.8 12.2l2.3 2.3 4.2-4.6"/></svg><div><p><strong>¿Primera vez?</strong> En el panel, «Insertar un ejemplo» crea una pestaña con el taller de la guía, ya planteado. Pulsa «Resolver» y verás el resultado (2.600) en un segundo.</p></div></div>
+
+      <h2 id="limites">Límites y buenas prácticas</h2>
+      <ul>
+        <li>Hasta <strong>200 celdas que cambian</strong> y <strong>500 restricciones</strong> (cada celda de un rango cuenta como una).</li>
+        <li>Para leer tu modelo, el complemento cambia las celdas de una en una y mira cómo responden tus fórmulas: tarda alrededor de un segundo por cada celda que cambia. Al terminar, la hoja queda como estaba o con la solución.</li>
+        <li>El modelo tiene que ser <strong>lineal</strong>: nada de multiplicar dos celdas que cambian entre sí, ni SI, MAX o potencias que dependan de ellas.</li>
+        <li>Si la hoja tiene fórmulas aleatorias (ALEATORIO) o que dependen de la hora, el resultado puede no ser estable.</li>
+      </ul>
+
+      <h2 id="ayuda">Ayuda y contacto</h2>
+      <p class="first">Si algo no funciona o echas algo en falta, escríbenos a <a href="mailto:rubenblanquez@gmail.com">rubenblanquez@gmail.com</a> con una captura y, si puedes, una copia de la hoja sin datos confidenciales. Respondemos en castellano y en inglés.</p>
+      <p>Las condiciones de uso están en <a href="../condiciones/">Condiciones</a> y lo que hacemos (y no hacemos) con los datos, en <a href="../privacidad/#complemento">Privacidad</a>.</p>
+
+      <h2 id="preguntas">Preguntas frecuentes</h2>
+      <div class="faq">
+        <details>
+          <summary>¿Cuánto cuesta el complemento Solver?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>Hoy es gratis, sin registro y sin límite de resoluciones al día, con modelos de hasta 200 variables y 500 restricciones. Si un día añadimos opciones de pago, lo diremos antes en esta página y nunca se cobrará nada sin que tú lo compres.</p></div>
+        </details>
+        <details>
+          <summary>¿Mis datos salen de mi hoja?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>No llegan a nosotros. El complemento se ejecuta dentro de tu cuenta de Google, solo puede leer y escribir la hoja que tienes abierta y resuelve con el servicio de optimización que incluye Google. No usa servidores propios ni tiene permiso para conectarse a otros sitios.</p></div>
+        </details>
+        <details>
+          <summary>¿Resuelve modelos no lineales, como el GRG de Excel?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>No. Resuelve modelos lineales, con variables continuas, enteras o binarias: el equivalente al método «Simplex LP» de Excel. Si una fórmula multiplica dos celdas que cambian, te dice cuál es en vez de devolver un resultado equivocado.</p></div>
+        </details>
+        <details>
+          <summary>¿Qué es el informe de sensibilidad?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>El mismo que el de Excel: para cada restricción, cuánto mejoraría el objetivo con una unidad más del recurso (el precio sombra) y hasta dónde vale ese número; y para cada variable, entre qué valores puede moverse su coeficiente sin que cambie la solución. El complemento añade debajo una lectura en frases normales. Solo existe si todas las variables son continuas, igual que en Excel.</p></div>
+        </details>
+        <details>
+          <summary>¿En qué se diferencia de la plantilla gratis?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>La <a href="../plantilla/">plantilla</a> trae su propio formato de tabla: copias la hoja y escribes ahí tu problema. El complemento funciona en cualquier hoja tuya, con tu modelo tal como lo tienes y tus propias fórmulas, como el Solver de Excel.</p></div>
+        </details>
+        <details>
+          <summary>¿Funciona con OpenSolver o con el Solver de Excel?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div class="a"><p>Es independiente de los dos. Si vienes de Excel, el panel te resultará conocido: celda objetivo, máximo, mínimo o valor, celdas que cambian y restricciones. Si OpenSolver te falla, mira también <a href="../opensolver-google-sheets/">por qué pasa</a>.</p></div>
+        </details>
+      </div>
+      <div class="callout warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10.3 4.3L2.6 18a2 2 0 0 0 1.7 3h15.4a2 2 0 0 0 1.7-3L13.7 4.3a2 2 0 0 0-3.4 0z"/><path d="M12 9.5v4.5M12 17.4v.3"/></svg><div><p><strong>El resultado es tan bueno como el modelo.</strong> Si falta una restricción o un número está mal, la solución puede ser imposible de cumplir. Revísala siempre antes de decidir nada con ella.</p></div></div>
+    </article>
+    <aside class="aside"><nav class="toc" aria-label="En esta página"><p>En esta página</p><ol><li><a href="#que-hace">Qué hace</a></li><li><a href="#informes">Los informes de respuestas y de sensibilidad</a></li><li><a href="#comparativa">Comparado con otros complementos</a></li><li><a href="#como">Cómo se usa</a></li><li><a href="#limites">Límites y buenas prácticas</a></li><li><a href="#ayuda">Ayuda y contacto</a></li><li><a href="#preguntas">Preguntas frecuentes</a></li></ol>
+      <div class="aside-cta"><strong>Plantilla gratis</strong><span>Los ejemplos de esta web, listos para resolver en tu Google Sheets.</span><a class="btn btn-primary btn-sm" href="https://docs.google.com/spreadsheets/d/1wYO8tv6pRsg1gmECqQLtMpFOm7IOn-0MS4rO8Z0BDJQ/copy" target="_blank" rel="noopener" data-plantilla>Hacer una copia <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="arrow"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></nav></aside>
+  </div>
+</div>
+
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="../"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="15" fill="#1F4436"/><polygon points="16,47 16,19 35,24 48,47" fill="#F2EBDC" stroke="#F2EBDC" stroke-width="5" stroke-linejoin="round"/><circle cx="35" cy="24" r="6.6" fill="#A3D7BC" stroke="#1F4436" stroke-width="3.4"/></svg><span>Solver <small>para Google Sheets</small></span></a>
+        <p>Guías en castellano, ejemplos resueltos y una plantilla gratis para optimizar con Google Sheets. Un proyecto de lanabes.</p>
+      </div>
+      <div>
+        <h2>Guías</h2>
+        <ul>
+          <li><a href="../solver-google-sheets/">Solver en Google Sheets</a></li>
+          <li><a href="../buscar-objetivo-google-sheets/">Buscar objetivo</a></li>
+          <li><a href="../opensolver-google-sheets/">OpenSolver no funciona</a></li>
+          <li><a href="../solver-online/">Solver online gratis</a></li>
+          <li><a href="../plantilla/">La plantilla gratis</a></li>
+          <li><a href="../complemento/">El complemento</a></li>
+          <li><a href="../privacidad/">Privacidad</a></li>
+          <li><a href="../condiciones/">Condiciones de uso</a></li>
+          <li><a href="../en/" hreflang="en">English version</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Ejemplos resueltos</h2>
+        <ul>
+          <li><a href="../ejemplos/mezcla-de-produccion/" hreflang="es">Mezcla de producción</a></li>
+          <li><a href="../ejemplos/problema-de-transporte/" hreflang="es">Problema de transporte</a></li>
+          <li><a href="../ejemplos/turnos-de-personal/" hreflang="es">Turnos de personal</a></li>
+          <li><a href="../ejemplos/presupuesto-de-inversiones/" hreflang="es">Presupuesto de inversiones</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="disclaimer">
+      <span>Los ejemplos son inventados para aprender. El resultado de un modelo depende de cómo se plantea: revísalo siempre antes de decidir.</span>
+      <span>Google Sheets es una marca de Google LLC y Excel, de Microsoft. Esta web no está afiliada a ninguna de las dos.</span>
+    </div>
+  </div>
+</footer>
+<script src="../assets/app.js" defer></script>
+
+</body>
+</html>

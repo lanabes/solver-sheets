@@ -13,7 +13,9 @@ Guías gratis en castellano e inglés, ejemplos resueltos y una plantilla gratis
 - [Goal Seek in Google Sheets: four ways to do it](https://lanabes.github.io/solver-sheets/en/goal-seek-google-sheets/)
 - [OpenSolver for Google Sheets not working? What to check, and a free alternative](https://lanabes.github.io/solver-sheets/en/opensolver-google-sheets/)
 - [Free Solver template for Google Sheets](https://lanabes.github.io/solver-sheets/en/template/)
+- [The Solver add-on for Google Sheets](https://lanabes.github.io/solver-sheets/en/add-on/)
 - [Free online linear programming solver](https://lanabes.github.io/solver-sheets/en/linear-programming-solver/)
+- [Terms of use · Solver for Google Sheets](https://lanabes.github.io/solver-sheets/en/terms/)
 
 ## Castellano
 
@@ -28,6 +30,8 @@ Guías gratis en castellano e inglés, ejemplos resueltos y una plantilla gratis
 - [Turnos de personal: la plantilla mínima que cubre la semana](https://lanabes.github.io/solver-sheets/ejemplos/turnos-de-personal/)
 - [Presupuesto de inversiones: qué proyectos aprobar](https://lanabes.github.io/solver-sheets/ejemplos/presupuesto-de-inversiones/)
 - [Plantilla Solver para Google Sheets](https://lanabes.github.io/solver-sheets/plantilla/)
+- [El complemento Solver para Google Sheets](https://lanabes.github.io/solver-sheets/complemento/)
+- [Condiciones de uso · Solver para Google Sheets](https://lanabes.github.io/solver-sheets/condiciones/)
 
 ---
 
